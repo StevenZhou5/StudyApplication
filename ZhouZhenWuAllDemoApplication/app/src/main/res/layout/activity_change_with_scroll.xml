@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_parent"
+            android:layout_width="match_parent"
+            android:layout_height="3000dp">
+
+            <TextView
+                android:id="@+id/tv_children"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="180dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="随滑动动态改变的View" />
+        </RelativeLayout>
+    </slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.MyScrollView>
+
+    <TextView
+        android:id="@+id/tv_children2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="随滑动动态改变的View"
+        android:visibility="gone" />
+</RelativeLayout>
