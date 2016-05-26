@@ -18,6 +18,11 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.adapter.MainA
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.adapter.MyBaseAdapter;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.bean.ActivityListItemBean;
 
+/**
+ * 创建者： ZhouZhenWu/Steven.
+ * 创建日期：16/5/19
+ * 类简介：程序主入口Activity
+ */
 public class MainActivity extends AppCompatActivity {
     private ListView mLvMain;
     private MyBaseAdapter mLvMainAdapter;
