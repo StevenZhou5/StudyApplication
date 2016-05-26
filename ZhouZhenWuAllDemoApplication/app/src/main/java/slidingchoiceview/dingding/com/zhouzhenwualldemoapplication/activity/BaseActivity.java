@@ -1,6 +1,7 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -9,4 +10,8 @@ import android.app.Activity;
  */
 public class BaseActivity extends Activity {
     public static String TAG = "ZZW";
+
+    public void showToast(String string) {
+        Toast.makeText(this.getApplicationContext(), string, Toast.LENGTH_SHORT).show();
+    }
 }

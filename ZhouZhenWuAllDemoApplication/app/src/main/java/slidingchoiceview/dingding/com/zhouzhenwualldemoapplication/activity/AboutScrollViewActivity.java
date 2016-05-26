@@ -1,8 +1,6 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 
