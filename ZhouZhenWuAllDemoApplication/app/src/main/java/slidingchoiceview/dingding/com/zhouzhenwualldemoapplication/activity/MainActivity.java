@@ -1,16 +1,19 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
@@ -59,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
         for (ActivityListItemBean data : mAllItemBeans) {
             datas.add(data);
         }
+        // 迭代器移除测试
+       /* Log.d("ZZW", "开始");
+        Iterator iterator = datas.iterator();
+        while (iterator.hasNext()) {
+            iterator.next();
+            iterator.remove();
+            for (Object data : datas) {
+                ActivityListItemBean bean = (ActivityListItemBean) data;
+                Log.d("ZZW", bean.getName());
+            }
+        }*/
         mLvMainAdapter.setDatas(datas);
         mLvMain.setAdapter(mLvMainAdapter);
         mLvMain.setOnItemClickListener(mOnItemClickListener);
