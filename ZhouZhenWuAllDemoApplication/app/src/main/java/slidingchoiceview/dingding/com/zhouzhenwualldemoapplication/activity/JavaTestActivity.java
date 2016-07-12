@@ -1,7 +1,19 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -12,6 +24,17 @@ public class JavaTestActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_java_test);
+    }
+
+    /**
+     * 测试按钮被点击
+     *
+     * @param v
+     */
+    public void javaTest(View v) {
+        showToast("javaTest开始");
+        hashSetTest();
     }
 
     /**
@@ -37,4 +60,61 @@ public class JavaTestActivity extends BaseActivity {
                 + (a == b) + (a == "abc") + ("abc" == b));
     }
 
+
+    /**
+     * JAVA相关引用测试
+     */
+    private void testRefrence() {
+        String s = new String("abc");
+        char[] c = {'a', 'b', 'c'};
+        String s1 = "abc";
+        String s2 = "abc";
+        Bean b = new Bean("a");
+        Bean b2 = new Bean("a");
+        Log.d("ZZW", "equls结果为：" + b.equals(b2) + "; 各自HashCode值为：b:" + b.hashCode() + "; b2:" + b2.hashCode());
+        change(s, c, s1, s2, b);
+
+        Log.d("ZZW", "Test结果为：" + s + "; " + c[0] + ";" + s1 + ";" + s2 + "; " + b.getS());
+    }
+
+    private class Bean {
+        private String s;
+
+        public Bean(String s) {
+            this.s = s;
+        }
+
+        public String getS() {
+            return s;
+        }
+
+        public void setS(String s) {
+            this.s = s;
+        }
+    }
+
+    private void change(String s, char[] chars, String s1, String s2, Bean b) {
+        s = "gbc";
+        chars[0] = 'g';
+        s1 = new String("gbc");
+        s2 = "gbc";
+        b = new Bean("g");
+    }
+
+    /**
+     * 测试用HashSet添加不重复的随机数
+     */
+    private void hashSetTest() {
+        HashSet<Integer> set = new HashSet<>();
+        while (set.size() < 99) {
+            int i = (int) (Math.random() * 100);
+            set.add(i);
+        }
+        int i = 1;
+        for (int a : set) {
+            Log.d(TAG, "第" + i + "个数为：" + a);
+            i++;
+        }
+
+    }
 }

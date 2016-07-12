@@ -32,6 +32,12 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--Android相关学习测试-->
+        <activity
+            android:name=".activity.AndroidTestActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--滑动吸顶Activity-->
         <activity
             android:name=".activity.ChangeWithScrollActivity"

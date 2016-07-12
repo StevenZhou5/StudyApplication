@@ -7,6 +7,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="测试开始" />
+        android:onClick="javaTest"
+        android:text="开始测试"
+        android:textSize="14sp" />
 </LinearLayout>
