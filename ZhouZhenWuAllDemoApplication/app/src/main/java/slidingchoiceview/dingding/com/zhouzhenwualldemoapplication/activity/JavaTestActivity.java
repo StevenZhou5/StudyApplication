@@ -1,19 +1,14 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass.A;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass.B;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -34,7 +29,25 @@ public class JavaTestActivity extends BaseActivity {
      */
     public void javaTest(View v) {
         showToast("javaTest开始");
-        hashSetTest();
+        fatherOrSon();
+//        hashSetTest();
+    }
+
+    /**
+     * 父类与子类方法调用测试
+     */
+    private void fatherOrSon() {
+        A a = new B();
+        Log.d("ZZW",a.getString());
+    }
+
+    /**
+     * 静态变量/代码块和非静态变量/代码块的创建顺序与次数测试
+     */
+    private void staticInitTest() {
+        A a;
+        a = new A();
+        a = new A();
     }
 
     /**

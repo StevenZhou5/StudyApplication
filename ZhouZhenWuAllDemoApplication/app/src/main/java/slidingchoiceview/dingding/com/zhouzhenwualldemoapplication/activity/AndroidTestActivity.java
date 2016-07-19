@@ -1,12 +1,12 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
-
-import java.util.HashSet;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 
@@ -20,6 +20,7 @@ public class AndroidTestActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_test);
+        Log.d("ZZW", getClass().getName() + ":onCreate");
     }
 
     /**
@@ -29,7 +30,8 @@ public class AndroidTestActivity extends BaseActivity {
      */
     public void androidTest(View v) {
         showToast("AndroidTest开始");
-        handlerThreadTest();
+
+//        handlerThreadTest();
     }
 
 
@@ -64,5 +66,47 @@ public class AndroidTestActivity extends BaseActivity {
             }
         };
         thread.start();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d("ZZW", getClass().getName() + ":onNewIntent");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("ZZW", getClass().getName() + ":onRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("ZZW", getClass().getName() + ":onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("ZZW", getClass().getName() + ":onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("ZZW", getClass().getName() + ":onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("ZZW", getClass().getName() + ":onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("ZZW", getClass().getName() + ":onDestroy");
     }
 }
