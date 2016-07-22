@@ -7,6 +7,7 @@ import android.view.View;
 import java.util.HashSet;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass.A;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass.B;
 

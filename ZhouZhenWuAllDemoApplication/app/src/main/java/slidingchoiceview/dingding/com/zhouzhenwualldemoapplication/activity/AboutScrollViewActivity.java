@@ -1,9 +1,9 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 
 /**
  * Created by Zhouzhenwu/Steven on 16/2/28.

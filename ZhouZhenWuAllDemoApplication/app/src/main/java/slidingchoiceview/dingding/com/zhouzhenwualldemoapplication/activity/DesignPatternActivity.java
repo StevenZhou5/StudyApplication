@@ -2,6 +2,8 @@ package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
 import android.content.Intent;
 
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
+
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/5/19

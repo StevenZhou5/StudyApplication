@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.utils.CommonUtils;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.utils.DynamicUtils;
 
 /**

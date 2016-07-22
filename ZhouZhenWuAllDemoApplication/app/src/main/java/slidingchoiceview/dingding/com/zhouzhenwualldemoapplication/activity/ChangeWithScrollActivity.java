@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.MyScrollView;
 
 /**

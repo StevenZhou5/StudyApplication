@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -20,7 +21,7 @@ public class AndroidTestActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_test);
-        Log.d("ZZW", getClass().getName() + ":onCreate");
+        Log.d("ZZW", getClass().getSimpleName() + ":onCreate");
     }
 
     /**
@@ -71,19 +72,19 @@ public class AndroidTestActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Log.d("ZZW", getClass().getName() + ":onNewIntent");
+        Log.d("ZZW", getClass().getSimpleName() + ":onNewIntent");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d("ZZW", getClass().getName() + ":onRestart");
+        Log.d("ZZW", getClass().getSimpleName() + ":onRestart");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("ZZW", getClass().getName() + ":onStart");
+        Log.d("ZZW", getClass().getSimpleName() + ":onStart");
     }
 
     @Override
@@ -95,18 +96,18 @@ public class AndroidTestActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("ZZW", getClass().getName() + ":onPause");
+        Log.d("ZZW", getClass().getSimpleName() + ":onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("ZZW", getClass().getName() + ":onStop");
+        Log.d("ZZW", getClass().getSimpleName() + ":onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("ZZW", getClass().getName() + ":onDestroy");
+        Log.d("ZZW", getClass().getSimpleName() + ":onDestroy");
     }
 }
