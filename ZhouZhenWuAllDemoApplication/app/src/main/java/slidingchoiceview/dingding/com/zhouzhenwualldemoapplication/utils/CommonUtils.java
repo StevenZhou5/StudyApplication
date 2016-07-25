@@ -2,6 +2,8 @@ package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.utils;
 
 import android.content.Context;
 
+import java.lang.reflect.Field;
+
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/3/14
@@ -36,5 +38,25 @@ public class CommonUtils {
         }
         sb.subSequence(0, sb.length() - 2);
         return sb.toString();
+    }
+
+
+    /**
+     * 获取状态栏高度，此方法在onCreate中调用也能获取到
+     * @param context
+     * @return
+     */
+    public static int getStatusBarHeight(Context context){
+        int statusBarHeight = 0;
+        try {
+            Class<?> c = Class.forName("com.android.internal.R$dimen");
+            Object obj = c.newInstance();
+            Field field = c.getField("status_bar_height");
+            int resId = Integer.parseInt(field.get(obj).toString());
+            statusBarHeight = context.getResources().getDimensionPixelSize(resId);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return statusBarHeight;
     }
 }

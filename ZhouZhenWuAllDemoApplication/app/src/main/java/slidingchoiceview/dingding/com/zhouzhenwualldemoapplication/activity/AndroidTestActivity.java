@@ -1,15 +1,25 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.PopupWindow;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.OneImageViewPopupWindow;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -17,6 +27,7 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activi
  * 类简介：
  */
 public class AndroidTestActivity extends BaseActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +38,49 @@ public class AndroidTestActivity extends BaseActivity {
     /**
      * 测试按钮被点击
      *
-     * @param v
+     * @param view
      */
-    public void androidTest(View v) {
+    public void androidTest(View view) {
         showToast("AndroidTest开始");
-
-//        handlerThreadTest();
+        popupWindowTest(view);
     }
 
+    @Bind(R.id.layout_pop_container)
+    View mPopContainer;
+
+    @Bind(R.id.view_background)
+    View mViewBackground;
+
+    private void popupWindowTest(View view) {
+        // 自定义的Pop
+//        OneImageViewPopupWindow oneImageViewPopupWindow = new OneImageViewPopupWindow(this,R.drawable.leak_canary_icon);
+//        oneImageViewPopupWindow.showAsDropDown(view);
+
+        // 带有动画效果的popupWindow
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentView = inflater.inflate(R.layout.popupwindow_layout, null);
+        ButterKnife.bind(this, contentView);
+        PopupWindow popup = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        popup.setFocusable(true);
+        popup.setAnimationStyle(R.style.AppTheme_PopupOverlay);
+        // 这个是为了点击“返回Back”也能使其消失，并且并不会影响你的背景
+        popup.setBackgroundDrawable(new BitmapDrawable());
+        popup.showAsDropDown(view);
+
+        mPopContainer.setVisibility(View.VISIBLE);
+        mViewBackground.setVisibility(View.VISIBLE);
+
+        mPopContainer.measure(0, 0);
+        Log.d("ZZW", "height:" + mPopContainer.getMeasuredHeight());
+        TranslateAnimation translateAnimation = new TranslateAnimation(0, 0, -mPopContainer.getMeasuredHeight(), 0);
+        translateAnimation.setDuration(2000);
+        mPopContainer.startAnimation(translateAnimation);
+
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.1f);
+        alphaAnimation.setDuration(2000);
+        alphaAnimation.setFillAfter(true);
+        mViewBackground.startAnimation(alphaAnimation);
+    }
 
     /**
      * 线程与handle回调测试
