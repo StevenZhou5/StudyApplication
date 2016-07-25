@@ -1,13 +1,13 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import java.util.HashSet;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass.A;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass.B;
 
@@ -39,7 +39,7 @@ public class JavaTestActivity extends BaseActivity {
      */
     private void fatherOrSon() {
         A a = new B();
-        Log.d("ZZW",a.getString());
+        LogUtils.log(a.getString());
     }
 
     /**
@@ -60,7 +60,7 @@ public class JavaTestActivity extends BaseActivity {
         for (int i = 0; i < 10; i++) {
             count1 = ++count1;
             count2 = count2++;
-            Log.d(TAG, "count1:" + count1 + ";" + "count2:" + count2); // count为0，并没有增加
+            LogUtils.log("count1:" + count1 + ";" + "count2:" + count2); // count为0，并没有增加
         }
     }
 
@@ -70,7 +70,7 @@ public class JavaTestActivity extends BaseActivity {
     private void StringReferenceTest() {
         String a = "abc";
         String b = new String("abc");
-        Log.d(TAG, "abc的HashCode：" + "abc".hashCode() + "; a的HashCode：" + a.hashCode() + "; b的HashCode：" + b.hashCode()
+        LogUtils.log("abc的HashCode：" + "abc".hashCode() + "; a的HashCode：" + a.hashCode() + "; b的HashCode：" + b.hashCode()
                 + (a == b) + (a == "abc") + ("abc" == b));
     }
 
@@ -85,10 +85,10 @@ public class JavaTestActivity extends BaseActivity {
         String s2 = "abc";
         Bean b = new Bean("a");
         Bean b2 = new Bean("a");
-        Log.d("ZZW", "equls结果为：" + b.equals(b2) + "; 各自HashCode值为：b:" + b.hashCode() + "; b2:" + b2.hashCode());
+        LogUtils.log("equls结果为：" + b.equals(b2) + "; 各自HashCode值为：b:" + b.hashCode() + "; b2:" + b2.hashCode());
         change(s, c, s1, s2, b);
 
-        Log.d("ZZW", "Test结果为：" + s + "; " + c[0] + ";" + s1 + ";" + s2 + "; " + b.getS());
+        LogUtils.log("Test结果为：" + s + "; " + c[0] + ";" + s1 + ";" + s2 + "; " + b.getS());
     }
 
     private class Bean {
@@ -126,7 +126,7 @@ public class JavaTestActivity extends BaseActivity {
         }
         int i = 1;
         for (int a : set) {
-            Log.d(TAG, "第" + i + "个数为：" + a);
+            LogUtils.log("第" + i + "个数为：" + a);
             i++;
         }
 

@@ -1,7 +1,5 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.utils;
 
-import android.util.Log;
-
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/4/1

@@ -1,6 +1,6 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass;
 
-import android.util.Log;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -10,7 +10,7 @@ import android.util.Log;
 public class B extends A {
 
     public B() {
-        Log.d("ZZW", "B的构造方法");
+        LogUtils.log("B的构造方法");
     }
 
     public String getString() {

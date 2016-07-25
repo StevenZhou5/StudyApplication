@@ -6,7 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -18,10 +17,11 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.activity.AlgorithmActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.android.activity.AndroidTestActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.activity.ChangeWithScrollActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.LIstDataBaseAdapter;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.designpattern.activity.DesignPatternActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.activity.JavaTestActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.adapter.MainActivityListAdapter;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.LIstDataBaseAdapter;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module.ActivityListItemBean;
 
 /**
@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         initListView();
         initFloationButton();
-
-        Log.d("ZZW", getClass().getSimpleName() + ":onCreate");
+        LogUtils.log(getClass().getSimpleName() + ":onCreate");
     }
 
     /**
@@ -115,48 +114,48 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Log.d("ZZW", getClass().getName() + ":onNewIntent");
+        LogUtils.log(getClass().getName() + ":onNewIntent");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d("ZZW", getClass().getSimpleName() + ":onRestart");
+        LogUtils.log(getClass().getSimpleName() + ":onRestart");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("ZZW", getClass().getSimpleName() + ":onStart");
+        LogUtils.log(getClass().getSimpleName() + ":onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("ZZW", getClass().getSimpleName() + ":onResume");
+        LogUtils.log(getClass().getSimpleName() + ":onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("ZZW", getClass().getSimpleName() + ":onPause");
+        LogUtils.log(getClass().getSimpleName() + ":onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("ZZW", getClass().getSimpleName() + ":onStop");
+        LogUtils.log(getClass().getSimpleName() + ":onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("ZZW", getClass().getSimpleName() + ":onDestroy");
+        LogUtils.log(getClass().getSimpleName() + ":onDestroy");
     }
 
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
-        Log.d("ZZW",getClass().getSimpleName() + ":onTrimMemory");
+        LogUtils.log(getClass().getSimpleName() + ":onTrimMemory");
     }
 }

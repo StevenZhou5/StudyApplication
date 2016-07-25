@@ -2,10 +2,10 @@ package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.ac
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.utils.DynamicProgrammingAlgorithmUtils;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -19,7 +19,7 @@ public class AlgorithmActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         getRabbitCount(24);
-        Log.d("ZZW", getClass().getName() + ":onCreate");
+        LogUtils.log(getClass().getSimpleName() + ":onCreate");
 //        quickSort();
     }
 
@@ -30,7 +30,7 @@ public class AlgorithmActivity extends BaseActivity {
         int total = (int) ((Math.random() * 100));
         int[] base = {1, 3, 5, 10, 20, 50, 100};
         String result = "total为:" + total + "; minCount:" + DynamicProgrammingAlgorithmUtils.getMinCount(40, base);
-        Log.d(TAG, result);
+        LogUtils.log(result);
         showToast(result);
     }
 
@@ -50,7 +50,7 @@ public class AlgorithmActivity extends BaseActivity {
 //        Log.d(TAG, "输出:" + CommonUtils.intsToString(ints));
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
-        Log.d(TAG, "排序耗时为：" + duration);
+        LogUtils.log("排序耗时为：" + duration);
     }
 
 
@@ -78,7 +78,7 @@ public class AlgorithmActivity extends BaseActivity {
             y = y1;
             z = z1;
             int countI = x + y + z;
-            Log.d(TAG, "第" + i + "个月的兔子总量为：" + countI);
+            LogUtils.log("第" + i + "个月的兔子总量为：" + countI);
         }
         count = x + y + z;
         return count;
@@ -98,7 +98,7 @@ public class AlgorithmActivity extends BaseActivity {
             y = x + y; // 等于上个月的x+y
             x = z; // 等于上个月的y
             int countI = x + y + z;
-            Log.d(TAG, "第" + i + "个月的兔子总量为：" + y);
+            LogUtils.log("第" + i + "个月的兔子总量为：" + y);
         }
         count = x + y + z;
         return count;
@@ -107,43 +107,44 @@ public class AlgorithmActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Log.d("ZZW", getClass().getName() + ":onNewIntent");
+        LogUtils.log(getClass().getSimpleName() + ":onNewIntent");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d("ZZW", getClass().getName() + ":onRestart");
+        LogUtils.log(getClass().getSimpleName() + ":onRestart");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("ZZW", getClass().getName() + ":onStart");
+        LogUtils.log(getClass().getSimpleName() + ":onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("ZZW", getClass().getName() + ":onResume");
+        LogUtils.log(getClass().getSimpleName() + ":onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("ZZW", getClass().getName() + ":onPause");
+        LogUtils.log(getClass().getSimpleName() + ":onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("ZZW", getClass().getName() + ":onStop");
+        LogUtils.log(getClass().getSimpleName() + ":onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("ZZW", getClass().getName() + ":onDestroy");
+        LogUtils.log(getClass().getSimpleName() + ":onDestroy");
+
     }
 
 }

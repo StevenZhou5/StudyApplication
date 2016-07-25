@@ -1,12 +1,12 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.MyScrollView;
 
 /**
@@ -68,7 +68,7 @@ public class ChangeWithScrollActivity extends BaseActivity {
                     RelativeLayout.LayoutParams params2 = (RelativeLayout.LayoutParams) mChildrenView2.getLayoutParams();
                     params2.leftMargin = margin;
                     params2.rightMargin = margin;
-                    Log.d(TAG, "margin值为：" + margin);
+                    LogUtils.log("margin值为：" + margin);
                     mChildrenView2.setLayoutParams(params2);
                 } else {
                     mChildrenView.setVisibility(View.VISIBLE);

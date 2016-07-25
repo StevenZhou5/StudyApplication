@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.lang.reflect.Field;
 
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.MyApplication;
+
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/3/14
@@ -40,13 +42,27 @@ public class CommonUtils {
         return sb.toString();
     }
 
+    /**
+     * 通过资源Id获取字符串
+     *
+     * @param resId ：字符串的资源Id
+     * @return
+     */
+    public static String getString(int resId) {
+        String resultString = null;
+        if (resId > 0) {
+            MyApplication.instance.getResources().getString(resId);
+        }
+        return resultString;
+    }
 
     /**
      * 获取状态栏高度，此方法在onCreate中调用也能获取到
+     *
      * @param context
      * @return
      */
-    public static int getStatusBarHeight(Context context){
+    public static int getStatusBarHeight(Context context) {
         int statusBarHeight = 0;
         try {
             Class<?> c = Class.forName("com.android.internal.R$dimen");

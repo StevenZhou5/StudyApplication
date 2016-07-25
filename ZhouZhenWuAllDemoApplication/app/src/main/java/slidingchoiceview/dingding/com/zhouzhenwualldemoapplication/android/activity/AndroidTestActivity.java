@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -31,7 +31,7 @@ public class AndroidTestActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_test);
-        Log.d("ZZW", getClass().getSimpleName() + ":onCreate");
+        LogUtils.log(getClass().getSimpleName() + ":onCreate");
     }
 
     /**
@@ -70,7 +70,7 @@ public class AndroidTestActivity extends BaseActivity {
         mViewBackground.setVisibility(View.VISIBLE);
 
         mPopContainer.measure(0, 0);
-        Log.d("ZZW", "height:" + mPopContainer.getMeasuredHeight());
+        LogUtils.log("height:" + mPopContainer.getMeasuredHeight());
         TranslateAnimation translateAnimation = new TranslateAnimation(0, 0, -mPopContainer.getMeasuredHeight(), 0);
         translateAnimation.setDuration(2000);
         mPopContainer.startAnimation(translateAnimation);
@@ -117,42 +117,48 @@ public class AndroidTestActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Log.d("ZZW", getClass().getSimpleName() + ":onNewIntent");
+        LogUtils.log(getClass().getSimpleName() + ":onNewIntent");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d("ZZW", getClass().getSimpleName() + ":onRestart");
+        LogUtils.log(getClass().getSimpleName() + ":onRestart");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("ZZW", getClass().getSimpleName() + ":onStart");
+        LogUtils.log(getClass().getSimpleName() + ":onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("ZZW", getClass().getName() + ":onResume");
+        LogUtils.log(getClass().getSimpleName() + ":onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("ZZW", getClass().getSimpleName() + ":onPause");
+        LogUtils.log(getClass().getSimpleName() + ":onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("ZZW", getClass().getSimpleName() + ":onStop");
+        LogUtils.log(getClass().getSimpleName() + ":onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("ZZW", getClass().getSimpleName() + ":onDestroy");
+        LogUtils.log(getClass().getSimpleName() + ":onDestroy");
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        LogUtils.log(getClass().getSimpleName() + ":onTrimMemory;" + "; 此时的level:" + level);
     }
 }

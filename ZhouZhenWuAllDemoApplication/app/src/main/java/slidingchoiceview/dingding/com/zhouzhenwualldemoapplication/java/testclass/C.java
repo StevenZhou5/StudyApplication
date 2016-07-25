@@ -1,15 +1,15 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass;
 
-import android.util.Log;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/7/18
  * 类简介：
  */
-public class C  {
+public class C {
 
-    public C(){
-        Log.d("ZZW","C的构造方法");
+    public C() {
+        LogUtils.log("C的构造方法");
     }
 }
