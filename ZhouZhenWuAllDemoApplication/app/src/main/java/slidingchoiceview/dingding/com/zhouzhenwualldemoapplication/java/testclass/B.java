@@ -1,8 +1,6 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass;
 
 import android.util.Log;
-
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass.A;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,8 +8,8 @@ import java.util.HashSet;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass.A;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass.B;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass.A;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass.B;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

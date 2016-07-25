@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
                 android:gravity="center"
                 android:text="随滑动动态改变的View" />
         </RelativeLayout>
-    </slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.MyScrollView>
+    </slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.MyScrollView>
 
     <TextView
         android:id="@+id/tv_children2"

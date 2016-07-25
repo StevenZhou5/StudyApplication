@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.android.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.OneImageViewPopupWindow;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

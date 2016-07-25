@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.testclass;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass;
 
 import android.util.Log;
 

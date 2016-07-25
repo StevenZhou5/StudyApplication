@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;

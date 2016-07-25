@@ -1,11 +1,11 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.utils.DynamicUtils;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.utils.DynamicProgrammingAlgorithmUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -29,7 +29,7 @@ public class AlgorithmActivity extends BaseActivity {
     private void getMinCount() {
         int total = (int) ((Math.random() * 100));
         int[] base = {1, 3, 5, 10, 20, 50, 100};
-        String result = "total为:" + total + "; minCount:" + DynamicUtils.getMinCount(40, base);
+        String result = "total为:" + total + "; minCount:" + DynamicProgrammingAlgorithmUtils.getMinCount(40, base);
         Log.d(TAG, result);
         showToast(result);
     }
@@ -46,7 +46,7 @@ public class AlgorithmActivity extends BaseActivity {
         }
         long startTime = System.currentTimeMillis();
 //        Log.d(TAG, "输入:" + CommonUtils.intsToString(ints));
-        DynamicUtils.quickSortSingle(ints, 0, ints.length - 1);
+        DynamicProgrammingAlgorithmUtils.quickSortSingle(ints, 0, ints.length - 1);
 //        Log.d(TAG, "输出:" + CommonUtils.intsToString(ints));
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;

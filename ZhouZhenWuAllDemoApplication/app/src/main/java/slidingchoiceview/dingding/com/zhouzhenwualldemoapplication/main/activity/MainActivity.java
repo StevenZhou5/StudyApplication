@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,9 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.adapter.MainActivityListAdapter;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.activity.AlgorithmActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.android.activity.AndroidTestActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.activity.ChangeWithScrollActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.designpattern.activity.DesignPatternActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.activity.JavaTestActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.adapter.MainActivityListAdapter;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.LIstDataBaseAdapter;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.bean.ActivityListItemBean;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module.ActivityListItemBean;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

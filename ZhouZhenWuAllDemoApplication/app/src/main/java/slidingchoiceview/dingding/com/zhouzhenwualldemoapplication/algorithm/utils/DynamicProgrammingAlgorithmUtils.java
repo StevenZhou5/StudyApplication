@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.utils;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.utils;
 
 import android.util.Log;
 
@@ -7,7 +7,7 @@ import android.util.Log;
  * 创建日期：16/4/1
  * 类简介：动态规划算法工具类
  */
-public class DynamicUtils {
+public class DynamicProgrammingAlgorithmUtils {
     private static final String TAG = "ZZW";
 
     /**

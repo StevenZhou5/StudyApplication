@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.activity;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets.MyScrollView;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.MyScrollView;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

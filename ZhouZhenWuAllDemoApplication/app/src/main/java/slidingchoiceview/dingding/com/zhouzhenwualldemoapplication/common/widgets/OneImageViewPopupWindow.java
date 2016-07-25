@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.utils.CommonUtils;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.CommonUtils;
 
 
 /**

@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.widgets;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.utils.CommonUtils;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.CommonUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
