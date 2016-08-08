@@ -6,14 +6,14 @@ import android.widget.TextView;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module.ActivityListItemBean;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.LIstDataBaseAdapter;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.ListDataBaseAdapter;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/4/9
- * 类简介：
+ * 类简介：用于进行Activi跳转的的list的Adapter
  */
-public class MainActivityListAdapter extends LIstDataBaseAdapter<ActivityListItemBean> {
+public class ActivityListAdapter extends ListDataBaseAdapter<ActivityListItemBean> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

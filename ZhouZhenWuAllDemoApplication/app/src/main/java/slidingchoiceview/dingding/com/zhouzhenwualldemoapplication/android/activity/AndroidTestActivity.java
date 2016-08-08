@@ -19,6 +19,8 @@ import butterknife.ButterKnife;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.LoadingPopupWindow;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.OneImageViewPopupWindow;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -41,7 +43,40 @@ public class AndroidTestActivity extends BaseActivity {
      */
     public void androidTest(View view) {
         showToast("AndroidTest开始");
-        popupWindowTest(view);
+        widgetPopupWindowTest(view);
+    }
+
+    /**
+     * 线程与handle回调测试
+     */
+    private void handlerThreadTest() {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    this.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                final Handler handler = new Handler(Looper.getMainLooper()) { // 必须指定为MainLooper否则不能进行UI操作
+                    @Override
+                    public void handleMessage(Message msg) {
+                        switch (msg.what) {
+                            case 1:
+                                showToast("线程休眠结束");
+                                break;
+                            default:
+                                break;
+                        }
+                        super.handleMessage(msg);
+                    }
+                };
+                Message message = new Message();
+                message.what = 1;
+                handler.sendMessage(message);
+            }
+        };
+        thread.start();
     }
 
     @Bind(R.id.layout_pop_container)
@@ -50,11 +85,12 @@ public class AndroidTestActivity extends BaseActivity {
     @Bind(R.id.view_background)
     View mViewBackground;
 
-    private void popupWindowTest(View view) {
-        // 自定义的Pop
-//        OneImageViewPopupWindow oneImageViewPopupWindow = new OneImageViewPopupWindow(this,R.drawable.leak_canary_icon);
-//        oneImageViewPopupWindow.showAsDropDown(view);
-
+    /**
+     * 带动画效果的popupwindow测试
+     *
+     * @param view
+     */
+    private void animationPopupWindowTest(View view) {
         // 带有动画效果的popupWindow
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.popupwindow_layout, null);
@@ -81,37 +117,17 @@ public class AndroidTestActivity extends BaseActivity {
         mViewBackground.startAnimation(alphaAnimation);
     }
 
-    /**
-     * 线程与handle回调测试
-     */
-    private void handlerThreadTest() {
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    this.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                final Handler handler = new Handler(Looper.getMainLooper()) {
-                    @Override
-                    public void handleMessage(Message msg) {
-                        switch (msg.what) {
-                            case 1:
-                                showToast("线程休眠结束");
-                                break;
-                            default:
-                                break;
-                        }
-                        super.handleMessage(msg);
-                    }
-                };
-                Message message = new Message();
-                message.what = 1;
-                handler.sendMessage(message);
-            }
-        };
-        thread.start();
+//    private LoadingPopupWindow loadingPopupWindow;
+
+    private void widgetPopupWindowTest(View view) {
+        // 自定义的展示一张图片的Pop
+//        OneImageViewPopupWindow oneImageViewPopupWindow = new OneImageViewPopupWindow(this, R.drawable.leak_canary_icon);
+//        oneImageViewPopupWindow.showAsDropDown(view);
+
+        // 自定义的展示全屏loading的popupWindow
+        LoadingPopupWindow loadingPopupWindow = new LoadingPopupWindow(this);
+        loadingPopupWindow.showLoading();
+
     }
 
     @Override

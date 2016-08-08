@@ -21,6 +21,18 @@ public class JavaTestActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_test);
+
+        // 迭代器移除测试
+       /* Log.d("ZZW", "开始");
+        Iterator iterator = datas.iterator();
+        while (iterator.hasNext()) {
+            iterator.next();
+            iterator.remove();
+            for (Object data : datas) {
+                ActivityListItemBean bean = (ActivityListItemBean) data;
+                Log.d("ZZW", bean.getName());
+            }
+        }*/
     }
 
     /**

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,11 +16,12 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.activity.AlgorithmActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.android.activity.AndroidTestActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.activity.ChangeWithScrollActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.LIstDataBaseAdapter;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.ListDataBaseAdapter;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.designpattern.activity.DesignPatternActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.activity.JavaTestActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.adapter.MainActivityListAdapter;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.adapter.ActivityListAdapter;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module.ActivityListItemBean;
 
 /**
@@ -29,9 +29,9 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module.A
  * 创建日期：16/5/19
  * 类简介：程序主入口Activity
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private ListView mLvMain;
-    private LIstDataBaseAdapter mLvMainAdapter;
+    private ListDataBaseAdapter mLvMainAdapter;
 
     /**
      * 首页入口列表Item数据
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityListItemBean[] mAllItemBeans = {
             new ActivityListItemBean("Android相关测试", AndroidTestActivity.class),
             new ActivityListItemBean("java相关测试", JavaTestActivity.class),
-            new ActivityListItemBean("滑动吸顶效果", ChangeWithScrollActivity.class),
             new ActivityListItemBean("算法测试", AlgorithmActivity.class),
-            new ActivityListItemBean("设计模式", DesignPatternActivity.class)
+            new ActivityListItemBean("设计模式", DesignPatternActivity.class),
+            new ActivityListItemBean("滑动吸顶效果", ChangeWithScrollActivity.class)
     };
 
     @Override
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         initListView();
         initFloationButton();
@@ -62,26 +61,27 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initListView() {
         mLvMain = (ListView) findViewById(R.id.lv_main);
-        mLvMainAdapter = new MainActivityListAdapter();
+        mLvMainAdapter = new ActivityListAdapter();
         // 数据初始化
         List<Object> datas = new ArrayList<>();
         for (ActivityListItemBean data : mAllItemBeans) {
             datas.add(data);
         }
-        // 迭代器移除测试
-       /* Log.d("ZZW", "开始");
-        Iterator iterator = datas.iterator();
-        while (iterator.hasNext()) {
-            iterator.next();
-            iterator.remove();
-            for (Object data : datas) {
-                ActivityListItemBean bean = (ActivityListItemBean) data;
-                Log.d("ZZW", bean.getName());
-            }
-        }*/
         mLvMainAdapter.setData(datas);
         mLvMain.setAdapter(mLvMainAdapter);
         mLvMain.setOnItemClickListener(mOnItemClickListener);
+
+        mLvMain.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                LogUtils.log("onItemSelected的position为：" + position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                LogUtils.log("onItemSelected的positio");
+            }
+        });
     }
 
     /**
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     private AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            LogUtils.log("onItemClick为：" + position);
             ActivityListItemBean data = (ActivityListItemBean) mLvMainAdapter.getItem(position);
             Intent intent = new Intent(MainActivity.this, data.getActivity());
             startActivity(intent);
@@ -106,7 +107,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                        .setAction("Action", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        }).show();
             }
         });
     }

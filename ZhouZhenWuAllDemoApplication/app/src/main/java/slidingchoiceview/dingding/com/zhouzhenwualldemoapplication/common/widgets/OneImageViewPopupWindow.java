@@ -23,7 +23,7 @@ public class OneImageViewPopupWindow extends PopupWindow {
 
 
     public OneImageViewPopupWindow(Activity context, int resourceId) {
-        super(context); // 不加这句的话，showAsDropDown(View anchor)
+        super(context); // 不加这句的话，showAsDropDown(View anchor)方法将会失效
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.popupwindow_one_image, null);
         initImageView(context, resourceId, contentView);

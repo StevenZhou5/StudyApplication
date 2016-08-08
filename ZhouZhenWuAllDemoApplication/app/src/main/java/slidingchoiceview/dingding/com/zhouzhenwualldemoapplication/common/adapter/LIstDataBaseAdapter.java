@@ -12,11 +12,11 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.MyApplication
  * 创建日期：16/4/9
  * 类简介：自定义ListView的基类Adapter，用于桥接具体Adapter
  */
-public abstract class LIstDataBaseAdapter<T> extends BaseAdapter {
+public abstract class ListDataBaseAdapter<T> extends BaseAdapter {
     protected LayoutInflater mLayoutInflater;
     protected List<T> mDatas;
 
-    public LIstDataBaseAdapter() {
+    public ListDataBaseAdapter() {
         if (mLayoutInflater == null) {
             mLayoutInflater = LayoutInflater.from(MyApplication.instance.getApplicationContext());
         }
