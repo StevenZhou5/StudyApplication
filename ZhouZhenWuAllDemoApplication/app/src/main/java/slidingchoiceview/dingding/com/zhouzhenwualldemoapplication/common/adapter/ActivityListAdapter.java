@@ -1,12 +1,11 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.adapter;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module.ActivityListItemBean;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.ListDataBaseAdapter;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.module.ActivityListItemBean;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

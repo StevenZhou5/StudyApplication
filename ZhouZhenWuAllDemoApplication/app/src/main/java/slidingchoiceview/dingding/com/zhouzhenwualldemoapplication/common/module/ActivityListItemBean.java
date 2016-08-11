@@ -1,4 +1,4 @@
-package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module;
+package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.module;
 
 import android.app.Activity;
 

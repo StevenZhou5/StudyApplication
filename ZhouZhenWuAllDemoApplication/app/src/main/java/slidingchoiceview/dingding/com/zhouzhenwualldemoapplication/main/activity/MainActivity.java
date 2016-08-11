@@ -15,14 +15,14 @@ import java.util.List;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.algorithm.activity.AlgorithmActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.android.activity.AndroidTestActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.activity.ChangeWithScrollActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.activity.AnimationMainActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.ActivityListAdapter;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.ListDataBaseAdapter;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.module.ActivityListItemBean;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.designpattern.activity.DesignPatternActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.activity.JavaTestActivity;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.adapter.ActivityListAdapter;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.main.module.ActivityListItemBean;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity {
             new ActivityListItemBean("java相关测试", JavaTestActivity.class),
             new ActivityListItemBean("算法测试", AlgorithmActivity.class),
             new ActivityListItemBean("设计模式", DesignPatternActivity.class),
-            new ActivityListItemBean("滑动吸顶效果", ChangeWithScrollActivity.class)
+            new ActivityListItemBean("动画", AnimationMainActivity.class)
     };
 
     @Override

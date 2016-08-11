@@ -5,7 +5,7 @@ import android.support.v4.util.Pools;
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/7/22
- * 类简介：
+ * 类简介：对象池使用的一个测试类
  */
 public class pollModule {
     protected static Pools.SynchronizedPool<pollModule> spolls = new Pools.SynchronizedPool<pollModule>(10); // 必须是静态的

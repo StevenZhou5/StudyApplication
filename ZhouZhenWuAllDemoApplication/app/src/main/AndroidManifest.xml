@@ -24,7 +24,12 @@
         </activity>
 
         <activity
-            android:name=".animation.activity.AboutScrollViewActivity"
+            android:name=".animation.activity.AnimationMainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".animation.activity.CalendarActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
