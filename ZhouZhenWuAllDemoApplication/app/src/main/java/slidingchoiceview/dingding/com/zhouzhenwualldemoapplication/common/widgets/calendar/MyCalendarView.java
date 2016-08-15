@@ -13,11 +13,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.CommonUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.DrawUtils;
+
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -30,20 +33,21 @@ public class MyCalendarView extends View {
     @ColorInt
     private static final int COLOR_DAY_TEXT = Color.BLACK; // 默认的日期文案字体颜色
     @ColorInt
-    private static final int COLOR_DAY_TEXT_MARKER = 0x52000000; // 默认的日期文案的底部标注文案字体颜色
+    private static final int COLOR_DAY_TEXT_MARKER = Color.YELLOW; // 默认的日期文案的底部标注文案字体颜色
     @ColorInt
-    private static final int COLOR_SELECTED_CIRCLE = 0x52FF0000; // 被选中天的圆圈颜色
+    private static final int COLOR_SELECTED_CIRCLE = Color.RED; // 被选中天的圆圈颜色
     @ColorInt
     private static final int COLOR_SELECTED_TEXT = Color.WHITE; // 被选中天的日期文案的颜色
     @ColorInt
-    private static final int COLOR_SELECTED_TEXT_MARKER = 0x52FFFFFF; // 被选中天的日期文案的颜色
+    private static final int COLOR_SELECTED_TEXT_MARKER = Color.YELLOW; // 被选中天的日期文案的颜色
     @ColorInt
-    private static final int COLOR_INVALID_TEXT = Color.GRAY; // 被选中天的日期文案的颜色
+    private static final int COLOR_INVALID_TEXT = Color.GRAY; // 无效天的日期文案的颜色
     @ColorInt
-    private static final int COLOR_INVALID_TEXT_MARKER = 0x52888888; // 被选中天的日期文案的颜色
+    private static final int COLOR_INVALID_TEXT_MARKER = Color.GRAY; // 无效天的日期文案的底部标注文案字体颜色
 
 
     /*---------------- 公共相关 --------------------*/
+    private Context mContext;
     private Calendar mCalendar;
     private OnDateSelectedListener mDateSelectedListener;
     private int mCurrentYear; // 当前年
@@ -56,7 +60,7 @@ public class MyCalendarView extends View {
     private float mCellHeight; // 单元格高度
 
     /*---------------- 绘制星期相关-------------------*/
-    private boolean mIsShowWeek = true;
+    private boolean mIsShowWeek = false;
     private Paint mWeekTextPaint; //
     private String[] mWeeks = {"一", "二", "三", "四", "五", "六", "天"};
 
@@ -74,6 +78,7 @@ public class MyCalendarView extends View {
 
     public MyCalendarView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
         initCommon(context);
         initWeek();
         initDay();
@@ -93,41 +98,13 @@ public class MyCalendarView extends View {
         wm.getDefaultDisplay().getMetrics(dm);
         mScreenWidth = dm.widthPixels;
         mCellWidth = mScreenWidth / 7f;
-        mCellHeight = mCellWidth;
+        mCellHeight = mCellWidth * 1.5f;
 
         mCalendar = Calendar.getInstance();
         mCurrentYear = mCalendar.get(Calendar.YEAR);
         mCurrentMonth = mCalendar.get(Calendar.MONTH) + 1;
         mSelectYear = mCurrentYear;
         mSelectMonth = mCurrentMonth;
-    }
-
-    public Calendar getmCalendar() {
-        return mCalendar;
-    }
-
-    /**
-     * 设置所选年月
-     *
-     * @param year  年
-     * @param month 月
-     */
-    public void refreshYearAndMonth(int year, int month) {
-        mSelectYear = year;
-        mSelectMonth = month;
-        mCalendar.set(Calendar.YEAR, mSelectYear);
-        mCalendar.set(Calendar.MONTH, mSelectMonth - 1);
-        initData();
-        invalidate();
-    }
-
-    /**
-     * 设置日期选择的监听
-     *
-     * @param listener
-     */
-    public void setDateSelectedListener(OnDateSelectedListener listener) {
-        mDateSelectedListener = listener;
     }
 
     /*----------------------------------------------- 顶部星期绘制相关相关 ---------------------------------------------------*/
@@ -162,10 +139,10 @@ public class MyCalendarView extends View {
      */
     private void initDay() {
         mDayTextPaint = DrawUtils.getPaint(COLOR_DAY_TEXT);
-        mDayTextPaint.setTextSize(mCellHeight * 0.3f);
+        mDayTextPaint.setTextSize(CommonUtils.dip2px(mContext, 14));
 
         mDayMarkerTextPaint = DrawUtils.getPaint(COLOR_DAY_TEXT_MARKER);
-        mDayMarkerTextPaint.setTextSize(mCellHeight * 0.25f);
+        mDayMarkerTextPaint.setTextSize(CommonUtils.dip2px(mContext, 10));
 
         initData();
     }
@@ -272,7 +249,7 @@ public class MyCalendarView extends View {
         float cY = (top + bottom) * 0.5f;
         // step3:绘制圆圈背景
         mDayTextPaint.setColor(COLOR_SELECTED_CIRCLE);
-        canvas.drawCircle(cX, cY, mCellHeight * 0.5f, mDayTextPaint);
+        canvas.drawCircle(cX, cY, mDayTextPaint.getTextSize() * 1.0f, mDayTextPaint);
         // step4:绘制日期文案
         mDayTextPaint.setColor(COLOR_SELECTED_TEXT);
         canvas.drawText(dateString, dayStringX, dayBaseLine, mDayTextPaint);
@@ -380,6 +357,36 @@ public class MyCalendarView extends View {
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+
+    /*----------------------------------------------- 公共方法定义区(根据需求扩展) ---------------------------------------------------*/
+    public Calendar getmCalendar() {
+        return mCalendar;
+    }
+
+    /**
+     * 设置所选年月
+     *
+     * @param year  年
+     * @param month 月
+     */
+    public void refreshYearAndMonth(int year, int month) {
+        mSelectYear = year;
+        mSelectMonth = month;
+        mCalendar.set(Calendar.YEAR, mSelectYear);
+        mCalendar.set(Calendar.MONTH, mSelectMonth - 1);
+        initData();
+        invalidate();
+    }
+
+    /**
+     * 设置日期选择的监听
+     *
+     * @param listener
+     */
+    public void setDateSelectedListener(OnDateSelectedListener listener) {
+        mDateSelectedListener = listener;
     }
 
     /*----------------------------------------------- 回调接口定义 ---------------------------------------------------*/

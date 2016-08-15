@@ -10,12 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="选择日期" />
+        android:text="选择日期"
+        android:textSize="14sp" />
 
     <slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.calendar.MyCalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:background="#ffffff" />
 </LinearLayout>
