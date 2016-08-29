@@ -3,21 +3,16 @@ package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.ac
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.GridView;
 
 import com.bigkoo.pickerview.MyTimePickerView;
 import com.bigkoo.pickerview.TimePickerView;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.adapter.GridViewCanlendarAdapter;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.module.GridCanlendarBean;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.calendar.MyCalendarView;
 

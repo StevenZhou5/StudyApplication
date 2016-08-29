@@ -20,7 +20,6 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.activity.BaseActivity;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.LogUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.LoadingPopupWindow;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.OneImageViewPopupWindow;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

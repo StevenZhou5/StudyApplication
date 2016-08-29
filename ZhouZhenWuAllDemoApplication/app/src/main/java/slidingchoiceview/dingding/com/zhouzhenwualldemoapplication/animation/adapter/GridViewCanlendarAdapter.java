@@ -1,12 +1,11 @@
 package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.R;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.module.GridCanlendarBean;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.model.GridCalendarBean;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapter.ListDataBaseAdapter;
 
 /**
@@ -14,7 +13,7 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.adapte
  * 创建日期：16/8/8
  * 类简介：
  */
-public class GridViewCanlendarAdapter extends ListDataBaseAdapter<GridCanlendarBean> {
+public class GridViewCanlendarAdapter extends ListDataBaseAdapter<GridCalendarBean> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
@@ -27,7 +26,7 @@ public class GridViewCanlendarAdapter extends ListDataBaseAdapter<GridCanlendarB
             holder = (ViewHolder) convertView.getTag();
         }
 
-        GridCanlendarBean data = mDatas.get(position);
+        GridCalendarBean data = mDatas.get(position);
         holder.mTvDayOfMonth.setText(data.getDayOfMonth());
 
         return convertView;

@@ -20,6 +20,7 @@ import java.util.List;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.CommonUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.DrawUtils;
+import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass.C;
 
 
 /**
@@ -29,21 +30,25 @@ import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.
  */
 public class MyCalendarView extends View {
     @ColorInt
-    private static final int COLOR_WEEK_TEXT = Color.BLACK; // 默认的星期文案字体颜色
+    private static final int COLOR_WEEK_TEXT = 0xFF666666; // 默认的星期文案字体颜色
     @ColorInt
-    private static final int COLOR_DAY_TEXT = Color.BLACK; // 默认的日期文案字体颜色
+    private static final int COLOR_DAY_TEXT = 0xFF333333; // 默认的日期文案字体颜色
     @ColorInt
-    private static final int COLOR_DAY_TEXT_MARKER = Color.YELLOW; // 默认的日期文案的底部标注文案字体颜色
+    private static final int COLOR_DAY_TEXT_MARKER = 0xFFc69c6d; // 默认的日期文案的底部标注文案字体颜色
     @ColorInt
-    private static final int COLOR_SELECTED_CIRCLE = Color.RED; // 被选中天的圆圈颜色
+    private static final int COLOR_SELECTED_CIRCLE = 0xFFfc4f3f; // 被选中天的圆圈颜色
     @ColorInt
     private static final int COLOR_SELECTED_TEXT = Color.WHITE; // 被选中天的日期文案的颜色
     @ColorInt
-    private static final int COLOR_SELECTED_TEXT_MARKER = Color.YELLOW; // 被选中天的日期文案的颜色
+    private static final int COLOR_SELECTED_TEXT_MARKER = 0xFFc69c6d; // 被选中天的日期文案的颜色
     @ColorInt
-    private static final int COLOR_INVALID_TEXT = Color.GRAY; // 无效天的日期文案的颜色
+    private static final int COLOR_INVALID_TEXT = 0xFFcccccc; // 无效天的日期文案的颜色
     @ColorInt
-    private static final int COLOR_INVALID_TEXT_MARKER = Color.GRAY; // 无效天的日期文案的底部标注文案字体颜色
+    private static final int COLOR_INVALID_TEXT_MARKER = 0xFFcccccc; // 无效天的日期文案的底部标注文案字体颜色
+    @ColorInt
+    private static final int COLOR_CURRENT_DAY_TEXT = 0xFFfc4f3f; // 当前天的日期文案的颜色
+    @ColorInt
+    private static final int COLOR_CURRENT_DAY_TEXT_MARKER = 0xFFc69c6d; // 当前天的日期文案的底部标注文案字体颜色
 
 
     /*---------------- 公共相关 --------------------*/
@@ -52,6 +57,7 @@ public class MyCalendarView extends View {
     private OnDateSelectedListener mDateSelectedListener;
     private int mCurrentYear; // 当前年
     private int mCurrentMonth; // 当前月
+    private int mCurrentDay; // 当前天
     private int mSelectYear; // 选择的年
     private int mSelectMonth; // 选择的月
 
@@ -98,11 +104,12 @@ public class MyCalendarView extends View {
         wm.getDefaultDisplay().getMetrics(dm);
         mScreenWidth = dm.widthPixels;
         mCellWidth = mScreenWidth / 7f;
-        mCellHeight = mCellWidth * 1.5f;
+        mCellHeight = CommonUtils.dip2px(mContext, 66);
 
         mCalendar = Calendar.getInstance();
         mCurrentYear = mCalendar.get(Calendar.YEAR);
         mCurrentMonth = mCalendar.get(Calendar.MONTH) + 1;
+        mCurrentDay = mCalendar.get(Calendar.DAY_OF_MONTH);
         mSelectYear = mCurrentYear;
         mSelectMonth = mCurrentMonth;
     }
@@ -114,7 +121,8 @@ public class MyCalendarView extends View {
      */
     private void initWeek() {
         mWeekTextPaint = DrawUtils.getPaint(COLOR_WEEK_TEXT);
-        mWeekTextPaint.setTextSize(mCellHeight * 0.4f);
+        mWeekTextPaint.setTextAlign(Paint.Align.CENTER);
+        mWeekTextPaint.setTextSize(CommonUtils.dip2px(mContext, 14));
         mWeekTextPaint.setTypeface(Typeface.DEFAULT_BOLD); // 设置字体类型为加粗
     }
 
@@ -139,9 +147,11 @@ public class MyCalendarView extends View {
      */
     private void initDay() {
         mDayTextPaint = DrawUtils.getPaint(COLOR_DAY_TEXT);
-        mDayTextPaint.setTextSize(CommonUtils.dip2px(mContext, 14));
+        mDayTextPaint.setTextAlign(Paint.Align.CENTER);
+        mDayTextPaint.setTextSize(CommonUtils.dip2px(mContext, 16));
 
         mDayMarkerTextPaint = DrawUtils.getPaint(COLOR_DAY_TEXT_MARKER);
+        mDayMarkerTextPaint.setTextAlign(Paint.Align.CENTER);
         mDayMarkerTextPaint.setTextSize(CommonUtils.dip2px(mContext, 10));
 
         initData();
@@ -200,23 +210,22 @@ public class MyCalendarView extends View {
             float right = mCellWidth * columcIndex; // 绘制区域的右边界
             float top = mCellHeight * (lineIndex - 1); // 绘制区域的上边界
             float bottom = mCellHeight * lineIndex; // 绘制区域的下边界
-            float dateStringX = DrawUtils.getTextMiddleStartX(left, right, mDayTextPaint, dateString); // 绘制日期文案的X轴位置
             float dateStringBaseLine = DrawUtils.getTextMiddleBaseline(top, bottom, mDayTextPaint); // 绘制日期文案的baseLine位置
-            float markerStringX = DrawUtils.getTextMiddleStartX(left, right, mDayMarkerTextPaint, markerString);
-            float markerStringBaseLine = DrawUtils.getTextMiddleBaseline(dateStringBaseLine, bottom, mDayMarkerTextPaint);
+            float markerStringBaseLine = DrawUtils.getTextMiddleBaseline(dateStringBaseLine + CommonUtils.dip2px(mContext, 10), bottom, mDayMarkerTextPaint);
+            float cX = (left + right) * 0.5f; // 绘制区域中的X轴中心的位置
 
 
             // step2: 根据不同状态，绘制每一个具体日期
             int state = bean.getStateType();
             switch (state) {
                 case CalendarDataBean.STATE_TYPE_NORMAL:
-                    drawNormalDay(canvas, dateString, dateStringX, dateStringBaseLine, markerString, markerStringX, markerStringBaseLine);
+                    drawNormalDay(canvas, dateString, cX, dateStringBaseLine, markerString, markerStringBaseLine, dayOfMonth);
                     break;
                 case CalendarDataBean.STATE_TYPR_SELECTED:
-                    drawSelectedDay(canvas, dateString, left, right, top, bottom, dateStringX, dateStringBaseLine, markerString, markerStringX, markerStringBaseLine);
+                    drawSelectedDay(canvas, dateString, cX, top, bottom, dateStringBaseLine, markerString, markerStringBaseLine);
                     break;
                 case CalendarDataBean.STATE_TYPE_INVALID:
-                    drawInvalidDay(canvas, dateString, dateStringX, dateStringBaseLine, markerString, markerStringX, markerStringBaseLine);
+                    drawInvalidDay(canvas, dateString, cX, dateStringBaseLine, markerString, markerStringBaseLine);
                     break;
                 default:
                     break;
@@ -228,35 +237,45 @@ public class MyCalendarView extends View {
     /**
      * 绘制普通状态天
      */
-    private void drawNormalDay(Canvas canvas, String dateString, float dayStringX, float dayBaseLine, String markerString, float markerStringX, float markerBaseLine) {
+    private void drawNormalDay(Canvas canvas, String dateString, float cX, float dayBaseLine, String markerString, float markerBaseLine, int dayOfMonth) {
+        // step1:判断是否是当前天
+        boolean isCurrentday = mSelectYear == mCurrentYear && mSelectMonth == mCurrentMonth && dayOfMonth == mCurrentDay;
+        if (isCurrentday) {
+            mDayTextPaint.setColor(COLOR_CURRENT_DAY_TEXT);
+            mDayMarkerTextPaint.setColor(COLOR_CURRENT_DAY_TEXT_MARKER);
+        }
         // step2:绘制日期文案
-        canvas.drawText(dateString, dayStringX, dayBaseLine, mDayTextPaint);
+        canvas.drawText(dateString, cX, dayBaseLine, mDayTextPaint);
         // step3:绘制markerString
         if (!TextUtils.isEmpty(markerString)) {
-            canvas.drawText(markerString, markerStringX, markerBaseLine, mDayMarkerTextPaint);
+            canvas.drawText(markerString, cX, markerBaseLine, mDayMarkerTextPaint);
+        }
+        // step4: 如果是当前天那么要还原画笔颜色
+        if (isCurrentday) {
+            mDayTextPaint.setColor(COLOR_DAY_TEXT);
+            mDayMarkerTextPaint.setColor(COLOR_DAY_TEXT_MARKER);
         }
     }
 
     /**
      * 绘制被选中天
      */
-    private void drawSelectedDay(Canvas canvas, String dateString, float left, float right, float top, float bottom, float dayStringX, float dayBaseLine, String markerString, float markerStringX, float markerBaseLine) {
+    private void drawSelectedDay(Canvas canvas, String dateString, float cX, float top, float bottom, float dayBaseLine, String markerString, float markerBaseLine) {
         // step1:记录画笔初始化状态
         int preColor = mDayTextPaint.getColor();
         int preMarkerColor = mDayMarkerTextPaint.getColor();
         // step2: 计算绘制时需要的参数
-        float cX = (left + right) * 0.5f;
         float cY = (top + bottom) * 0.5f;
         // step3:绘制圆圈背景
         mDayTextPaint.setColor(COLOR_SELECTED_CIRCLE);
-        canvas.drawCircle(cX, cY, mDayTextPaint.getTextSize() * 1.0f, mDayTextPaint);
+        canvas.drawCircle(cX, cY, CommonUtils.dip2px(mContext, 16), mDayTextPaint);
         // step4:绘制日期文案
         mDayTextPaint.setColor(COLOR_SELECTED_TEXT);
-        canvas.drawText(dateString, dayStringX, dayBaseLine, mDayTextPaint);
+        canvas.drawText(dateString, cX, dayBaseLine, mDayTextPaint);
         // step5:绘制markerString
         if (!TextUtils.isEmpty(markerString)) {
             mDayMarkerTextPaint.setColor(COLOR_SELECTED_TEXT_MARKER);
-            canvas.drawText(markerString, markerStringX, markerBaseLine, mDayMarkerTextPaint);
+            canvas.drawText(markerString, cX, markerBaseLine, mDayMarkerTextPaint);
         }
         // step5:还原画笔状态
         mDayTextPaint.setColor(preColor);
@@ -266,17 +285,17 @@ public class MyCalendarView extends View {
     /**
      * 绘制无效的天
      */
-    private void drawInvalidDay(Canvas canvas, String dateString, float dayStringX, float dayBaseLine, String markerString, float markerStringX, float markerBaseLine) {
+    private void drawInvalidDay(Canvas canvas, String dateString, float cX, float dayBaseLine, String markerString, float markerBaseLine) {
         // step1:记录画笔初始化状态
         int preColor = mDayTextPaint.getColor();
         int preMarkerColor = mDayMarkerTextPaint.getColor();
         // step2:绘制日期文案
         mDayTextPaint.setColor(COLOR_INVALID_TEXT);
-        canvas.drawText(dateString, dayStringX, dayBaseLine, mDayTextPaint);
+        canvas.drawText(dateString, cX, dayBaseLine, mDayTextPaint);
         // step3:绘制markerString
         if (!TextUtils.isEmpty(markerString)) {
             mDayMarkerTextPaint.setColor(COLOR_INVALID_TEXT_MARKER);
-            canvas.drawText(markerString, markerStringX, markerBaseLine, mDayMarkerTextPaint);
+            canvas.drawText(markerString, cX, markerBaseLine, mDayMarkerTextPaint);
         }
         // step4:还原画笔状态
         mDayTextPaint.setColor(preColor);

@@ -2,6 +2,7 @@ package slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.animation.ac
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -33,7 +34,9 @@ public class AnimationMainActivity extends BaseActivity {
      */
     private ActivityListItemBean[] mAllItemBeans = {
             new ActivityListItemBean("滑动吸顶动画", ChangeWithScrollActivity.class),
-            new ActivityListItemBean("日历", CalendarActivity.class)
+            new ActivityListItemBean("日历", CalendarActivity.class),
+            new ActivityListItemBean("item可以展开的ListView", ExpandableListViewActivity.class),
+            new ActivityListItemBean("RecycleView代理ListView", RecycleViewActivity.class)
     };
 
     @Override
