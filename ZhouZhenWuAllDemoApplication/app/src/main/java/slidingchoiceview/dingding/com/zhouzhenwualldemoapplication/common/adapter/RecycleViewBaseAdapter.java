@@ -15,6 +15,18 @@ public abstract class RecycleViewBaseAdapter<T> extends RecyclerView.Adapter {
     protected OnRecyclerViewItemClickListener mOnRecyclerViewItemClickListener;
     protected OnRecyclerViewItemLongClickListener mOnRecyclerViewItemLongClickListener;
 
+    protected void onItemClicked(int position) {
+        if (mOnRecyclerViewItemClickListener != null) {
+            mOnRecyclerViewItemClickListener.onRecyclerViewItemClick(position);
+        }
+    }
+
+    protected void onItemLongClicked(int position) {
+        if (mOnRecyclerViewItemLongClickListener != null) {
+            mOnRecyclerViewItemLongClickListener.onRecyclerViewItemLongClick(position);
+        }
+    }
+
     @Override
     public int getItemCount() {
         return mDatas == null ? 0 : mDatas.size();
@@ -33,13 +45,12 @@ public abstract class RecycleViewBaseAdapter<T> extends RecyclerView.Adapter {
         this.mOnRecyclerViewItemLongClickListener = mOnRecyclerViewItemLongClickListener;
     }
 
-
     public static interface OnRecyclerViewItemClickListener {
         void onRecyclerViewItemClick(int position);
 
     }
 
     public static interface OnRecyclerViewItemLongClickListener {
-        boolean onRecyclerViewItemLongClick(int position);
+        void onRecyclerViewItemLongClick(int position);
     }
 }

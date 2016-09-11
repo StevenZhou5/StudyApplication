@@ -36,7 +36,8 @@ public class AnimationMainActivity extends BaseActivity {
             new ActivityListItemBean("滑动吸顶动画", ChangeWithScrollActivity.class),
             new ActivityListItemBean("日历", CalendarActivity.class),
             new ActivityListItemBean("item可以展开的ListView", ExpandableListViewActivity.class),
-            new ActivityListItemBean("RecycleView代理ListView", RecycleViewActivity.class)
+            new ActivityListItemBean("RecycleView代理ListView", RecycleViewActivity.class),
+            new ActivityListItemBean("评级流程趋势折线图", TendencyChartActivity.class),
     };
 
     @Override

@@ -20,7 +20,6 @@ import java.util.List;
 
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.CommonUtils;
 import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.utils.DrawUtils;
-import slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.java.testclass.C;
 
 
 /**
@@ -177,7 +176,7 @@ public class MyCalendarView extends View {
             int lineIndex = preLine + plusLine + (mIsShowWeek ? 1 : 0); // 行索引等于preLine加上plusLine,还要看是否需要再加上1，因为可以展示星期
             bean.setLineIndex(lineIndex);
             bean.setColumnIndex(mDatas.size() % 7 == 0 ? 7 : mDatas.size() % 7); // 列索引等于plusLine
-            bean.setCurrenYear(mSelectYear);
+            bean.setCurrentYear(mSelectYear);
             bean.setCurrentMonth(mSelectMonth);
 
             bean.setMarkerString("本月");
@@ -335,7 +334,7 @@ public class MyCalendarView extends View {
         }
         bean.setStateType(CalendarDataBean.STATE_TYPR_SELECTED);
         if (mDateSelectedListener != null) { // 日期选择的监听监听回调
-            mDateSelectedListener.onDateSelected(bean.getCurrenYear(), bean.getCurrentMonth(), bean.getDayOfMonth());
+            mDateSelectedListener.onDateSelected(bean.getCurrentYear(), bean.getCurrentMonth(), bean.getDayOfMonth());
         }
         invalidate(); // 刷新界面
     }

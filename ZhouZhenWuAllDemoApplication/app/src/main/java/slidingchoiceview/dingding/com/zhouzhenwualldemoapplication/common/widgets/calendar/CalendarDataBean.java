@@ -10,7 +10,7 @@ public class CalendarDataBean {
     public static final int STATE_TYPR_SELECTED = 1; // 被选中状态
     public static final int STATE_TYPE_INVALID = 2; // 无效状态，不可被点击
     private int dayOfMonth = -1; // 日期索引：属于当月的第几天，小于0认为是无效日期
-    private int currenYear; // 当前年份
+    private int currentYear; // 当前年份
     private int currentMonth; // 当前月份
     private int lineIndex = 1; // 行索引：在日历中属于第几行，默认是第一行
     private int columnIndex = 1; // 列索引：在日历中属于第几列，默认是第一列
@@ -28,12 +28,12 @@ public class CalendarDataBean {
         this.dayOfMonth = dayOfMonth;
     }
 
-    public int getCurrenYear() {
-        return currenYear;
+    public int getCurrentYear() {
+        return currentYear;
     }
 
-    public void setCurrenYear(int currenYear) {
-        this.currenYear = currenYear;
+    public void setCurrentYear(int currentYear) {
+        this.currentYear = currentYear;
     }
 
     public int getCurrentMonth() {

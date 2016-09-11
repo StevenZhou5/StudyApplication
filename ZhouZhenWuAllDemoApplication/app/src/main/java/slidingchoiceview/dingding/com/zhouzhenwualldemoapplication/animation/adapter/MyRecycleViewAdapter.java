@@ -56,9 +56,7 @@ public class MyRecycleViewAdapter extends RecycleViewBaseAdapter<MyRecycleViewIt
 
         @Override
         public void onClick(View v) {
-            if (mOnRecyclerViewItemClickListener != null) {
-                mOnRecyclerViewItemClickListener.onRecyclerViewItemClick(this.getLayoutPosition());
-            }
+            onItemClicked(this.getLayoutPosition());
         }
     }
 }
