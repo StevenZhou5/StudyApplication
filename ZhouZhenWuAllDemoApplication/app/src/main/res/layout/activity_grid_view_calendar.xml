@@ -13,7 +13,7 @@
         android:text="选择日期"
         android:textSize="14sp" />
 
-    <test.zhouzhenwu.com.mydemo.common.widgets.calendar.MyCalendarView
+    <study.zhouzhenwu.com.mydemo.common.widgets.calendar.MyCalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

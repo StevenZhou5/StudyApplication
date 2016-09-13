@@ -5,7 +5,7 @@
     android:layout_gravity="center">
 
 
-    <test.zhouzhenwu.com.mydemo.common.widgets.chart.ChartView
+    <study.zhouzhenwu.com.mydemo.common.widgets.chart.ChartView
         android:id="@+id/chart_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />

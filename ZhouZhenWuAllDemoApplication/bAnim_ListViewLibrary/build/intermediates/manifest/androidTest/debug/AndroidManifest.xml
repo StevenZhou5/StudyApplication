@@ -14,7 +14,7 @@
         android:targetPackage="com.haarman.listviewanimations.test" />
 
     <application>
-        <uses-library android:name="android.test.runner" />
+        <uses-library android:name="android.study.runner" />
     </application>
 
 </manifest>
