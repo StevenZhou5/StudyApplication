@@ -5,7 +5,7 @@
     android:layout_gravity="center">
 
 
-    <slidingchoiceview.dingding.com.zhouzhenwualldemoapplication.common.widgets.chart.ChartView
+    <test.zhouzhenwu.com.mydemo.common.widgets.chart.ChartView
         android:id="@+id/chart_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
