@@ -33,6 +33,21 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.animation.activity.BezierActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.animation.activity.ClockActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.animation.activity.HeartActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--Java相关学习测试-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.java.activity.JavaTestActivity"

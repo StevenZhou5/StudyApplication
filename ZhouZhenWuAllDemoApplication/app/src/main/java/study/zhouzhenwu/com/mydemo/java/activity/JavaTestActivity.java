@@ -43,7 +43,7 @@ public class JavaTestActivity extends BaseActivity {
     public void javaTest(View v) {
         showToast("javaTest开始");
         fatherOrSon();
-//        hashSetTest();
+//
     }
 
     /**

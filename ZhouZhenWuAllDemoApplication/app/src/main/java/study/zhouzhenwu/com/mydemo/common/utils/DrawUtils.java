@@ -1,7 +1,9 @@
 package study.zhouzhenwu.com.mydemo.common.utils;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.RectF;
 
 /**
@@ -93,5 +95,122 @@ public class DrawUtils {
         // step3:还原画笔属性
         paint.setStyle(preStyle);
         paint.setColor(preColor);
+    }
+
+
+    /**
+     * 绘制心形
+     *
+     * @param canvas
+     * @param px     心形中心点的x坐标
+     * @param py     心形中心点的y坐标
+     * @param radius 心形圆的半径
+     * @param paint  画笔
+     * @param isFill true:实心；false:空心
+     */
+    public static void drawHeart(Canvas canvas, float px, float py, float radius, Paint paint, boolean isFill) {
+        Paint.Style style = paint.getStyle();
+        if (isFill) {
+            paint.setStyle(Paint.Style.FILL);
+            drawFillHeart(canvas, px, py, radius, paint);
+        } else {
+            paint.setStyle(Paint.Style.STROKE);
+            drawStrokeHeart(canvas, px, py, radius, paint);
+        }
+        paint.setStyle(style);
+    }
+
+    /**
+     * 花实心心形的算法(利用canvas的旋转进行绘制)
+     *
+     * @param canvas
+     * @param px     心形中心点的x坐标
+     * @param py     心形中心点的y坐标
+     * @param radius 心形圆的半径
+     * @param paint  画笔
+     */
+    public static void drawFillHeart(Canvas canvas, float px, float py, float radius, Paint paint) {
+        // 第一种绘制方法:旋转区域绘制
+        paint.setColor(Color.BLUE);
+        canvas.rotate(-45, px, py); // 先以中心点逆时针45度
+        RectF rectF1 = new RectF(px - radius, py - radius, px + radius, py + radius); // 初始化正方形区域
+        canvas.drawRect(rectF1, paint); // 画正方形
+        canvas.drawCircle(px, py - radius, radius, paint); // 画圆形
+        canvas.rotate(90, px, py); // 再将画布顺势正旋转90度
+        canvas.drawRect(rectF1, paint); // 画正方形
+        canvas.drawCircle(px, py - radius, radius, paint); // 话圆形
+        canvas.rotate(-45, px, py); // 在逆时针旋转45度将画布还原为初始位置
+
+        // 第二种绘制方法:旋转Path路径绘制
+        paint.setColor(Color.RED);
+        canvas.rotate(-45, px, py); // 先以中心点逆时针45度
+        Path leftPath = new Path();
+        leftPath.moveTo(px - radius, py + radius);
+        leftPath.lineTo(px - radius, py - radius);
+        RectF leftRectF = new RectF(px - radius, py - 2 * radius, px + radius, py);
+        leftPath.arcTo(leftRectF, 180, 180);// 第一个角度代表起点的角度,第二个不是代表中点角度,而是代表从起点要旋转多少度
+        leftPath.close();
+        canvas.drawPath(leftPath, paint);
+        canvas.rotate(45, px, py); // 左边绘制完成,还原画布位置,顺时针旋转45度
+
+        canvas.rotate(45, px, py); // 瞬时针旋转45度,绘制右边区域
+        Path rightPath = new Path();
+        RectF rightRectF = new RectF(px - radius, py - 2 * radius, px + radius, py);
+        rightPath.arcTo(rightRectF, 180, 180);
+        rightPath.lineTo(px + radius, py + radius);
+        canvas.drawPath(rightPath, paint);
+        canvas.rotate(-45, px, py);
+
+
+        float f = (float) Math.sqrt(radius * radius * 2);
+    }
+
+    /**
+     * 画空心心形的算法呢
+     *
+     * @param canvas
+     * @param px     心形中心点的x坐标
+     * @param py     心形中心点的y坐标
+     * @param radius 心形圆的半径
+     * @param paint  画笔
+     */
+    public static void drawStrokeHeart(Canvas canvas, float px, float py, float radius, Paint paint) {
+        float paintStroke = paint.getStrokeWidth(); // 得到笔宽度
+
+
+        // 第一种绘制方法:Canvas旋转,线条加圆弧加点(用短线条来充当点)
+        paint.setColor(Color.BLUE);
+        canvas.rotate(-45, px, py); // 先将画布逆时针旋转45度
+        RectF rectF = new RectF(px - radius + paintStroke / 2, py - 2 * radius + paintStroke / 2, px + radius - paintStroke / 2, py - paintStroke / 2); // 心形圆弧区域确定
+        canvas.drawArc(rectF, 180, 180, false, paint); // 画心形左半边的圆弧
+        canvas.drawLine(px - radius + paintStroke / 2, py - radius - 1, px - radius + paintStroke / 2, py + radius, paint);// 画心形左边的线条
+        canvas.drawLine(px + radius - paintStroke / 2, py - radius - 1, px + radius - paintStroke / 2 + 1, py - radius + paintStroke, paint); // 画心形的中心点
+        canvas.rotate(90, px, py); // 将画布顺时针旋转90度
+        canvas.drawArc(rectF, 180, 180, false, paint); // 画右边的圆弧
+        canvas.drawLine(px + radius - paintStroke / 2, py - radius - 1, px + radius - paintStroke / 2, py + radius, paint); // 画右边的线条
+        canvas.rotate(-45, px, py);
+
+
+        // 第二种绘制方法:Canvas旋转,Path路径绘制加点
+        paint.setColor(Color.RED);
+        canvas.rotate(-45, px, py); // 先以中心点逆时针45度
+        Path leftPath = new Path();
+        leftPath.moveTo(px - radius, py + radius + paintStroke / 2);
+        leftPath.lineTo(px - radius, py - radius);
+        RectF leftRectF = new RectF(px - radius, py - 2 * radius, px + radius, py);
+        leftPath.arcTo(leftRectF, 180, 180);// 第一个角度代表起点的角度,第二个不是代表中点角度,而是代表从起点要旋转多少度
+        canvas.drawPath(leftPath, paint);
+        canvas.drawLine(px + radius, py - radius, px + radius, py - radius + paintStroke / 2, paint); // 画心形的中心点
+        canvas.rotate(45, px, py); // 左边绘制完成,还原画布位置,顺时针旋转45度
+
+        canvas.rotate(45, px, py); // 瞬时针旋转45度,绘制右边区域
+        Path rightPath = new Path();
+        RectF rightRectF = new RectF(px - radius, py - 2 * radius, px + radius, py);
+        rightPath.arcTo(rightRectF, 180, 180);
+        rightPath.lineTo(px + radius, py + radius + paintStroke / 2);
+        canvas.drawPath(rightPath, paint);
+        canvas.rotate(-45, px, py);
+
+
     }
 }

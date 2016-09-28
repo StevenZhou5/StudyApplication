@@ -211,11 +211,14 @@ public class ChartView extends View {
                 return true;
             case MotionEvent.ACTION_UP:
                 mUpPosition = getTouchPosition((int) x, y);
-                if (mUpPosition >= 0 && mUpPosition < mDatas.size() && mDownPosition == mUpPosition && mSelectedPosition != mUpPosition) {
-                    mSelectedPosition = mUpPosition;
+                if (mUpPosition >= 0 && mUpPosition < mDatas.size() && mDownPosition == mUpPosition) {
                     if (mSelectedPositionChangeListener != null) { // 通知回调
-                        mSelectedPositionChangeListener.onSelectedPosition(mSelectedPosition);
+                        mSelectedPositionChangeListener.onSelectedPosition(mUpPosition);
                     }
+                    if (mSelectedPosition == mUpPosition) { // 如果已经是当前所选位置则不需要刷新界面
+                        break;
+                    }
+                    mSelectedPosition = mUpPosition;
                     invalidate(); // 刷新界面
                 }
                 break;
