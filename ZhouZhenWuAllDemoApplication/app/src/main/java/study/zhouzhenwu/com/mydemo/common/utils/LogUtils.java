@@ -12,12 +12,12 @@ import study.zhouzhenwu.com.mydemo.BuildConfig;
 public class LogUtils {
     private static String LOG_TAG = BuildConfig.LOG_TAG;
 
+    public static void log(int StringResId) {
+        String string = CommonUtils.getString(StringResId);
+        log(string);
+    }
 
     public static void log(String contentString) {
         Log.d(LOG_TAG, contentString);
-    }
-
-    public static void log(int StringResId) {
-        log(CommonUtils.getString(StringResId));
     }
 }

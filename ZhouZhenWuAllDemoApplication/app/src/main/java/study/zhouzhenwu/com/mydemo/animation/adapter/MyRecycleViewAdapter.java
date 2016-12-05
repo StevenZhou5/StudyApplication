@@ -45,18 +45,12 @@ public class MyRecycleViewAdapter extends RecycleViewBaseAdapter<MyRecycleViewIt
         }
     }
 
-    private class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class ViewHolder extends BaseViewHolder {
         private TextView tvTitle;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            onItemClicked(this.getLayoutPosition());
         }
     }
 }

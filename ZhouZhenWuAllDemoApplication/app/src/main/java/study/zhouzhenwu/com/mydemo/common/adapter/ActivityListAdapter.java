@@ -19,7 +19,7 @@ public class ActivityListAdapter extends ListDataBaseAdapter<ActivityListItemBea
         ViewHoleder holeder = null;
         if (convertView == null) {
             holeder = new ViewHoleder();
-            convertView = mLayoutInflater.inflate(R.layout.adapter_item_main_activity_list, null);
+            convertView = mLayoutInflater.inflate(R.layout.adapter_item_activity_list, null);
             holeder.mTvName = (TextView) convertView.findViewById(R.id.tv_name);
             convertView.setTag(holeder);
         } else {
