@@ -10,14 +10,15 @@ import android.widget.TextView;
 
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.animation.model.MyRecycleViewItemModel;
-import study.zhouzhenwu.com.mydemo.common.adapter.RecycleViewBaseAdapter;
+import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
+import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/8/29
  * 类简介：
  */
-public class MyRecycleViewAdapter extends RecycleViewBaseAdapter<MyRecycleViewItemModel> {
+public class MyRecycleViewAdapter extends RecycleViewArrayAdapter<MyRecycleViewItemModel> {
     private int mSelectedPosition = -1;
 
     public void setSelectedPosition(int selectedPosition) {
@@ -27,6 +28,7 @@ public class MyRecycleViewAdapter extends RecycleViewBaseAdapter<MyRecycleViewIt
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LogUtils.log("onCreateViewHolder");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_recycle_view_item_layout, null);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         view.setLayoutParams(lp);
@@ -35,8 +37,9 @@ public class MyRecycleViewAdapter extends RecycleViewBaseAdapter<MyRecycleViewIt
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        LogUtils.log("onBindViewHolder");
         ViewHolder viewHolder = (ViewHolder) holder;
-        MyRecycleViewItemModel data = mDatas.get(position);
+        MyRecycleViewItemModel data = mItems.get(position);
         viewHolder.tvTitle.setText(data.getTitle() + position + "");
         if (mSelectedPosition == position) {
             viewHolder.tvTitle.setTextColor(Color.RED);

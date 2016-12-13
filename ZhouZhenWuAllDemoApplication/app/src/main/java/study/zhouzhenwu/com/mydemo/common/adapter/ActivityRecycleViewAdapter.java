@@ -10,6 +10,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
+import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
+import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -17,7 +19,7 @@ import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
  * 类简介：用于进行Activi跳转的的list的Adapter；（List的实现用的是RecycleView）
  */
 
-public class ActivityRecycleViewAdapter extends RecycleViewBaseAdapter<ActivityListItemBean> {
+public class ActivityRecycleViewAdapter extends RecycleViewArrayAdapter<ActivityListItemBean> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_item_activity_list, null);
@@ -27,7 +29,7 @@ public class ActivityRecycleViewAdapter extends RecycleViewBaseAdapter<ActivityL
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
-        ActivityListItemBean data = mDatas.get(position);
+        ActivityListItemBean data = mItems.get(position);
         String name = data.getName();
         viewHolder.mTvName.setText(name);
     }

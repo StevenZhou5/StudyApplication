@@ -15,7 +15,7 @@ import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.animation.adapter.MyRecycleViewAdapter;
 import study.zhouzhenwu.com.mydemo.animation.model.MyRecycleViewItemModel;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
-import study.zhouzhenwu.com.mydemo.common.adapter.RecycleViewBaseAdapter;
+import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -41,7 +41,7 @@ public class RecycleViewActivity extends BaseActivity {
         mRecycleView.setLayoutManager(layoutManager);
 
         mRecycleViewAdapter = new MyRecycleViewAdapter();
-        mRecycleViewAdapter.setOnRecyclerViewItemClickListener(new RecycleViewBaseAdapter.OnRecyclerViewItemClickListener() {
+        mRecycleViewAdapter.setOnItemClickListener(new RecycleViewArrayAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onRecyclerViewItemClick(View v, int position) {
                 showToast(position + "被点击");
@@ -54,7 +54,7 @@ public class RecycleViewActivity extends BaseActivity {
         for (int i = 0; i < 20; i++) {
             mListDatas.add(new MyRecycleViewItemModel());
         }
-        mRecycleViewAdapter.setData(mListDatas);
+        mRecycleViewAdapter.addAllItems(mListDatas);
         mRecycleView.scrollToPosition(10); // 滑动到第几个位置
     }
 }

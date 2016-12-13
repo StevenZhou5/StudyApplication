@@ -112,7 +112,7 @@ public class ChartView extends View {
      * @param datats
      */
     public void setDatats(List<ChartItemBean> datats) {
-//        mDatas = datats;
+//        mItems = datats;
         int max = 10;
         for (int i = 0; i < max; i++) {
             ChartItemBean data = new ChartItemBean();

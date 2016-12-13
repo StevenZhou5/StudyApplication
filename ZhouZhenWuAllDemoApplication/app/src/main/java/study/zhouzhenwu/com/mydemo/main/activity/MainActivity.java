@@ -1,25 +1,11 @@
 package study.zhouzhenwu.com.mydemo.main.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.AndroidTestActivity;
 import study.zhouzhenwu.com.mydemo.animation.activity.AnimationMainActivity;
-import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ListActivity;
-import study.zhouzhenwu.com.mydemo.common.adapter.ActivityListAdapter;
-import study.zhouzhenwu.com.mydemo.common.adapter.ListDataBaseAdapter;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivity;

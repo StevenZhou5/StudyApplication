@@ -40,7 +40,7 @@ public class ExpandableListViewActivity extends BaseActivity {
 
 
         mDatas = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             mDatas.add(new MyExpandableListItemModel());
         }
         mLvAdapter.addAll(mDatas);

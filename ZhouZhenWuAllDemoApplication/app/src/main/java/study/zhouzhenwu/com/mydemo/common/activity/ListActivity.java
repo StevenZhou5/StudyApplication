@@ -12,11 +12,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.adapter.ActivityRecycleViewAdapter;
-import study.zhouzhenwu.com.mydemo.common.adapter.RecycleViewBaseAdapter;
+import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 
 /**
@@ -50,10 +47,10 @@ public abstract class ListActivity extends BaseActivity {
 
         // step4:数据初始化，并刷新显示最新数据
         List<ActivityListItemBean> datas = initDatas();
-        mAdapter.setData(datas);
+        mAdapter.addAllItems(datas);
 
         // step5:监听初始化
-        mAdapter.setOnRecyclerViewItemClickListener(new RecycleViewBaseAdapter.OnRecyclerViewItemClickListener() {
+        mAdapter.setOnItemClickListener(new RecycleViewArrayAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onRecyclerViewItemClick(View v, int position) {
                 log("onItemClick为：" + position);
