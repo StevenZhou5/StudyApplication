@@ -20,92 +20,132 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
 
+
+        <!--动画学习相关的Activity-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.AnimationMainActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--日历控件封装-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.CalendarActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--贝塞尔曲线绘制-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.BezierActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--时钟控件-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.ClockActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--心形绘制-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.HeartActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <!--Java相关学习测试-->
-        <activity
-            android:name="study.zhouzhenwu.com.mydemo.java.activity.JavaTestActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <!--Android相关学习测试-->
-        <activity
-            android:name="study.zhouzhenwu.com.mydemo.android.activity.AndroidTestActivity"
-            android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--滑动吸顶Activity-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.ChangeWithScrollActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--ListView的Item可以展看的Activity-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.ExpandableListViewActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.ExpandableRecycleViewActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--使用RecycleView的Activity-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.RecycleViewActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="study.zhouzhenwu.com.mydemo.animation.activity.TendencyChartActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+        <!--Java相关学习测试-->
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.java.activity.JavaTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.java.activity.TypeChangeTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
+        <!--Android相关学习测试-->
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.android.activity.AndroidTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.android.activity.HandlerTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+
         <!--算法学习Activity-->
         <activity
-            android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmActivity"
+            android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmTestActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.sortActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
 
 
         <!--设计模式学习Activity-->
         <activity
             android:name="study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

@@ -6,8 +6,14 @@ import android.view.View;
 import java.util.HashSet;
 
 import study.zhouzhenwu.com.mydemo.R;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmTestActivity;
+import study.zhouzhenwu.com.mydemo.android.activity.AndroidTestActivity;
+import study.zhouzhenwu.com.mydemo.animation.activity.AnimationMainActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
+import study.zhouzhenwu.com.mydemo.common.activity.ListActivity;
+import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
+import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivity;
 import study.zhouzhenwu.com.mydemo.java.testclass.A;
 import study.zhouzhenwu.com.mydemo.java.testclass.B;
 
@@ -16,11 +22,27 @@ import study.zhouzhenwu.com.mydemo.java.testclass.B;
  * 创建日期：16/5/19
  * 类简介：和Java相关的一些Test
  */
-public class JavaTestActivity extends BaseActivity {
+public class JavaTestActivity extends ListActivity {
+    /**
+     * 首页入口列表Item数据
+     */
+    private ActivityListItemBean[] mAllItemBeans = {
+            new ActivityListItemBean("类型转换测试", TypeChangeTestActivity.class),
+            new ActivityListItemBean("java相关测试", JavaTestActivity.class),
+            new ActivityListItemBean("算法测试", AlgorithmTestActivity.class),
+            new ActivityListItemBean("设计模式", DesignPatternActivity.class),
+            new ActivityListItemBean("动画", AnimationMainActivity.class)
+    };
+
+
+    @Override
+    protected ActivityListItemBean[] getItemBeans() {
+        return mAllItemBeans;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_java_test);
 
         // 迭代器移除测试
        /* Log.d("ZZW", "开始");

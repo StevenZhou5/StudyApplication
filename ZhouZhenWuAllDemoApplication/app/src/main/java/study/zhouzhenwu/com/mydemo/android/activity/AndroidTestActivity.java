@@ -1,5 +1,7 @@
 package study.zhouzhenwu.com.mydemo.android.activity;
 
+import android.app.Activity;
+import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +17,48 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.PopupWindow;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
-import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmTestActivity;
+import study.zhouzhenwu.com.mydemo.animation.activity.AnimationMainActivity;
+import study.zhouzhenwu.com.mydemo.common.activity.ListActivity;
+import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 import study.zhouzhenwu.com.mydemo.common.widgets.LoadingPopupWindow;
+import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivity;
+import study.zhouzhenwu.com.mydemo.java.activity.JavaTestActivity;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：16/6/16
  * 类简介：
  */
-public class AndroidTestActivity extends BaseActivity {
+public class AndroidTestActivity extends ListActivity {
+    /**
+     * 首页入口列表Item数据
+     */
+    private ActivityListItemBean[] mAllItemBeans = {
+            new ActivityListItemBean("动画", AnimationMainActivity.class),
+            new ActivityListItemBean("Activity生命周期", HandlerTestActivity.class),
+            new ActivityListItemBean("Service生命周期", HandlerTestActivity.class),
+            new ActivityListItemBean("数据库操作", HandlerTestActivity.class),
+            new ActivityListItemBean("广播操作", HandlerTestActivity.class),
+            new ActivityListItemBean("ContentProvider测试", HandlerTestActivity.class),
+            new ActivityListItemBean("handler相关测试", HandlerTestActivity.class),
+    };
+
+    @Override
+    protected ActivityListItemBean[] getItemBeans() {
+        return mAllItemBeans;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_android_test);
         LogUtils.log(getClass().getSimpleName() + ":onCreate");
     }
 
@@ -41,42 +68,9 @@ public class AndroidTestActivity extends BaseActivity {
      * @param view
      */
     public void androidTest(View view) {
-        showToast("AndroidTest开始");
         widgetPopupWindowTest(view);
     }
 
-    /**
-     * 线程与handle回调测试
-     */
-    private void handlerThreadTest() {
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    this.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                final Handler handler = new Handler(Looper.getMainLooper()) { // 必须指定为MainLooper否则不能进行UI操作
-                    @Override
-                    public void handleMessage(Message msg) {
-                        switch (msg.what) {
-                            case 1:
-                                showToast("线程休眠结束");
-                                break;
-                            default:
-                                break;
-                        }
-                        super.handleMessage(msg);
-                    }
-                };
-                Message message = new Message();
-                message.what = 1;
-                handler.sendMessage(message);
-            }
-        };
-        thread.start();
-    }
 
     @Bind(R.id.layout_pop_container)
     View mPopContainer;
@@ -157,6 +151,12 @@ public class AndroidTestActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         LogUtils.log(getClass().getSimpleName() + ":onPause");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        log("onActivityResult:" + requestCode + ";" + resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

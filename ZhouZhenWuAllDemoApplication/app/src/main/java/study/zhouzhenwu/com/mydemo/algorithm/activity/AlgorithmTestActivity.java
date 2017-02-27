@@ -10,13 +10,16 @@ import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
  * 创建日期：16/5/19
  * 类简介：算法学习相关Activity
  */
-public class AlgorithmActivity extends ListActivity {
+public class AlgorithmTestActivity extends ListActivity {
 
     /**
      * 首页入口列表Item数据
      */
     private ActivityListItemBean[] mAllItemBeans = {
-            new ActivityListItemBean("排序算法比较", sortActivity.class)
+            new ActivityListItemBean("排序算法比较", sortActivity.class),
+            new ActivityListItemBean("动态规划算法", sortActivity.class),
+            new ActivityListItemBean("大数据算法", sortActivity.class),
+            new ActivityListItemBean("结核性算法", sortActivity.class),
     };
 
 

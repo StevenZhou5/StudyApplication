@@ -1,7 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="稳定的排序算法："
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bt_bubble_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="冒泡排序O(n^2)" />
+
+        <Button
+            android:id="@+id/bt_straight_insertion_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="直接插入排序O(n^2)" />
+
+        <Button
+            android:id="@+id/bt_merge_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="归并排序O(nlogn)" />
+
+        <Button
+            android:id="@+id/bt_radix_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基数排序O(d(r+n))" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="不稳定排序算法："
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bt_simple_selection_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简单选择排序(n^2)" />
+
+        <Button
+            android:id="@+id/bt_shell_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="shell排序" />
+
+        <Button
+            android:id="@+id/bt_quick_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快速排序O(nlogn)" />
+
+        <Button
+            android:id="@+id/bt_heap_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="堆排序O(nlogn)" />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：2016/12/7
- * 类简介：
+ * 类简介：列表Item可以展看收起的RecycleView的Adapter
  */
 
 public abstract class ExpandableRecycleViewAdapter<T> extends RecycleViewArrayAdapter<T> {
@@ -29,7 +29,7 @@ public abstract class ExpandableRecycleViewAdapter<T> extends RecycleViewArrayAd
 
     private List<Long> mVisibleIds; // 根据ItemId记录那些Content要显示
 
-    private int mLimitCount = 1; // 限制展看的个数
+    private int mLimitCount = 0; // 限制展看的个数
     private Map<Long, View> mExpandedViewMaps; // 被展看View的map集合
 
     private AnimationEndListener mAnimationEndListener;

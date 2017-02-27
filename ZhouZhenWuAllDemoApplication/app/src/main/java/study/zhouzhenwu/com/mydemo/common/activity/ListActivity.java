@@ -57,6 +57,7 @@ public abstract class ListActivity extends BaseActivity {
                 ActivityListItemBean data = mAdapter.getItem(position);
                 Intent intent = new Intent(ListActivity.this, data.getActivity());
                 startActivity(intent);
+//                startActivityForResult(intent,-1); // 如果requestCode设置为-1的话，startActivity将不起作用
             }
         });
     }

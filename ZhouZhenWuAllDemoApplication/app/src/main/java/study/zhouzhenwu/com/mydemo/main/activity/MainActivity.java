@@ -2,7 +2,7 @@ package study.zhouzhenwu.com.mydemo.main.activity;
 
 import android.content.Intent;
 
-import study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.AndroidTestActivity;
 import study.zhouzhenwu.com.mydemo.animation.activity.AnimationMainActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ListActivity;
@@ -22,11 +22,10 @@ public class MainActivity extends ListActivity {
      * 首页入口列表Item数据
      */
     private ActivityListItemBean[] mAllItemBeans = {
-            new ActivityListItemBean("Android相关测试", AndroidTestActivity.class),
             new ActivityListItemBean("java相关测试", JavaTestActivity.class),
-            new ActivityListItemBean("算法测试", AlgorithmActivity.class),
-            new ActivityListItemBean("设计模式", DesignPatternActivity.class),
-            new ActivityListItemBean("动画", AnimationMainActivity.class)
+            new ActivityListItemBean("Android相关测试", AndroidTestActivity.class),
+            new ActivityListItemBean("算法测试", AlgorithmTestActivity.class),
+            new ActivityListItemBean("设计模式", DesignPatternActivity.class)
     };
 
 
