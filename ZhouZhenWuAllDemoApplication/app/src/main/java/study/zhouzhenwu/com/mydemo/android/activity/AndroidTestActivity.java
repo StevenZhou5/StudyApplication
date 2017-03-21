@@ -1,10 +1,13 @@
 package study.zhouzhenwu.com.mydemo.android.activity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,8 +47,9 @@ public class AndroidTestActivity extends ListActivity {
      */
     private ActivityListItemBean[] mAllItemBeans = {
             new ActivityListItemBean("动画", AnimationMainActivity.class),
-            new ActivityListItemBean("Activity生命周期", HandlerTestActivity.class),
-            new ActivityListItemBean("Service生命周期", HandlerTestActivity.class),
+            new ActivityListItemBean("Handler相关测试", HandlerTestActivity.class),
+            new ActivityListItemBean("PopupWindow跟Activity生命周期相关测试", PopupWindowTestActivity.class),
+            new ActivityListItemBean("LayerListTest", LayerListTestActivity.class),
             new ActivityListItemBean("数据库操作", HandlerTestActivity.class),
             new ActivityListItemBean("广播操作", HandlerTestActivity.class),
             new ActivityListItemBean("ContentProvider测试", HandlerTestActivity.class),
@@ -56,71 +61,22 @@ public class AndroidTestActivity extends ListActivity {
         return mAllItemBeans;
     }
 
+    private static Drawable sDrawable;
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LogUtils.log(getClass().getSimpleName() + ":onCreate");
-    }
 
-    /**
-     * 测试按钮被点击
-     *
-     * @param view
-     */
-    public void androidTest(View view) {
-        widgetPopupWindowTest(view);
-    }
+        /*
+        TextView textView = new TextView(this);
+        if (sDrawable == null){
+            sDrawable = getResources().getDrawable(R.mipmap.entrust_intordcut1); // 静态drawable对象会导致严重的内存占用
+        }
+        textView.setBackground(sDrawable);
 
-
-    @Bind(R.id.layout_pop_container)
-    View mPopContainer;
-
-    @Bind(R.id.view_background)
-    View mViewBackground;
-
-    /**
-     * 带动画效果的popupwindow测试
-     *
-     * @param view
-     */
-    private void animationPopupWindowTest(View view) {
-        // 带有动画效果的popupWindow
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.popupwindow_layout, null);
-        ButterKnife.bind(this, contentView);
-        PopupWindow popup = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        popup.setFocusable(true);
-        popup.setAnimationStyle(R.style.AppTheme_PopupOverlay);
-        // 这个是为了点击“返回Back”也能使其消失，并且并不会影响你的背景
-        popup.setBackgroundDrawable(new BitmapDrawable());
-        popup.showAsDropDown(view);
-
-        mPopContainer.setVisibility(View.VISIBLE);
-        mViewBackground.setVisibility(View.VISIBLE);
-
-        mPopContainer.measure(0, 0);
-        LogUtils.log("height:" + mPopContainer.getMeasuredHeight());
-        TranslateAnimation translateAnimation = new TranslateAnimation(0, 0, -mPopContainer.getMeasuredHeight(), 0);
-        translateAnimation.setDuration(2000);
-        mPopContainer.startAnimation(translateAnimation);
-
-        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.1f);
-        alphaAnimation.setDuration(2000);
-        alphaAnimation.setFillAfter(true);
-        mViewBackground.startAnimation(alphaAnimation);
-    }
-
-//    private LoadingPopupWindow loadingPopupWindow;
-
-    private void widgetPopupWindowTest(View view) {
-        // 自定义的展示一张图片的Pop
-//        OneImageViewPopupWindow oneImageViewPopupWindow = new OneImageViewPopupWindow(this, R.drawable.leak_canary_icon);
-//        oneImageViewPopupWindow.showAsDropDown(view);
-
-        // 自定义的展示全屏loading的popupWindow
-        LoadingPopupWindow loadingPopupWindow = new LoadingPopupWindow(this);
-        loadingPopupWindow.showLoading();
-
+        setContentView(textView);*/
     }
 
     @Override

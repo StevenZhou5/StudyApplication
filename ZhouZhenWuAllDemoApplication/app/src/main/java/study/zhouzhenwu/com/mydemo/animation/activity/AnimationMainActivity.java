@@ -21,7 +21,8 @@ public class AnimationMainActivity extends ListActivity {
             new ActivityListItemBean("评级流程趋势折线图", TendencyChartActivity.class),
             new ActivityListItemBean("贝塞尔曲线绘制", BezierActivity.class),
             new ActivityListItemBean("Canvas时钟绘制", ClockActivity.class),
-            new ActivityListItemBean("心形绘制", HeartActivity.class)
+            new ActivityListItemBean("心形绘制", HeartActivity.class),
+            new ActivityListItemBean("随动控件的各个属性值动态改变测试",MoveTestActivity.class)
     };
 
     @Override

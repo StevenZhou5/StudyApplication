@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.Bind;
@@ -33,6 +34,9 @@ public class RecycleViewActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view);
         ButterKnife.bind(this);
+        StringBuilder sb = new StringBuilder();
+        sb.append(5);
+        sb.append(" ");
 
 
         mRecycleView.setHasFixedSize(true);
