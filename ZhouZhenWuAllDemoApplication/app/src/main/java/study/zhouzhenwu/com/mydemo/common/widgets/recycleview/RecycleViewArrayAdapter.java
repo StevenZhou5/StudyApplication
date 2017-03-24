@@ -1,5 +1,6 @@
 package study.zhouzhenwu.com.mydemo.common.widgets.recycleview;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -7,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import study.zhouzhenwu.com.mydemo.animation.adapter.MyRecycleViewAdapter;
+import study.zhouzhenwu.com.mydemo.animation.model.MyRecycleViewItemModel;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 
 /**
@@ -14,10 +17,8 @@ import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
  * 创建日期：16/8/29
  * 类简介：自定义RecycleView的含有List数据吗的Adapter的基类
  */
-public abstract class RecycleViewArrayAdapter<T> extends RecyclerView.Adapter {
+public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter {
     protected List<T> mItems;
-    protected OnRecyclerViewItemClickListener mOnRecyclerViewItemClickListener;
-    protected OnRecyclerViewItemLongClickListener mOnRecyclerViewItemLongClickListener;
 
     public RecycleViewArrayAdapter() {
         this(null);
@@ -126,69 +127,6 @@ public abstract class RecycleViewArrayAdapter<T> extends RecyclerView.Adapter {
 
     public long getItemId(int position) {
         return position;
-    }
-
-    /*-------------------------------------- recycleView的Item点击 ------------------------------*/
-    protected void onItemClicked(View v, int position) {
-        if (mOnRecyclerViewItemClickListener != null) {
-            mOnRecyclerViewItemClickListener.onRecyclerViewItemClick(v, position);
-        }
-    }
-
-    public void setOnItemClickListener(OnRecyclerViewItemClickListener mOnRecyclerViewItemClickListener) {
-        this.mOnRecyclerViewItemClickListener = mOnRecyclerViewItemClickListener;
-    }
-
-    /*-------------------------------------- recycleView的Item长按点击 ------------------------------*/
-    protected void onItemLongClicked(View v, int position) {
-        if (mOnRecyclerViewItemLongClickListener != null) {
-            mOnRecyclerViewItemLongClickListener.onRecyclerViewItemLongClick(v, position);
-        }
-    }
-
-    public void setOnItemLongClickListener(OnRecyclerViewItemLongClickListener mOnRecyclerViewItemLongClickListener) {
-        this.mOnRecyclerViewItemLongClickListener = mOnRecyclerViewItemLongClickListener;
-    }
-
-
-    /*-------------------------------------- 内部类定义 ------------------------------*/
-
-    public abstract class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-
-        public BaseViewHolder(View itemView) {
-            super(itemView);
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            LogUtils.log("itemView的点击触发");
-            onItemClicked(v, getLayoutPosition());
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            onItemLongClicked(v, getLayoutPosition());
-            return false;
-        }
-    }
-
-    /*-------------------------------------- 内部接口定义 ------------------------------*/
-
-    /**
-     * recycleView的Item点击监听接口（注意：接口必须是public的）
-     */
-    public interface OnRecyclerViewItemClickListener {
-        void onRecyclerViewItemClick(View v, int position);
-
-    }
-
-    /**
-     * recycleView的Item长按监听接口（注意：接口必须是public的）
-     */
-    public interface OnRecyclerViewItemLongClickListener {
-        void onRecyclerViewItemLongClick(View v, int position);
     }
 
 }

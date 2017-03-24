@@ -63,14 +63,14 @@ public abstract class ExpandableRecycleViewAdapter<T> extends RecycleViewArrayAd
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseRecycleViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         parent = new RootView(mContext);
         ViewHolder holder = new ViewHolder(parent);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindBaseViewHolder(BaseRecycleViewViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
 
         // step1：title相关初始化
@@ -159,7 +159,7 @@ public abstract class ExpandableRecycleViewAdapter<T> extends RecycleViewArrayAd
     /**
      * 内部ViewHolder类
      */
-    class ViewHolder extends BaseViewHolder {
+    class ViewHolder extends BaseRecycleViewViewHolder {
         ViewGroup titleParent;
         ViewGroup contentParent;
         View titleView;

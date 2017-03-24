@@ -16,6 +16,7 @@ import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.animation.adapter.MyRecycleViewAdapter;
 import study.zhouzhenwu.com.mydemo.animation.model.MyRecycleViewItemModel;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
+import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItemClickListener;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 
 /**
@@ -45,7 +46,7 @@ public class RecycleViewActivity extends BaseActivity {
         mRecycleView.setLayoutManager(layoutManager);
 
         mRecycleViewAdapter = new MyRecycleViewAdapter();
-        mRecycleViewAdapter.setOnItemClickListener(new RecycleViewArrayAdapter.OnRecyclerViewItemClickListener() {
+        mRecycleViewAdapter.setOnItemClickListener(new OnRecyclerViewItemClickListener() {
             @Override
             public void onRecyclerViewItemClick(View v, int position) {
                 showToast(position + "被点击");

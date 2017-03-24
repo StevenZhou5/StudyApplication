@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import study.zhouzhenwu.com.mydemo.common.adapter.ActivityRecycleViewAdapter;
+import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItemClickListener;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 
@@ -50,7 +51,7 @@ public abstract class ListActivity extends BaseActivity {
         mAdapter.addAllItems(datas);
 
         // step5:监听初始化
-        mAdapter.setOnItemClickListener(new RecycleViewArrayAdapter.OnRecyclerViewItemClickListener() {
+        mAdapter.setOnItemClickListener(new OnRecyclerViewItemClickListener() {
             @Override
             public void onRecyclerViewItemClick(View v, int position) {
                 log("onItemClick为：" + position);

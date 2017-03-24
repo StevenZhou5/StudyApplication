@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
+import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.BaseRecycleViewViewHolder;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 
 /**
@@ -21,20 +22,20 @@ import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAd
 
 public class ActivityRecycleViewAdapter extends RecycleViewArrayAdapter<ActivityListItemBean> {
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseRecycleViewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_item_activity_list, null);
         return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindBaseViewHolder(BaseRecycleViewViewHolder holder, int position) {
         ViewHolder viewHolder = (ViewHolder) holder;
         ActivityListItemBean data = mItems.get(position);
         String name = data.getName();
         viewHolder.mTvName.setText(name);
     }
 
-    class ViewHolder extends BaseViewHolder {
+    class ViewHolder extends BaseRecycleViewViewHolder {
         @Bind(R.id.tv_name)
         TextView mTvName;
 
