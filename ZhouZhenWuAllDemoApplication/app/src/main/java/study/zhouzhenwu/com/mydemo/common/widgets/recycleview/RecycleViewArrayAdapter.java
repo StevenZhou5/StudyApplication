@@ -1,11 +1,16 @@
 package study.zhouzhenwu.com.mydemo.common.widgets.recycleview;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import study.zhouzhenwu.com.mydemo.animation.adapter.MyRecycleViewAdapter;
@@ -38,8 +43,14 @@ public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter 
      * @param items 要添加的items
      */
     public void addAllItems(Collection<? extends T> items) {
+        if (items == null) {
+            return;
+        }
+        int startPosition = mItems.size();
+        int itemCount = items.size();
+        Log.d("ZZW", "addAllItems方法被调用：startPosition为" + startPosition + "; itemCount为:" + itemCount);
         mItems.addAll(items);
-        notifyDataSetChanged();
+        notifyItemRangeInserted(startPosition, itemCount);
     }
 
     /**
@@ -49,8 +60,13 @@ public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter 
      * @param items    要添加的items
      */
     public void addAllItems(int location, Collection<? extends T> items) {
+        if (items == null || location < 0 || location > items.size()) {
+            return;
+        }
+        int itemCount = items.size();
+        Log.d("ZZW", "addAllItems方法被调用：startPosition为" + location + "; itemCount为:" + itemCount);
         mItems.addAll(location, items);
-        notifyDataSetChanged();
+        notifyItemRangeInserted(location, itemCount);
     }
 
     /**
@@ -59,8 +75,13 @@ public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter 
      * @param item 要添加的item
      */
     public void addItem(T item) {
+        if (item == null) {
+            return;
+        }
+        int startPosition = mItems.size();
         mItems.add(item);
-        notifyDataSetChanged();
+        notifyItemInserted(startPosition);
+        Log.d("ZZW", "addItem方法被调用：startPosition为" + startPosition + ";");
     }
 
     /**
@@ -70,8 +91,12 @@ public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter 
      * @param item     要添加的item
      */
     public void addItem(int location, T item) {
+        if (item == null || location < 0 || location > mItems.size()) {
+            return;
+        }
         mItems.add(location, item);
-        notifyDataSetChanged();
+        notifyItemInserted(location);
+        Log.d("ZZW", "addItem方法被调用：startPosition为" + location + ";");
     }
 
     /**
@@ -80,8 +105,8 @@ public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter 
      * @param item 要移除的Item
      */
     public void removeItem(T item) {
-        mItems.remove(item);
-        notifyDataSetChanged();
+        int location = mItems.indexOf(item); // 先找出位置信息，然后移除对应位置的数据
+        removeItem(location);
     }
 
     /**
@@ -90,8 +115,12 @@ public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter 
      * @param location 要移除的item的所在的位置
      */
     public void removeItem(int location) {
+        if (location < 0 || location >= mItems.size()) {
+            return;
+        }
         mItems.remove(location);
-        notifyDataSetChanged();
+        notifyItemRemoved(location);
+        Log.d("ZZW", "removeItem方法被调用：removePosition为" + location + ";");
     }
 
     /**
@@ -100,8 +129,13 @@ public abstract class RecycleViewArrayAdapter<T> extends BaseRecycleViewAdapter 
      * @param items 要移除的items
      */
     public void removeAllItems(Collection<? extends T> items) {
-        mItems.removeAll(items);
-        notifyDataSetChanged();
+        if (items == null || items.isEmpty()) {
+            return;
+        }
+        Iterator<? extends T> it = items.iterator();
+        while (it.hasNext()) { // 遍历然后一个一个移除
+            removeItem(it.next());
+        }
     }
 
     /**

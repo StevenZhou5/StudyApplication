@@ -25,7 +25,7 @@ import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 
 public abstract class ListActivity extends BaseActivity {
     private RecyclerView mRecyclerView;
-    private ActivityRecycleViewAdapter mAdapter;
+    protected ActivityRecycleViewAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public abstract class ListActivity extends BaseActivity {
     }
 
     @NonNull
-    private List<ActivityListItemBean> initDatas() {
+    protected List<ActivityListItemBean> initDatas() {
         List<ActivityListItemBean> datas = new ArrayList<>();
         ActivityListItemBean[] beans = getItemBeans();
         if (beans == null || beans.length == 0) {

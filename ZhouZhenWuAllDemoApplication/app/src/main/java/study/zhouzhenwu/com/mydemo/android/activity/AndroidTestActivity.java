@@ -22,7 +22,10 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -69,6 +72,34 @@ public class AndroidTestActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         LogUtils.log(getClass().getSimpleName() + ":onCreate");
 
+
+        final Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Log.d("ZZW", "handler开始执行任务");
+                List<ActivityListItemBean> datas = initDatas();
+//                mAdapter.addAllItems(8,datas);
+//                mAdapter.addItem(datas.get(0));
+                mAdapter.addItem(5, datas.get(0));
+//                mAdapter.removeItem(datas.get(0));
+                mAdapter.removeItem(5);
+//                datas.remove(0);
+//                datas.remove(5);
+//                mAdapter.removeAllItems(datas);
+            }
+        };
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                Log.d("ZZW", "开始执行task任务");
+                handler.sendMessage(new Message());
+
+            }
+        };
+
+        Timer timer = new Timer();
+        timer.schedule(task, 3000);
         /*
         TextView textView = new TextView(this);
         if (sDrawable == null){
