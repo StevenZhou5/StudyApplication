@@ -8,7 +8,7 @@ android {
     // 默认设置，这些都会对应配置重写在AndroidManifest.xml中
     defaultConfig {
         applicationId "slidingchoiceview.dingding.com.zhouzhenwualldemoapplication" // 应用包名
-        minSdkVersion 11 // 支持的最低版本，低于此版本将无法安装应用
+        minSdkVersion 18 // 支持的最低版本，低于此版本将无法安装应用
         targetSdkVersion 23 // 目标版本
         versionCode 1
         versionName "1.0"
@@ -32,6 +32,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "LOG_TAG", "\"ZZW\"");
         }
+
     }
 
     productFlavors {
@@ -44,6 +45,8 @@ android {
         flavorr2 {
             buildConfigField("String", "LOG_TAG", "\"ZZW\"");
         }
+
+        bu
     }
 
 
@@ -58,6 +61,7 @@ android {
             }
         }
     }
+
 }
 
 dependencies {

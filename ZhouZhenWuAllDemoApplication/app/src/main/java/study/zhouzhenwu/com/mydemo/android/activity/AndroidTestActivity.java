@@ -53,10 +53,7 @@ public class AndroidTestActivity extends ListActivity {
             new ActivityListItemBean("Handler相关测试", HandlerTestActivity.class),
             new ActivityListItemBean("PopupWindow跟Activity生命周期相关测试", PopupWindowTestActivity.class),
             new ActivityListItemBean("LayerListTest", LayerListTestActivity.class),
-            new ActivityListItemBean("数据库操作", HandlerTestActivity.class),
-            new ActivityListItemBean("广播操作", HandlerTestActivity.class),
-            new ActivityListItemBean("ContentProvider测试", HandlerTestActivity.class),
-            new ActivityListItemBean("handler相关测试", HandlerTestActivity.class),
+            new ActivityListItemBean("获得一个View在一个可滑动viewGroup中是否可见", TestCheckViewVisible.class),
     };
 
     @Override
@@ -108,6 +105,10 @@ public class AndroidTestActivity extends ListActivity {
         textView.setBackground(sDrawable);
 
         setContentView(textView);*/
+
+//        while (true){
+//            String s = new String("a");
+//        }
     }
 
     @Override
