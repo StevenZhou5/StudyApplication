@@ -1,6 +1,7 @@
 package study.zhouzhenwu.com.mydemo.common.activity;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,8 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import study.zhouzhenwu.com.mydemo.common.adapter.ActivityRecycleViewAdapter;
+import study.zhouzhenwu.com.mydemo.common.utils.ActivityOpenFromSrcViewToTargetViewUtils;
+import study.zhouzhenwu.com.mydemo.common.utils.ViewUtils;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItemClickListener;
-import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 
 /**
@@ -55,8 +57,12 @@ public abstract class ListActivity extends BaseActivity {
             @Override
             public void onRecyclerViewItemClick(View v, int position) {
                 log("onItemClick为：" + position);
+                Rect targetRect = ViewUtils.getViewRectInActivity(v);
+                log("当前被点击ItemView的targetRect:" + "left:" + targetRect.left + "; right:" + targetRect.right + "; top:"
+                        + targetRect.top + "; bottom:" + targetRect.bottom);
                 ActivityListItemBean data = mAdapter.getItem(position);
                 Intent intent = new Intent(ListActivity.this, data.getActivity());
+//                ActivityOpenFromSrcViewToTargetViewUtils.startActivity(ListActivity.this, intent, v);
                 startActivity(intent);
 //                startActivityForResult(intent,-1); // 如果requestCode设置为-1的话，startActivity将不起作用
             }

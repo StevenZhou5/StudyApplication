@@ -1,5 +1,6 @@
 package study.zhouzhenwu.com.mydemo.common.utils;
 
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,31 @@ public class ViewUtils {
         return TagType;
     }
 
+    /**
+     * 获取view在当前Activity根View中的所占的区域
+     *
+     * @param targetView
+     * @return
+     */
+    public static Rect getViewRectInActivity(View targetView) {
+        Rect resultRect = new Rect();
+        targetView.getGlobalVisibleRect(resultRect);
+        return resultRect;
+    }
+
+    /**
+     * 获取view在当前Activity根View中的区域的距离Activty根View的X轴距离和Y轴距离
+     *
+     * @param targetView
+     * @return
+     */
+    public static Point getViewOffsetInActivity(View targetView) {
+        Rect globalRect = new Rect();
+        Point globalOffset = new Point();
+        targetView.getGlobalVisibleRect(globalRect, globalOffset);
+        return globalOffset;
+    }
+
 
     /**
      * 判断一个目标View在容器View中是否可见
@@ -40,7 +66,7 @@ public class ViewUtils {
      * @return
      */
     public static boolean checkViewIsVisible(View targetView, ViewGroup contentView, double heightPercent,
-                                       double widthPercent) {
+                                             double widthPercent) {
         // step1: 获取目标View相对与Activity的位置
         Rect targetRect = new Rect();
         targetView.getGlobalVisibleRect(targetRect);

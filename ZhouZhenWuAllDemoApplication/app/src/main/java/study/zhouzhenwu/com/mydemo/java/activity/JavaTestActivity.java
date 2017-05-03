@@ -5,13 +5,11 @@ import android.view.View;
 
 import java.util.HashSet;
 
-import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.AlgorithmTestActivity;
-import study.zhouzhenwu.com.mydemo.android.activity.AndroidTestActivity;
 import study.zhouzhenwu.com.mydemo.animation.activity.AnimationMainActivity;
-import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
+import study.zhouzhenwu.com.mydemo.common.utils.ActivityOpenFromSrcViewToTargetViewUtils;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivity;
 import study.zhouzhenwu.com.mydemo.java.testclass.A;

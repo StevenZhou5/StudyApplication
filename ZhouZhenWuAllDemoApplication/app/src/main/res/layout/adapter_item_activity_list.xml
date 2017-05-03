@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/activity_item_selecter">
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/activity_item_selecter"
-        android:gravity="center"
         android:layout_marginTop="0.5dp"
+        android:background="@mipmap/call_locate_green"
+        android:gravity="center"
         android:text="我是展示ActivityListView的Adapter"
-        android:textColor="@color/colorAccent"
+        android:textColor="@android:color/black"
         android:textSize="15sp" />
 </RelativeLayout>

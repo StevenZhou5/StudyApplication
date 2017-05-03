@@ -69,7 +69,6 @@ public class AndroidTestActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         LogUtils.log(getClass().getSimpleName() + ":onCreate");
 
-
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
