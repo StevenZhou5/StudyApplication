@@ -8,7 +8,7 @@ import android.widget.Button;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
-import study.zhouzhenwu.com.mydemo.algorithm.utils.DynamicProgrammingAlgorithmUtils;
+import study.zhouzhenwu.com.mydemo.common.utils.AlgorithmUtils;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.utils.CommonUtils;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
@@ -78,7 +78,7 @@ public class sortActivity extends BaseActivity implements View.OnClickListener {
     private void getMinCount() {
         int total = (int) ((Math.random() * 100));
         int[] base = {1, 3, 5, 10, 20, 50, 100};
-        String result = "total为:" + total + "; minCount:" + DynamicProgrammingAlgorithmUtils.getMinCount(40, base);
+        String result = "total为:" + total + "; minCount:" + AlgorithmUtils.getMinCount(40, base);
         LogUtils.log(result);
         showToast(result);
     }
@@ -87,7 +87,7 @@ public class sortActivity extends BaseActivity implements View.OnClickListener {
      * 快速排序
      */
     private void quickSort(int[] datas) {
-        DynamicProgrammingAlgorithmUtils.quickSortSingle(datas, 0, datas.length - 1);
+        AlgorithmUtils.quickSortSingle(datas, 0, datas.length - 1);
 
     }
 

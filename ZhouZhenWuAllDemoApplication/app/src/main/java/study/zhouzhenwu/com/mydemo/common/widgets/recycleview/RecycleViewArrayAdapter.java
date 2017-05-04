@@ -1,21 +1,11 @@
 package study.zhouzhenwu.com.mydemo.common.widgets.recycleview;
 
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-
-import study.zhouzhenwu.com.mydemo.animation.adapter.MyRecycleViewAdapter;
-import study.zhouzhenwu.com.mydemo.animation.model.MyRecycleViewItemModel;
-import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

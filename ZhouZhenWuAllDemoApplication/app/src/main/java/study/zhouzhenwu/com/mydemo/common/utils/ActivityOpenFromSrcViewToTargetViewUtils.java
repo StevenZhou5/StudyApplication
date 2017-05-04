@@ -44,9 +44,9 @@ public class ActivityOpenFromSrcViewToTargetViewUtils {
     private static int mFinalX;
     private static int mStartY;
     private static int mFinalY;
-    private static float mStartSacleX;
+    private static float mStartScaleX;
     private static float mFinalScaleX = (float) 1.0;
-    private static float mStartSacleY;
+    private static float mStartScaleY;
     private static float mFinalScaleY = (float) 1.0;
 
     public static void startActivity(Activity activity, Intent intent, View srcView) {
@@ -90,10 +90,10 @@ public class ActivityOpenFromSrcViewToTargetViewUtils {
 //        mFinalY = mTargetOffset.y;
 
         // 初始化startScale和finalScale
-        mStartSacleX = (float) mSrcRect.width() / CommonUtils.dip2px(destActivity, 200);
-        mStartSacleY = (float) mSrcRect.height() / CommonUtils.dip2px(destActivity, 180);
-//        mStartSacleX = (float) mSrcRect.width() / mTargetRect.width();
-//        mStartSacleY = (float) mSrcRect.height() / mTargetRect.height();
+        mStartScaleX = (float) mSrcRect.width() / CommonUtils.dip2px(destActivity, 200);
+        mStartScaleY = (float) mSrcRect.height() / CommonUtils.dip2px(destActivity, 180);
+//        mStartScaleX = (float) mSrcRect.width() / mTargetRect.width();
+//        mStartScaleY = (float) mSrcRect.height() / mTargetRect.height();
 
         mImageView = createImageView(destActivity);
     }
@@ -147,8 +147,8 @@ public class ActivityOpenFromSrcViewToTargetViewUtils {
         mImageView.setPivotY(0f);
         Animator anim1 = ObjectAnimator.ofFloat(mImageView, View.X, mStartX, mFinalX);
         Animator anim2 = ObjectAnimator.ofFloat(mImageView, View.Y, mStartY, mFinalY);
-        Animator anim3 = ObjectAnimator.ofFloat(mImageView, View.SCALE_X, mStartSacleX, mFinalScaleX);
-        Animator anim4 = ObjectAnimator.ofFloat(mImageView, View.SCALE_Y, mStartSacleY, mFinalScaleY);
+        Animator anim3 = ObjectAnimator.ofFloat(mImageView, View.SCALE_X, mStartScaleX, mFinalScaleX);
+        Animator anim4 = ObjectAnimator.ofFloat(mImageView, View.SCALE_Y, mStartScaleY, mFinalScaleY);
         final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(duration);
         if (interpolator != null) {
