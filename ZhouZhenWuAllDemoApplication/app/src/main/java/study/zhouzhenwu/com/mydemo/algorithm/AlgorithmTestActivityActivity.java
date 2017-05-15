@@ -2,7 +2,9 @@ package study.zhouzhenwu.com.mydemo.algorithm;
 
 import android.content.Intent;
 
-import study.zhouzhenwu.com.mydemo.algorithm.activity.sortActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.LongestSubstringActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.SingleLinkedListsActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.SortActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 
@@ -17,16 +19,29 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
      * 首页入口列表Item数据
      */
     private ActivityListItemBean[] mAllItemBeans = {
-            new ActivityListItemBean("排序算法比较", sortActivity.class),
-            new ActivityListItemBean("动态规划算法", sortActivity.class),
-            new ActivityListItemBean("大数据算法", sortActivity.class),
-            new ActivityListItemBean("结核性算法", sortActivity.class),
+            new ActivityListItemBean("排序算法比较", SortActivity.class),
+            new ActivityListItemBean("两个单向链表相加", SingleLinkedListsActivity.class),
+            new ActivityListItemBean("查找一个字符串的最长不重复子串", LongestSubstringActivity.class)
     };
 
 
     @Override
     protected ActivityListItemBean[] getItemBeans() {
         return mAllItemBeans;
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            int indexOneValue = nums[i];
+            int targetTwoValue = target - indexOneValue;
+            for (int j = i + 1; j < nums.length; j++) {
+                int indexTwoValue = nums[j];
+                if (targetTwoValue == indexTwoValue) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return null;
     }
 
 

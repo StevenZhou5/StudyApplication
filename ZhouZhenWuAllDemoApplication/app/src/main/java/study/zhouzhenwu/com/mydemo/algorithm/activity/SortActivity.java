@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -19,13 +20,39 @@ import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
  * 类简介：排序算法
  */
 
-public class sortActivity extends BaseActivity implements View.OnClickListener {
+public class SortActivity extends BaseActivity implements View.OnClickListener {
     private int[] datas;
 
+    // 稳定排序
+    @Bind(R.id.bt_bubble_sort)
+    Button mBtBubbleSort; // 冒泡排序按钮
+    @Bind(R.id.bt_straight_insertion_sort)
+    Button mBtStraightInsertionSort; // 冒泡排序按钮
+    @Bind(R.id.bt_merge_sort)
+    Button mBtMergeSort; // 冒泡排序按钮
+    @Bind(R.id.bt_radix_sort)
+    Button mBtRadixSort; // 冒泡排序按钮
+
+
+    // 不稳定排序
+    @Bind(R.id.bt_simple_selection_sort)
+    Button mBtSimpleSelectionSort;
+    @Bind(R.id.bt_shell_sort)
+    Button mBtShellSort;
     @Bind(R.id.bt_quick_sort)
     Button mBtQuickSort;
     @Bind(R.id.bt_heap_sort)
     Button mBtHeapSort;
+
+    // 初始化按钮
+    @Bind(R.id.bt_init)
+    Button mBtInit;
+
+    // 输出和输出文案
+    @Bind(R.id.tv_input)
+    TextView mTvInput;
+    @Bind(R.id.tv_output)
+    TextView mTvOutput;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,37 +63,44 @@ public class sortActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initListener() {
+        mBtInit.setOnClickListener(this);
         mBtQuickSort.setOnClickListener(this);
         mBtHeapSort.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        initData();
         long startTime = System.currentTimeMillis();
-        log("初始数据输出:" + CommonUtils.intsToString(datas));
+        log("点击的开始时间:" + CommonUtils.intsToString(datas));
         switch (v.getId()) {
+            case R.id.bt_init: // 数据初始化
+                initData();
+                mTvInput.setText("输入：" + CommonUtils.intsToString(datas));
+                break;
             case R.id.bt_quick_sort:
                 quickSort(datas);
+                mTvOutput.setText("输出：" + CommonUtils.intsToString(datas));
                 break;
             case R.id.bt_heap_sort:
                 heapSortTest(datas);
+                mTvOutput.setText("输出：" + CommonUtils.intsToString(datas));
                 break;
         }
-        log("排序后输出:" + CommonUtils.intsToString(datas));
+        log("点击时间处理完毕后的结束时间:" + CommonUtils.intsToString(datas));
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
-        LogUtils.log("排序耗时为：" + duration);
+        LogUtils.log("点击触发的事件的耗时：" + duration);
     }
 
     private void initData() {
         if (datas != null) {
             datas = null;
         }
-        datas = new int[10000];
+        int length = (int) (Math.random() * 19) + 1;
+        datas = new int[length];
         int i = 0;
         while (i < datas.length) {
-            datas[i] = (int) (Math.random() * 100000000);
+            datas[i] = (int) (Math.random() * 1000);
             i++;
         }
     }

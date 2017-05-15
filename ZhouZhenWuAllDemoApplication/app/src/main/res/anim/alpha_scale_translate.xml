@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:shareInterpolator="false"
->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
     <alpha
-        android:interpolator="@android:res/anim/accelerate_decelerate_interpolator"
+        android:duration="3000"
         android:fromAlpha="0.0"
-        android:toAlpha="1.0"
-        android:duration="3000"
-    >
-    </alpha>
-    
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:toAlpha="1.0" />
+
     <scale
-        android:interpolator="@android:res/anim/accelerate_decelerate_interpolator"
+        android:duration="3000"
         android:fromXScale="0.0"
-        android:toXScale="1.0"
         android:fromYScale="0.0"
-        android:toYScale="1.0"
-        android:pivotX="50%"
-        android:pivotY="50%"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:pivotX="100%"
+        android:pivotY="100%"
+        android:toXScale="1.0"
+        android:toYScale="1.0" />
+
+    <translate
         android:duration="3000"
-    ></scale>
-    
-       <translate
-        android:interpolator="@android:anim/accelerate_decelerate_interpolator" 
-        android:fromXDelta="120"
-        android:toXDelta="30"
-        android:fromYDelta="30"
-        android:toYDelta="250"
-        android:duration="3000"
-        />
-    
+        android:fromXDelta="300"
+        android:fromYDelta="280"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:toXDelta="0"
+        android:toYDelta="0" />
+
 </set>

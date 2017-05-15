@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layout_sort_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -80,5 +81,31 @@
             android:text="堆排序O(nlogn)" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/bt_init"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_sort_button"
+        android:layout_centerHorizontal="true"
+        android:background="@color/higtlight"
+        android:text="初始化数据" />
+
+    <TextView
+        android:id="@+id/tv_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_init"
+        android:layout_centerHorizontal="true"
+        android:maxLines="3"
+        android:text="输入：" />
+
+    <TextView
+        android:id="@+id/tv_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_input"
+        android:layout_centerHorizontal="true"
+        android:maxLines="3"
+        android:text="输出：" />
 
 </RelativeLayout>

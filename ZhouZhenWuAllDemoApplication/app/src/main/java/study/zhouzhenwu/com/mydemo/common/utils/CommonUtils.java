@@ -5,6 +5,7 @@ import android.content.Context;
 import java.lang.reflect.Field;
 
 import study.zhouzhenwu.com.mydemo.MyApplication;
+import study.zhouzhenwu.com.mydemo.common.module.SingleLinkedListNode;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -38,8 +39,7 @@ public class CommonUtils {
         for (int i : input) {
             sb.append(i + ",");
         }
-        sb.subSequence(0, sb.length() - 2);
-        return sb.toString();
+        return sb.subSequence(0, sb.length() - 1).toString();
     }
 
     /**
@@ -75,4 +75,6 @@ public class CommonUtils {
         }
         return statusBarHeight;
     }
+
+
 }

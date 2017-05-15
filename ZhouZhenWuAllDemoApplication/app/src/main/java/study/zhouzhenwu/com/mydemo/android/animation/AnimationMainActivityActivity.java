@@ -72,11 +72,14 @@ public class AnimationMainActivityActivity extends ActivityListActivity {
         }
         log("AddOneByOneEnd:" + SystemClock.currentThreadTimeMillis() + "");*/
 
-
     }
 
     @Override
     protected ActivityListItemBean[] getItemBeans() {
         return mAllItemBeans;
+    }
+
+    private int[] getValues() {
+        return new int[]{1, 2};
     }
 }
