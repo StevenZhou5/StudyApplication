@@ -3,7 +3,7 @@ package study.zhouzhenwu.com.mydemo;
 import android.content.Intent;
 
 import study.zhouzhenwu.com.mydemo.algorithm.AlgorithmTestActivityActivity;
-import study.zhouzhenwu.com.mydemo.android.AndroidTestActivityActivity;
+import study.zhouzhenwu.com.mydemo.android.AndroidTestMainActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
@@ -22,7 +22,7 @@ public class MainActivityActivity extends ActivityListActivity {
      */
     private ActivityListItemBean[] mAllItemBeans = {
             new ActivityListItemBean("java相关测试", JavaTestActivityActivity.class),
-            new ActivityListItemBean("Android相关测试", AndroidTestActivityActivity.class),
+            new ActivityListItemBean("Android相关测试", AndroidTestMainActivity.class),
             new ActivityListItemBean("算法测试", AlgorithmTestActivityActivity.class),
             new ActivityListItemBean("设计模式", DesignPatternActivityActivity.class)
     };

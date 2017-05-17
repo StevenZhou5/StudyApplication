@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import study.zhouzhenwu.com.mydemo.android.activity.GoogleZXingScanActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.HandlerTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.LayerListTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.PopupWindowTestActivity;
@@ -27,7 +28,7 @@ import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
  * 创建日期：16/6/16
  * 类简介：Android测试相关的主Activity
  */
-public class AndroidTestActivityActivity extends ActivityListActivity {
+public class AndroidTestMainActivity extends ActivityListActivity {
     /**
      * 首页入口列表Item数据
      */
@@ -37,6 +38,7 @@ public class AndroidTestActivityActivity extends ActivityListActivity {
             new ActivityListItemBean("PopupWindow跟Activity生命周期相关测试", PopupWindowTestActivity.class),
             new ActivityListItemBean("LayerListTest", LayerListTestActivity.class),
             new ActivityListItemBean("获得一个View在一个可滑动viewGroup中是否可见", TestCheckViewVisible.class),
+            new ActivityListItemBean("GoogleZXing扫码", GoogleZXingScanActivity.class)
     };
 
     @Override
