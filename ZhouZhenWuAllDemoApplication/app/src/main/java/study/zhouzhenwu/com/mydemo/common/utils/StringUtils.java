@@ -21,7 +21,7 @@ public class StringUtils {
         Random random = new Random();
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < length; i++) {
-            int num = random.nextInt(26);
+            int num = random.nextInt(str.length());
             buf.append(str.charAt(num));
         }
         return buf.toString();

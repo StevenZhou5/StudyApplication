@@ -16,21 +16,15 @@ import android.view.WindowManager;
 
 public class ScreenUtils {
     //获取屏幕宽度
-    public static int getScreenWidth(Activity activity) {
-        DisplayMetrics dm = new DisplayMetrics();
-
-        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);//this指当前activity
-
-        return dm.widthPixels;
+    public static int getScreenWidth(Context context) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return metrics.widthPixels;
     }
 
     //获取屏幕高度
-    public static int getScreenHeight(Activity activity) {
-        DisplayMetrics dm = new DisplayMetrics();
-
-        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);//this指当前activity
-
-        return dm.heightPixels;
+    public static int getScreenHeight(Context context) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return metrics.heightPixels;
     }
 
     public static int getScreenStatusBarHeight(Activity activity) {

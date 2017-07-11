@@ -18,7 +18,7 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：2017/5/17
- * 类简介：
+ * 类简介： 二维码扫描Activity
  */
 
 public class GoogleZXingScanActivity extends BaseActivity implements View.OnClickListener {

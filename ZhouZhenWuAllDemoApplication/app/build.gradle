@@ -87,4 +87,7 @@ dependencies {
     // google ZXing扫码
     compile 'com.journeyapps:zxing-android-embedded:3.5.0'
     compile 'com.android.support:appcompat-v7:23.1.0'   // Version 23+ is required
+
+    // multitypeRecycleView的引入
+    compile 'me.drakeet.multitype:multitype:3.0.0'
 }

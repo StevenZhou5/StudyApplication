@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="直接递归求解" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="直接递归求解时间复杂度为o(2^n);时间复杂度很高，这不算真正的好的动态规划算法" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="备忘录算法" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="        采用备忘录方式，用map将计算过的结果存起来。
+        如果能在map中取到的计算结果就直接在map中取，否则才去计算，然后计算完在存入map中，这样就不回去冲去计算之前计算过的值了。
+        因为从f(1)-f(n)共有n和输入，map中存放了n-2个结果，
+        所以时间复杂度变为了o(n)，控件复杂度也是o(n)。
+        但是这个是自顶向下的计算，控件复杂度很高，任然不是一个好的动态规划算法" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="自低向上的动态规划算法" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="        由于从f(3)之后，每一个f(x)只跟之前的f(x-1)和f(x-2)的结果相关。
+        所以我们只用从f(3)开始循环计算，每次只存储上f(x-1)的值和f(x-2)的值，计算出f(x)的值后进行暂存数据的更新。
+        这样的话时间复杂度任然是o(n)，但是空间复杂度变为了o(1)，这才是真正的动态规划。" />
+    </LinearLayout>
+</LinearLayout>

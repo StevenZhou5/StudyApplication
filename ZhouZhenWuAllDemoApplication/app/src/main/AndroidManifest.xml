@@ -169,6 +169,12 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.android.activity.MultiTypeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name="study.zhouzhenwu.com.mydemo.android.activity.MyScanActivity"
@@ -219,6 +225,18 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.LongestSubstringActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.MedianOfTwoSortedArraysActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.UpstairsWithOneOrTwoStepActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

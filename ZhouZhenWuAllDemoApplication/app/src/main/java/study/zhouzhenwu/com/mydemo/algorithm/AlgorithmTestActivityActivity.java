@@ -3,8 +3,10 @@ package study.zhouzhenwu.com.mydemo.algorithm;
 import android.content.Intent;
 
 import study.zhouzhenwu.com.mydemo.algorithm.activity.LongestSubstringActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.MedianOfTwoSortedArraysActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SingleLinkedListsActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SortActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.UpstairsWithOneOrTwoStepActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 
@@ -20,9 +22,13 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
      */
     private ActivityListItemBean[] mAllItemBeans = {
             new ActivityListItemBean("排序算法比较", SortActivity.class),
+            new ActivityListItemBean("真正的动态规划-经典阶梯问题", UpstairsWithOneOrTwoStepActivity.class),
             new ActivityListItemBean("两个单向链表相加", SingleLinkedListsActivity.class),
-            new ActivityListItemBean("查找一个字符串的最长不重复子串", LongestSubstringActivity.class)
+            new ActivityListItemBean("查找一个字符串的最长不重复子串", LongestSubstringActivity.class),
+            new ActivityListItemBean("两个已排序的数组中值", MedianOfTwoSortedArraysActivity.class)
     };
+
+    // 动态规划算法有三种
 
 
     @Override
@@ -30,6 +36,12 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
         return mAllItemBeans;
     }
 
+    /**
+     * 在一个数组中找两个数，使的这两个数的加和等于目标数
+     * @param nums 输入数组
+     * @param target 目标数
+     * @return 返回结果
+     */
     public int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             int indexOneValue = nums[i];
