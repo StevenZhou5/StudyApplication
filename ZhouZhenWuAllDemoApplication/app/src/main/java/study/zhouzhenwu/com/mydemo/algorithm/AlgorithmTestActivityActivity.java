@@ -3,6 +3,7 @@ package study.zhouzhenwu.com.mydemo.algorithm;
 import android.content.Intent;
 
 import study.zhouzhenwu.com.mydemo.algorithm.activity.LongestSubstringActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.MatrixRotate90DegreeActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.MedianOfTwoSortedArraysActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SingleLinkedListsActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SortActivity;
@@ -25,7 +26,8 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
             new ActivityListItemBean("真正的动态规划-经典阶梯问题", UpstairsWithOneOrTwoStepActivity.class),
             new ActivityListItemBean("两个单向链表相加", SingleLinkedListsActivity.class),
             new ActivityListItemBean("查找一个字符串的最长不重复子串", LongestSubstringActivity.class),
-            new ActivityListItemBean("两个已排序的数组中值", MedianOfTwoSortedArraysActivity.class)
+            new ActivityListItemBean("两个已排序的数组中值", MedianOfTwoSortedArraysActivity.class),
+            new ActivityListItemBean("矩阵旋转90度", MatrixRotate90DegreeActivity.class)
     };
 
     // 动态规划算法有三种
@@ -38,7 +40,8 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
 
     /**
      * 在一个数组中找两个数，使的这两个数的加和等于目标数
-     * @param nums 输入数组
+     *
+     * @param nums   输入数组
      * @param target 目标数
      * @return 返回结果
      */

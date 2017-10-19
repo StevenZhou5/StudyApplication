@@ -48,14 +48,19 @@ public class MultiTypeActivity extends BaseActivity {
         mRecycleView.setAdapter(mMultiTypeAdapter);
         mRecycleView.setLayoutManager(new LinearLayoutManager(this));
 
-        mMultiTypeItems = new Items();
-        mMultiTypeItems.add(new MultiTypeBannerData()); // 添加Banner数据
-        mMultiTypeItems.add(new MultiTypeTestText()); // 添加TestText数据
-        mMultiTypeItems.add(new MultiTypeTestText()); // 添加TestText数据
-        mMultiTypeItems.add(new MultiTypeTestText()); // 添加TestText数据
-        mMultiTypeItems.add(new MultiTypeVerticalRecycleView()); // 添加TestText数据
+        mRecycleView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mMultiTypeItems = new Items();
+                mMultiTypeItems.add(new MultiTypeBannerData()); // 添加Banner数据
+                mMultiTypeItems.add(new MultiTypeTestText()); // 添加TestText数据
+                mMultiTypeItems.add(new MultiTypeTestText()); // 添加TestText数据
+                mMultiTypeItems.add(new MultiTypeTestText()); // 添加TestText数据
+                mMultiTypeItems.add(new MultiTypeVerticalRecycleView()); // 添加TestText数据
 
-        mMultiTypeAdapter.setItems(mMultiTypeItems);
-        mMultiTypeAdapter.notifyDataSetChanged();
+                mMultiTypeAdapter.setItems(mMultiTypeItems);
+                mMultiTypeAdapter.notifyDataSetChanged();
+            }
+        }, 300);
     }
 }

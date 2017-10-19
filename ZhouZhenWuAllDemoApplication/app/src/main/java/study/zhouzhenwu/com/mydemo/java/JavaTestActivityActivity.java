@@ -11,6 +11,7 @@ import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivityActivity;
+import study.zhouzhenwu.com.mydemo.java.activity.GenericsTestActivity;
 import study.zhouzhenwu.com.mydemo.java.activity.TypeChangeTestActivity;
 import study.zhouzhenwu.com.mydemo.java.testclass.A;
 import study.zhouzhenwu.com.mydemo.java.testclass.B;
@@ -26,10 +27,7 @@ public class JavaTestActivityActivity extends ActivityListActivity {
      */
     private ActivityListItemBean[] mAllItemBeans = {
             new ActivityListItemBean("类型转换测试", TypeChangeTestActivity.class),
-            new ActivityListItemBean("java相关测试", JavaTestActivityActivity.class),
-            new ActivityListItemBean("算法测试", AlgorithmTestActivityActivity.class),
-            new ActivityListItemBean("设计模式", DesignPatternActivityActivity.class),
-            new ActivityListItemBean("动画", AnimationMainActivityActivity.class)
+            new ActivityListItemBean("泛型相关测试", GenericsTestActivity.class),
     };
 
 

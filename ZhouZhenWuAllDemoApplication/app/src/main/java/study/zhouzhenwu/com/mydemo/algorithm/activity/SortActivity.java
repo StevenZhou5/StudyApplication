@@ -27,7 +27,7 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.bt_bubble_sort)
     Button mBtBubbleSort; // 冒泡排序按钮
     @Bind(R.id.bt_straight_insertion_sort)
-    Button mBtStraightInsertionSort; // 冒泡排序按钮
+    Button mBtStraightInsertionSort; // 直接插入排序
     @Bind(R.id.bt_merge_sort)
     Button mBtMergeSort; // 冒泡排序按钮
     @Bind(R.id.bt_radix_sort)
@@ -64,6 +64,9 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
 
     private void initListener() {
         mBtInit.setOnClickListener(this);
+
+        mBtStraightInsertionSort.setOnClickListener(this);
+
         mBtQuickSort.setOnClickListener(this);
         mBtHeapSort.setOnClickListener(this);
     }
@@ -77,11 +80,15 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
                 initData();
                 mTvInput.setText("输入：" + CommonUtils.intsToString(datas));
                 break;
-            case R.id.bt_quick_sort:
+            case R.id.bt_straight_insertion_sort: // 直接插入排序
+                straightInsertionSort(datas);
+                mTvOutput.setText("输出：" + CommonUtils.intsToString(datas));
+                break;
+            case R.id.bt_quick_sort: // 快速排序
                 quickSort(datas);
                 mTvOutput.setText("输出：" + CommonUtils.intsToString(datas));
                 break;
-            case R.id.bt_heap_sort:
+            case R.id.bt_heap_sort: // 堆排序
                 heapSortTest(datas);
                 mTvOutput.setText("输出：" + CommonUtils.intsToString(datas));
                 break;
@@ -116,6 +123,35 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
         LogUtils.log(result);
         showToast(result);
     }
+
+    /**
+     * 直接插入排序
+     *
+     * @param datas
+     */
+    private void straightInsertionSort(int[] datas) {
+        if (datas == null || datas.length < 2) {
+            return;
+        }
+        // step1：从第二个数开始
+        for (int i = 1; i < datas.length; i++) {
+            // 如果要插入的这个数比最后一个数还要大，则直接插入下一个数
+            if (datas[i] >= datas[i - 1]) {
+                continue;
+            }
+            // 要找到插入位置
+            int targetNumber = datas[i];
+            int j = i - 1; // 一次递减的当前值索引
+            // 如果目标值小于
+            while (j >= 0 && targetNumber < datas[j]) { // 如果要插入的目标值小于当前索引值，则将索引减一，并后移当前索引值
+                datas[j + 1] = datas[j];
+                j--;
+            }
+            // 当把所有比目标值大的数都后移之后，
+            datas[j + 1] = targetNumber;
+        }
+    }
+
 
     /**
      * 快速排序

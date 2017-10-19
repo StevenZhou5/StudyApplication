@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import study.zhouzhenwu.com.mydemo.android.activity.CoordinatorLayoutTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.GoogleZXingScanActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.HandlerTestActivity;
+import study.zhouzhenwu.com.mydemo.android.activity.IPCTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.LayerListTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.MultiTypeActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.PopupWindowTestActivity;
@@ -40,7 +42,10 @@ public class AndroidTestMainActivity extends ActivityListActivity {
             new ActivityListItemBean("LayerListTest", LayerListTestActivity.class),
             new ActivityListItemBean("获得一个View在一个可滑动viewGroup中是否可见", TestCheckViewVisible.class),
             new ActivityListItemBean("GoogleZXing扫码", GoogleZXingScanActivity.class),
-            new ActivityListItemBean("MultiTypeRecycleView测试", MultiTypeActivity.class)
+            new ActivityListItemBean("MultiTypeRecycleView测试", MultiTypeActivity.class),
+            new ActivityListItemBean("用semaphore实现对象池，防止内存抖动", MultiTypeActivity.class),
+            new ActivityListItemBean("进程间IPC策似", IPCTestActivity.class),
+            new ActivityListItemBean("协调器布局测试", CoordinatorLayoutTestActivity.class)
     };
 
     @Override

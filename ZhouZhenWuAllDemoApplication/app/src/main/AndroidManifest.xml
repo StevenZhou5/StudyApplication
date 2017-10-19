@@ -45,6 +45,12 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".android.animation.activity.MobikeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
 
         <!--日历控件封装-->
@@ -132,6 +138,12 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".android.animation.activity.ProterDufferTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
 
         <!--Java相关学习测试-->
@@ -144,6 +156,12 @@
 
         <activity
             android:name="study.zhouzhenwu.com.mydemo.java.activity.TypeChangeTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.java.activity.GenericsTestActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -173,6 +191,33 @@
             android:name="study.zhouzhenwu.com.mydemo.android.activity.MultiTypeActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.android.activity.IPCTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.android.activity.IPCTestActivity2"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:process=":remote"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.android.activity.IPCTestActivity3"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:process="com.ipc.test.public.remote"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.android.activity.CoordinatorLayoutTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:process="com.ipc.test.public.remote"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
@@ -231,6 +276,12 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.MedianOfTwoSortedArraysActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="study.zhouzhenwu.com.mydemo.algorithm.activity.MatrixRotate90DegreeActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

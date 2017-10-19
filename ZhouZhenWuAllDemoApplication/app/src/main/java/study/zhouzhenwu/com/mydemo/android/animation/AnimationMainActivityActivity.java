@@ -1,11 +1,7 @@
 package study.zhouzhenwu.com.mydemo.android.animation;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import study.zhouzhenwu.com.mydemo.android.animation.activity.BezierActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.CalendarActivity;
@@ -14,8 +10,10 @@ import study.zhouzhenwu.com.mydemo.android.animation.activity.ClockActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.ExpandableListViewActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.ExpandableRecycleViewActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.HeartActivity;
+import study.zhouzhenwu.com.mydemo.android.animation.activity.MobikeActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.MoveTestActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.OpenActivityFromSrcViewToTargetViewActivity;
+import study.zhouzhenwu.com.mydemo.android.animation.activity.ProterDufferTestActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewDragItemActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewSlidingItemActivity;
@@ -46,7 +44,9 @@ public class AnimationMainActivityActivity extends ActivityListActivity {
             new ActivityListItemBean("Canvas时钟绘制", ClockActivity.class),
             new ActivityListItemBean("心形绘制", HeartActivity.class),
             new ActivityListItemBean("随动控件的各个属性值动态改变测试", MoveTestActivity.class),
-            new ActivityListItemBean("由一个小View渐变到一个大View打开Activity", OpenActivityFromSrcViewToTargetViewActivity.class)
+            new ActivityListItemBean("由一个小View渐变到一个大View打开Activity", OpenActivityFromSrcViewToTargetViewActivity.class),
+            new ActivityListItemBean("图片搜索展示", MobikeActivity.class),
+            new ActivityListItemBean("ProterDuff测试", ProterDufferTestActivity.class),
     };
 
     @Override

@@ -12,7 +12,7 @@ import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.ExpandableRecycleV
 /**
  * 创建者： ZhouZhenWu/Steven.
  * 创建日期：2016/12/9
- * 类简介：
+ * 类简介：用Recycle实现Item可以点击展开效果的ListView
  */
 
 public class MyExpandableRecycleViewItemAdapter extends ExpandableRecycleViewAdapter<MyExpandableListItemModel> {
