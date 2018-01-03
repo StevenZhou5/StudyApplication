@@ -3,12 +3,13 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
 
         // google AutoValue
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+//        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 //        compile gradleApi()
 //        compile localGroovy()
 
@@ -23,6 +24,7 @@ allprojects {
         flatDir {
             dirs 'aars'
         }
+        google()
     }
 }
 

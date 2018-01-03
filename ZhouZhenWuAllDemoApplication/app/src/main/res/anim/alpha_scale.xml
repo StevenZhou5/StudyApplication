@@ -4,13 +4,13 @@
     android:shareInterpolator="false">
     <alpha
         android:fromAlpha="0.0"
-        android:interpolator="@android:res/anim/accelerate_decelerate_interpolator"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
         android:repeatCount="0"
         android:toAlpha="1.0" />
     <scale
         android:fromXScale="1.0"
         android:fromYScale="1.0"
-        android:interpolator="@android:res/anim/accelerate_decelerate_interpolator"
+        android:interpolator="@android:anim/accelerate_decelerate_interpolator"
         android:pivotX="50%"
         android:pivotY="50%"
         android:repeatCount="0"

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="study.zhouzhenwu.com.mydemo.cityplan.CityPlanActivity">
+
+    <TextView
+        android:id="@+id/tv_city_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="显示未去的城市" />
+
+    <Button
+        android:id="@+id/bt_run"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="开始随机选择" />
+
+    <TextView
+        android:id="@+id/tv_city_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_run"
+        android:layout_centerHorizontal="true"
+        android:text="随机城市结果" />
+</RelativeLayout>
