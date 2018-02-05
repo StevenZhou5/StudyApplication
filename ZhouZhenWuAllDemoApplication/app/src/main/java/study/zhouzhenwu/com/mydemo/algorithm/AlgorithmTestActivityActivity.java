@@ -2,6 +2,7 @@ package study.zhouzhenwu.com.mydemo.algorithm;
 
 import android.content.Intent;
 
+import study.zhouzhenwu.com.mydemo.algorithm.activity.AESTestActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.LongestSubstringActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.MatrixRotate90DegreeActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.MedianOfTwoSortedArraysActivity;
@@ -22,12 +23,14 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
      * 首页入口列表Item数据
      */
     private ActivityListItemBean[] mAllItemBeans = {
+            new ActivityListItemBean("简单算法测试", AESTestActivity.class),
             new ActivityListItemBean("排序算法比较", SortActivity.class),
             new ActivityListItemBean("真正的动态规划-经典阶梯问题", UpstairsWithOneOrTwoStepActivity.class),
             new ActivityListItemBean("两个单向链表相加", SingleLinkedListsActivity.class),
             new ActivityListItemBean("查找一个字符串的最长不重复子串", LongestSubstringActivity.class),
             new ActivityListItemBean("两个已排序的数组中值", MedianOfTwoSortedArraysActivity.class),
-            new ActivityListItemBean("矩阵旋转90度", MatrixRotate90DegreeActivity.class)
+            new ActivityListItemBean("矩阵旋转90度", MatrixRotate90DegreeActivity.class),
+            new ActivityListItemBean("AES加密算法", AESTestActivity.class),
     };
 
     // 动态规划算法有三种

@@ -83,17 +83,17 @@ public class ActivityOpenFromSrcViewToTargetViewUtils {
         if (mTargetOffset == null) {
             mTargetOffset = new Point();
         }
-//        targetView.getGlobalVisibleRect(mTargetRect, mTargetOffset);
-        mFinalX = CommonUtils.dip2px(destActivity, 50);
-        mFinalY = CommonUtils.dip2px(destActivity, 50) + mScreenStatusHeight;
-//        mFinalX = mTargetOffset.x;
-//        mFinalY = mTargetOffset.y;
+        targetView.getGlobalVisibleRect(mTargetRect, mTargetOffset);
+//        mFinalX = CommonUtils.dip2px(destActivity, 50);
+//        mFinalY = CommonUtils.dip2px(destActivity, 50) + mScreenStatusHeight;
+        mFinalX = mTargetOffset.x;
+        mFinalY = mTargetOffset.y;
 
         // 初始化startScale和finalScale
-        mStartScaleX = (float) mSrcRect.width() / CommonUtils.dip2px(destActivity, 200);
-        mStartScaleY = (float) mSrcRect.height() / CommonUtils.dip2px(destActivity, 180);
-//        mStartScaleX = (float) mSrcRect.width() / mTargetRect.width();
-//        mStartScaleY = (float) mSrcRect.height() / mTargetRect.height();
+//        mStartScaleX = (float) mSrcRect.width() / CommonUtils.dip2px(destActivity, 200);
+//        mStartScaleY = (float) mSrcRect.height() / CommonUtils.dip2px(destActivity, 180);
+        mStartScaleX = (float) mSrcRect.width() / mTargetRect.width();
+        mStartScaleY = (float) mSrcRect.height() / mTargetRect.height();
 
         mImageView = createImageView(destActivity);
     }

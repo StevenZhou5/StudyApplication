@@ -26,8 +26,13 @@ public class OpenActivity1 extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open1);
         ButterKnife.bind(this);
-        ActivityOpenFromSrcViewToTargetViewUtils.prepareAnimation(OpenActivity1.this, mTargetView);
-        ActivityOpenFromSrcViewToTargetViewUtils.animate(OpenActivity1.this);
+        mTargetView.post( new Runnable() {
+            @Override
+            public void run() {
+                ActivityOpenFromSrcViewToTargetViewUtils.prepareAnimation(OpenActivity1.this, mTargetView);
+                ActivityOpenFromSrcViewToTargetViewUtils.animate(OpenActivity1.this);
+            }
+        } );
 //        mTargetView.post(new Runnable() {
 //            @Override
 //            public void run() {
