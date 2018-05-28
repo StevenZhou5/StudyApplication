@@ -1,18 +1,51 @@
 apply plugin: 'com.android.application'
-// google AutoValue
 
+/* apply plugin：'×××' 这种叫做引入Gradle插件，而Gradle插件大致分为分为两种：
+ *
+ * 1. apply plugin：'×××'：叫做二进制插件，二进制插件一般都是被打包在一个jar里独立发布的，
+ * 比如我们自定义的插件，再发布的时候我们也可以为其指定plugin id，这个plugin id最好是一个全限定名称，就像你的包名一样；
+ *
+ * 2. apply from：'×××'：叫做应用脚本插件，其实这不能算一个插件，它只是一个脚本。
+ * 应用脚本插件，其实就是把这个脚本加载进来，和二进制插件不同的是它使用的是from关键字.
+ * 后面紧跟的坫一个脚本文件，可以是本地的，也可以是网络存在的，如果是网络上的话要使用HTTP URL.
+ */
+
+/* 然后我们说说'com.android.application'
+ * Android Gradle插件的分类其实是根据Android工程的属性分类的。
+ * 在Andriod中有3类工程，
+ * 一类是App应用工程，它可以生成一个可运行的apk应用：
+ * 一类是Library库工程，它可以生成AAR包给其他的App工程公用，就和我们的Jar一样，但是它包含了Android的资源等信息，是一个特殊的Jar包；
+ * 最后一类是Test测试工程，用于对App工程或者Library库工程进行单元测试。
+ *
+ *
+ * App插件id：com.android.application.
+ *
+ *        Library插件id：com.android.library.
+ *
+ *       Test插件id：com.android.test.
+ *
+ *       一般一个项目只会设置一个App插件，而module一般是会设置为Library插件。
+ *       */
+
+// google AutoValue
+//Gradle-Step4:module的build.gradle文件执行
+
+ // android{...}是Android插件提供的一个扩展类型，可以让我们自定义Android Gradle工程，是Android Gradle工程配置的唯一入口
 android {
     // 必添加的项只有下面两项
     compileSdkVersion 23
     buildToolsVersion '26.0.2'
+    enforceUniquePackageName false // 解决包名冲突
 
     // 默认设置，这些都会对应配置重写在AndroidManifest.xml中
+    // defaultConfig是默认的配置，它是一个ProductFlavor。ProductFlavor允许我们根据不同的情况同时生成多个不同的apk包。
     defaultConfig {
         applicationId "slidingchoiceview.dingding.com.zhouzhenwualldemoapplication" // 应用包名
         minSdkVersion 18 // 支持的最低版本，低于此版本将无法安装应用
         targetSdkVersion 23 // 目标版本
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true // 用于配置该BuildType是否启用自动拆分多个Dex的功能。一般用程序中代码太多，超过了65535个方法的时候
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -23,6 +56,14 @@ android {
 
     // 签名配置
     signingConfigs {
+//        签名配置，一个app只有在签名之后才能被发布、安装、使用，签名是保护app的方式，标记该app的唯一性。
+//        如果app被恶意删改，签名就不一样了，无法升级安装，一定程度保护了我们的app。
+//        而signingConfigs就很方便为我们提供这个签名的配置。
+//        storeFile签名文件，storePassword签名证书文件的密码，storeType签名证书类型，
+//        keyAlias签名证书中秘钥别名，keyPassword签名证书中改密钥的密码。
+
+//        默认情况下，debug模式的签名已经被配置好了，使用的就是Android SDK自动生成的debug证书，
+//        它一般位于$HOME/.android/debug.keystore,其key和密码是已经知道的，一般情况下我们不需要单独配置debug模式的签名信息
         release {
         }
     }
@@ -38,6 +79,20 @@ android {
             minifyEnabled false  // 是否进行混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "LOG_TAG", "\"ZZW\"");
+
+//            name：build type的名字
+//            applicationIdSuffix：应用id后缀
+//            versionNameSuffix：版本名称后缀
+//            debuggable：是否生成一个debug的apk
+//            minifyEnabled：是否混淆
+//            proguardFiles：混淆文件
+//            signingConfig：签名配置
+//            manifestPlaceholders：清单占位符
+//            shrinkResources：是否去除未利用的资源，默认false，表示不去除。
+//            zipAlignEnable：是否使用zipalign工具压缩。
+//            multiDexEnabled：是否拆成多个Dex
+//            multiDexKeepFile：指定文本文件编译进主Dex文件中
+//            multiDexKeepProguard：指定混淆文件编译进主Dex文件中
         }
 
     }
@@ -73,8 +128,10 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile(name: 'pickerview', ext: 'aar')
+    compile project(':framework')
+
     testCompile 'junit:junit:4.12'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    compile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.nineoldandroids:library:2.4.+'

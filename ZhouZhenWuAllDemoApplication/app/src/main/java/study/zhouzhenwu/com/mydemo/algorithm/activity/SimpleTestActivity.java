@@ -31,4 +31,8 @@ public class SimpleTestActivity extends BaseActivity {
             }
         });
     }
+
+    private void test(){
+
+    }
 }

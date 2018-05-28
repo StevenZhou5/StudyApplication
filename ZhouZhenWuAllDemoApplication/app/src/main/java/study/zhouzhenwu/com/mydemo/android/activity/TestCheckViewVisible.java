@@ -8,8 +8,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
-import study.zhouzhenwu.com.mydemo.common.utils.ViewUtils;
 import study.zhouzhenwu.com.mydemo.common.widgets.MyScrollView;
+import com.example.mylibrary.utils.ViewUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.

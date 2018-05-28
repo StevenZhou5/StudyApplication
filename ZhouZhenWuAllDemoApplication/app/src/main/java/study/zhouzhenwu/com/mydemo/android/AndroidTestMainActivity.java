@@ -19,9 +19,11 @@ import study.zhouzhenwu.com.mydemo.android.activity.HandlerTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.IPCTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.LayerListTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.MultiTypeActivity;
+import study.zhouzhenwu.com.mydemo.android.activity.NotificationShowProgressTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.PopupWindowTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.TabTextIndicatorTest;
 import study.zhouzhenwu.com.mydemo.android.activity.TestCheckViewVisible;
+import study.zhouzhenwu.com.mydemo.android.activity.TextureViewTestActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.AnimationMainActivityActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
@@ -47,7 +49,9 @@ public class AndroidTestMainActivity extends ActivityListActivity {
             new ActivityListItemBean("用semaphore实现对象池，防止内存抖动", MultiTypeActivity.class),
             new ActivityListItemBean("进程间IPC策似", IPCTestActivity.class),
             new ActivityListItemBean("协调器布局测试", CoordinatorLayoutTestActivity.class),
-            new ActivityListItemBean("Text指示器设置测试", TabTextIndicatorTest.class)
+            new ActivityListItemBean("Text指示器设置测试", TabTextIndicatorTest.class),
+            new ActivityListItemBean("通知栏展示下载进度测试", NotificationShowProgressTestActivity.class),
+            new ActivityListItemBean("TextureView使用测试", TextureViewTestActivity.class)
     };
 
     @Override

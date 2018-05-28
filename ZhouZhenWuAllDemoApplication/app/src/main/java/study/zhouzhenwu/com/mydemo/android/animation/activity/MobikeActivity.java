@@ -18,7 +18,7 @@ import study.zhouzhenwu.com.mydemo.android.animation.model.MobikeTestData;
 import study.zhouzhenwu.com.mydemo.android.animation.adapter.MobikeTestRecycleViewAdapter;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
-import study.zhouzhenwu.com.mydemo.common.utils.ToastUtils;
+import com.example.mylibrary.utils.ToastUtils;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItemClickListener;
 
 /**

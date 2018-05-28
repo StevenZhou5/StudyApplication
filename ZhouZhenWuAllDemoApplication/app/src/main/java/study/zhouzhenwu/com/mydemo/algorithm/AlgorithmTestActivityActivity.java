@@ -6,6 +6,7 @@ import study.zhouzhenwu.com.mydemo.algorithm.activity.AESTestActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.LongestSubstringActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.MatrixRotate90DegreeActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.MedianOfTwoSortedArraysActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.SimpleTestActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SingleLinkedListsActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SortActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.UpstairsWithOneOrTwoStepActivity;
@@ -23,7 +24,7 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
      * 首页入口列表Item数据
      */
     private ActivityListItemBean[] mAllItemBeans = {
-            new ActivityListItemBean("简单算法测试", AESTestActivity.class),
+            new ActivityListItemBean("简单算法测试", SimpleTestActivity.class),
             new ActivityListItemBean("排序算法比较", SortActivity.class),
             new ActivityListItemBean("真正的动态规划-经典阶梯问题", UpstairsWithOneOrTwoStepActivity.class),
             new ActivityListItemBean("两个单向链表相加", SingleLinkedListsActivity.class),

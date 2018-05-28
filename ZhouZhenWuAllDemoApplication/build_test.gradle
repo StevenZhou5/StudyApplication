@@ -1,0 +1,8 @@
+apply from:'version.gradle'
+
+task printStringTest {
+   println "App版本是：${versionName},版本号：${versionCode}"
+}
+
+
+

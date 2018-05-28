@@ -2,7 +2,6 @@ package study.zhouzhenwu.com.mydemo.algorithm.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,7 +10,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
-import study.zhouzhenwu.com.mydemo.common.utils.StringUtils;
+import com.example.mylibrary.utils.StringUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
