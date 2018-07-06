@@ -52,7 +52,7 @@ public class AnimationMainActivityActivity extends ActivityListActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /* List<ActivityListItemBean> datas = initDatas();
+       /* List<ActivityListItemBean> datas = arrayToList();
         List<ActivityListItemBean> datas2 = new ArrayList<>();
         List<ActivityListItemBean> datas3 = new ArrayList<>();
 

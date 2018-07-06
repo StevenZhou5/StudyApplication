@@ -17,7 +17,7 @@ public class ToastUtils {
 
     public static void showShortToast(Context context, int stringResId) {
         String toastString = context.getString(stringResId);
-        showShortToast(context, toastString);
+        showShortToast(context.getApplicationContext(), toastString);
     }
 
     public static void showLongToast(Context context, String toastString) {
@@ -26,7 +26,7 @@ public class ToastUtils {
 
     public static void showLongToast(Context context, int stringResId) {
         String toastString = context.getString(stringResId);
-        showShortToast(context, toastString);
+        showShortToast(context.getApplicationContext(), toastString);
     }
 
 }

@@ -33,7 +33,7 @@ apply plugin: 'com.android.application'
  // android{...}是Android插件提供的一个扩展类型，可以让我们自定义Android Gradle工程，是Android Gradle工程配置的唯一入口
 android {
     // 必添加的项只有下面两项
-    compileSdkVersion 23
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     enforceUniquePackageName false // 解决包名冲突
 
@@ -52,6 +52,15 @@ android {
                 includeCompileClasspath = true
             }
         }
+
+        jackOptions {
+            enabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     // 签名配置
@@ -153,4 +162,10 @@ dependencies {
     compile 'me.drakeet.multitype:multitype:3.0.0'
 
     annotationProcessor "com.google.dagger:dagger-compiler:2.6"
+
+    // airbnb的lottie库
+    compile 'com.airbnb.android:lottie:1.0.1'
+
+    // 微信sdk
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

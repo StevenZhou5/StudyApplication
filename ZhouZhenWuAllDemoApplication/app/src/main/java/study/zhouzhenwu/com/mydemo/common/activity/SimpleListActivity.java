@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
+import rx.Subscriber;
 import study.zhouzhenwu.com.mydemo.common.adapter.SimpleRecycleViewAdapter;
 import study.zhouzhenwu.com.mydemo.common.module.SimpleListItemBean;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItemClickListener;
@@ -46,7 +48,7 @@ public abstract class SimpleListActivity<T extends SimpleListItemBean> extends B
         mRecyclerView.setAdapter(mAdapter);
 
         // step4:数据初始化，并刷新显示最新数据
-        mDatas = initDatas();
+        mDatas = arrayToList(getItemBeans());
         mAdapter.addAllItems(mDatas);
 
         // step5:监听初始化
@@ -59,15 +61,25 @@ public abstract class SimpleListActivity<T extends SimpleListItemBean> extends B
     }
 
     @NonNull
-    protected List<T> initDatas() {
+    protected List<T> arrayToList(T[] array) {
         List<T> datas = new ArrayList<>();
-        T[] beans = getItemBeans();
-        if (beans == null || beans.length == 0) {
-            return null;
-        }
-        for (T data : beans) {
-            datas.add(data);
-        }
+        Observable<T> observable = Observable.from(array);
+        observable.subscribe(new Subscriber<T>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(T data) {
+                datas.add(data);
+            }
+        });
         return datas;
     }
 

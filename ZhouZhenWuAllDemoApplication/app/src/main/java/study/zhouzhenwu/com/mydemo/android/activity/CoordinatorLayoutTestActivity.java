@@ -8,6 +8,7 @@ import android.view.View;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 
@@ -33,4 +34,5 @@ public class CoordinatorLayoutTestActivity extends BaseActivity {
             }
         });
     }
+
 }
