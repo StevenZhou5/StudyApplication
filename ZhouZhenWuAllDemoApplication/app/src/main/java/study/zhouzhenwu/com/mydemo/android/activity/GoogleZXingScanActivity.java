@@ -10,8 +10,6 @@ import android.widget.TextView;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 
@@ -22,17 +20,16 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
  */
 
 public class GoogleZXingScanActivity extends BaseActivity implements View.OnClickListener {
-    @Bind(R.id.bt_test)
     Button mBtTest;
 
-    @Bind(R.id.tv_scan_result)
     TextView mTvScanResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_zxing_scan_activity);
-        ButterKnife.bind(this);
+        mBtTest = (Button) findViewById(R.id.bt_test);
+        mTvScanResult = (TextView) findViewById(R.id.tv_scan_result);
 
         mBtTest.setOnClickListener(this);
     }

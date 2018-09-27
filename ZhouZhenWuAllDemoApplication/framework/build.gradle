@@ -7,6 +7,12 @@ android {
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = false
+            }
+        }
     }
     buildTypes {
         release {

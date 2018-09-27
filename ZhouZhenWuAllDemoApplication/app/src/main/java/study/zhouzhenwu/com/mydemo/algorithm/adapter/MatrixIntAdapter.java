@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.BaseRecycleViewViewHolder;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAdapter;
@@ -31,12 +29,12 @@ public class MatrixIntAdapter extends RecycleViewArrayAdapter<Integer> {
     }
 
     class ViewHolder extends BaseRecycleViewViewHolder {
-        @Bind(R.id.tv_int)
         TextView mTvInt;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+
+            mTvInt = itemView.findViewById(R.id.tv_int);
         }
 
         public void onBindView(Integer integer) {

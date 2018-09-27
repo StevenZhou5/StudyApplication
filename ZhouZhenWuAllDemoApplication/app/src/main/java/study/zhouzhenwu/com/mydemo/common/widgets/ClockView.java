@@ -1,8 +1,10 @@
 package study.zhouzhenwu.com.mydemo.common.widgets;
 
 import android.content.Context;
+import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -18,6 +20,7 @@ public class ClockView extends View {
     private Paint mPaint = new Paint();
 
     private Paint mTextPaint = new Paint();
+
 
     public ClockView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -124,6 +127,7 @@ public class ClockView extends View {
         canvas.rotate(-mCurrentHourHandDegress, cx, cy);
         mCurrentHourHandDegress += 6.0f / 60f / 60f;
         initPaint();
+
         postInvalidateDelayed(1000);
     }
 

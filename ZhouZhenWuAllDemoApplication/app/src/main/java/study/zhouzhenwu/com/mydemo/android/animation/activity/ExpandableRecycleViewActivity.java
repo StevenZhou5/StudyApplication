@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.android.animation.adapter.MyExpandableRecycleViewItemAdapter;
 import study.zhouzhenwu.com.mydemo.android.animation.model.MyExpandableListItemModel;
@@ -22,14 +20,13 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
  */
 
 public class ExpandableRecycleViewActivity extends BaseActivity {
-    @Bind(R.id.recycle_view)
     RecyclerView mRecycleView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expandable_recycle_view);
-        ButterKnife.bind(this);
+        mRecycleView = (RecyclerView) findViewById(R.id.recycle_view);
 
         mRecycleView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

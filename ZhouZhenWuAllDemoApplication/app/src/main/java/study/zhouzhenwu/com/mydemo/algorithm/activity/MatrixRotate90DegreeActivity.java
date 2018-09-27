@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.algorithm.adapter.MatrixIntAdapter;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
@@ -24,13 +22,10 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
  */
 
 public class MatrixRotate90DegreeActivity extends BaseActivity {
-    @Bind(R.id.bt_init)
     Button mBtInit;
 
-    @Bind(R.id.bt_test)
     Button mBtTest;
 
-    @Bind(R.id.recycle_view)
     RecyclerView mRecycleView;
 
     private MatrixIntAdapter mAdapter;
@@ -43,8 +38,9 @@ public class MatrixRotate90DegreeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrix_ratate_90_degree);
-        ButterKnife.bind(this);
-
+        mBtInit = (Button) findViewById(R.id.bt_init);
+        mBtTest = (Button) findViewById(R.id.bt_test);
+        mRecycleView = (RecyclerView) findViewById(R.id.recycle_view);
 
         mAdapter = new MatrixIntAdapter();
         mRecycleView.setAdapter(mAdapter);

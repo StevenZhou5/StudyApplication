@@ -7,8 +7,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.module.SingleLinkedListNode;
@@ -21,16 +19,12 @@ import study.zhouzhenwu.com.mydemo.common.utils.SindleLinkedListUtils;
  */
 
 public class SingleLinkedListsActivity extends BaseActivity implements OnClickListener {
-    @Bind(R.id.bt_init)
     Button mBtInit;
 
-    @Bind(R.id.bt_test)
     Button mBtTest;
 
-    @Bind(R.id.tv_input)
     TextView mTvInput;
 
-    @Bind(R.id.tv_output)
     TextView mTvOutput;
 
     private SingleLinkedListNode originalListRoot1; // 原始的List1的根节点
@@ -42,7 +36,11 @@ public class SingleLinkedListsActivity extends BaseActivity implements OnClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_linked_list);
-        ButterKnife.bind(this);
+        mBtInit = (Button) findViewById(R.id.bt_init);
+        mBtTest = (Button) findViewById(R.id.bt_test);
+        mTvInput = (TextView) findViewById(R.id.tv_input);
+        mTvOutput = (TextView) findViewById(R.id.tv_output);
+
 
         initListener();
     }

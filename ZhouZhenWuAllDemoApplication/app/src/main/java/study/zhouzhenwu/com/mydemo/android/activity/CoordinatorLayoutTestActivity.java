@@ -6,9 +6,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 
@@ -19,14 +16,15 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
  */
 
 public class CoordinatorLayoutTestActivity extends BaseActivity {
-    @Bind(R.id.fab_button)
     FloatingActionButton fabButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinator_layout_test);
-        ButterKnife.bind(this);
+        fabButton = (FloatingActionButton) findViewById(R.id.fab_button);
+
+
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,12 +1,9 @@
 package study.zhouzhenwu.com.mydemo.android.activity;
 
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 
@@ -17,14 +14,13 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
  */
 
 public class LayerListTestActivity extends BaseActivity {
-    @Bind(R.id.et_test)
     EditText mEtTest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layer_list);
-        ButterKnife.bind(this);
+        mEtTest = (EditText) findViewById(R.id.et_test);
 
         mEtTest.setBackgroundResource(R.drawable.layer_list_edit_text);
 

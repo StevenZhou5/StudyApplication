@@ -10,8 +10,6 @@ import com.bigkoo.pickerview.TimePickerView;
 import java.util.Calendar;
 import java.util.Date;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.widgets.calendar.MyCalendarView;
@@ -22,9 +20,7 @@ import study.zhouzhenwu.com.mydemo.common.widgets.calendar.MyCalendarView;
  * 类简介：展示日历控件
  */
 public class CalendarActivity extends BaseActivity {
-    @Bind(R.id.calendar_view)
     MyCalendarView mCalendar;
-    @Bind(R.id.bt_choice_date)
     View mBtChoiceDate;
 
     private TimePickerView timePickerView;
@@ -33,7 +29,8 @@ public class CalendarActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_view_calendar);
-        ButterKnife.bind(this);
+        mCalendar = (MyCalendarView) findViewById(R.id.calendar_view);
+        mBtChoiceDate = findViewById(R.id.bt_choice_date);
 
         mBtChoiceDate.setOnClickListener(new View.OnClickListener() {
             @Override

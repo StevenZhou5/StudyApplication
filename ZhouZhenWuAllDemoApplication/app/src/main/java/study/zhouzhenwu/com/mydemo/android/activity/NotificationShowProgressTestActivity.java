@@ -2,16 +2,12 @@ package study.zhouzhenwu.com.mydemo.android.activity;
 
 import android.app.Activity;
 import android.app.NotificationManager;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 
@@ -21,14 +17,13 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
  */
 
 public class NotificationShowProgressTestActivity extends BaseActivity {
-    @Bind(R.id.tv_download)
     TextView tvDownload;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_show_progress);
-        ButterKnife.bind(this);
+        tvDownload = (TextView) findViewById(R.id.tv_download);
 
         tvDownload.setOnClickListener(new View.OnClickListener() {
             @Override

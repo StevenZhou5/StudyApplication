@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
-import study.zhouzhenwu.com.mydemo.common.utils.AlgorithmUtils;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
+import study.zhouzhenwu.com.mydemo.common.utils.AlgorithmUtils;
 import study.zhouzhenwu.com.mydemo.common.utils.CommonUtils;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 
@@ -24,41 +22,46 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
     private int[] datas;
 
     // 稳定排序
-    @Bind(R.id.bt_bubble_sort)
     Button mBtBubbleSort; // 冒泡排序按钮
-    @Bind(R.id.bt_straight_insertion_sort)
     Button mBtStraightInsertionSort; // 直接插入排序
-    @Bind(R.id.bt_merge_sort)
     Button mBtMergeSort; // 冒泡排序按钮
-    @Bind(R.id.bt_radix_sort)
     Button mBtRadixSort; // 冒泡排序按钮
 
 
     // 不稳定排序
-    @Bind(R.id.bt_simple_selection_sort)
     Button mBtSimpleSelectionSort;
-    @Bind(R.id.bt_shell_sort)
     Button mBtShellSort;
-    @Bind(R.id.bt_quick_sort)
     Button mBtQuickSort;
-    @Bind(R.id.bt_heap_sort)
     Button mBtHeapSort;
 
     // 初始化按钮
-    @Bind(R.id.bt_init)
     Button mBtInit;
 
     // 输出和输出文案
-    @Bind(R.id.tv_input)
     TextView mTvInput;
-    @Bind(R.id.tv_output)
     TextView mTvOutput;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sort_layout);
-        ButterKnife.bind(this);
+
+        mBtBubbleSort = (Button) findViewById(R.id.bt_bubble_sort);
+        mBtStraightInsertionSort = (Button) findViewById(R.id.bt_straight_insertion_sort);
+        mBtMergeSort = (Button) findViewById(R.id.bt_merge_sort);
+        mBtRadixSort = (Button) findViewById(R.id.bt_radix_sort);
+
+        mBtSimpleSelectionSort = (Button) findViewById(R.id.bt_simple_selection_sort);
+        mBtShellSort = (Button) findViewById(R.id.bt_shell_sort);
+        mBtQuickSort = (Button) findViewById(R.id.bt_quick_sort);
+        mBtHeapSort = (Button) findViewById(R.id.bt_heap_sort);
+
+        mBtInit = (Button) findViewById(R.id.bt_init);
+
+        mTvInput = (TextView) findViewById(R.id.tv_input);
+        mTvOutput = (TextView) findViewById(R.id.tv_output);
+
+
         initListener();
     }
 

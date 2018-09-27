@@ -9,16 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.mylibrary.utils.ToastUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import study.zhouzhenwu.com.mydemo.android.animation.model.MobikeTestData;
-import study.zhouzhenwu.com.mydemo.android.animation.adapter.MobikeTestRecycleViewAdapter;
 import study.zhouzhenwu.com.mydemo.R;
+import study.zhouzhenwu.com.mydemo.android.animation.adapter.MobikeTestRecycleViewAdapter;
+import study.zhouzhenwu.com.mydemo.android.animation.model.MobikeTestData;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
-import com.example.mylibrary.utils.ToastUtils;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItemClickListener;
 
 /**
@@ -28,13 +27,10 @@ import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItem
  */
 
 public class MobikeActivity extends BaseActivity {
-    @Bind(R.id.et_input)
     EditText mEtInput;
 
-    @Bind(R.id.bt_search)
     Button mBtSearch;
 
-    @Bind(R.id.recycle_view)
     RecyclerView mRecycleView;
 
     private MobikeTestRecycleViewAdapter mAdapter;
@@ -43,7 +39,9 @@ public class MobikeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_test);
-        ButterKnife.bind(this);
+        mEtInput = (EditText) findViewById(R.id.et_input);
+        mBtSearch = (Button) findViewById(R.id.bt_search);
+        mRecycleView = (RecyclerView) findViewById(R.id.recycle_view);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         mRecycleView.setLayoutManager(gridLayoutManager);
@@ -64,8 +62,8 @@ public class MobikeActivity extends BaseActivity {
             = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (TextUtils.isEmpty(mEtInput.getText())){
-                ToastUtils.showShortToast(getApplicationContext(),"搜索内容不能为空");
+            if (TextUtils.isEmpty(mEtInput.getText())) {
+                ToastUtils.showShortToast(getApplicationContext(), "搜索内容不能为空");
                 return;
             }
             requestData();

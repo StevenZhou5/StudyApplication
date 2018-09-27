@@ -15,17 +15,13 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
@@ -40,10 +36,8 @@ import study.zhouzhenwu.com.mydemo.common.widgets.calendar.CalendarDataBean;
 
 public class PopupWindowTestActivity extends BaseActivity {
 
-    @Bind(R.id.layout_pop_container)
     View mPopContainer;
 
-    @Bind(R.id.view_background)
     View mViewBackground;
 
     @Override
@@ -65,6 +59,7 @@ public class PopupWindowTestActivity extends BaseActivity {
         });
         button.setText("开始相关测试");
         setContentView(linearLayout);
+
     }
 
     /**
@@ -89,7 +84,7 @@ public class PopupWindowTestActivity extends BaseActivity {
         int length = ints.length;
         HashSet<CalendarDataBean> set = new HashSet<>();
         set.size();
-        Map<String ,CalendarDataBean> map = new HashMap<>();
+        Map<String, CalendarDataBean> map = new HashMap<>();
         map.keySet();
         map.values();
 //        animationPopupWindowTest(view);
@@ -105,7 +100,8 @@ public class PopupWindowTestActivity extends BaseActivity {
         // 带有动画效果的popupWindow
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.popupwindow_layout, null);
-        ButterKnife.bind(this, contentView);
+        mPopContainer = contentView.findViewById(R.id.layout_pop_container);
+        mViewBackground = contentView.findViewById(R.id.view_background);
         PopupWindow popup = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         popup.setFocusable(true);
         popup.setAnimationStyle(R.style.AppTheme_PopupOverlay);

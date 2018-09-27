@@ -12,8 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 
@@ -24,20 +22,19 @@ import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
  */
 
 public class HandlerTestActivity extends BaseActivity implements View.OnClickListener {
-    @Bind(R.id.bt_normal_handler)
     Button mBtNormalHandler;
-    @Bind(R.id.bt_handler_thread)
     Button mBtHandlerThread;
-    @Bind(R.id.et_delay)
     EditText mEtDelay;
-    @Bind(R.id.tv_show_time)
     TextView mTvShowTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler_test_layout);
-        ButterKnife.bind(this);
+        mBtNormalHandler = (Button) findViewById(R.id.bt_normal_handler);
+        mBtHandlerThread = (Button) findViewById(R.id.bt_handler_thread);
+        mEtDelay = (EditText) findViewById(R.id.et_delay);
+        mTvShowTime = (TextView) findViewById(R.id.tv_show_time);
 
         initListener();
     }

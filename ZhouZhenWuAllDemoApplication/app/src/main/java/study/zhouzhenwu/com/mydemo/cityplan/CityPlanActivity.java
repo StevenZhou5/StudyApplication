@@ -1,34 +1,29 @@
 package study.zhouzhenwu.com.mydemo.cityplan;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Random;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 
 public class CityPlanActivity extends AppCompatActivity {
-    @Bind(R.id.tv_city_list)
     TextView mTvCityList;
-    @Bind(R.id.bt_run)
     Button mBtRun;
-    @Bind(R.id.tv_city_result)
     TextView mTvCityResult;
 
-    private String[] mCityLists = {"河北省--石家庄", "山东省--济南", "山西省--太原", "吉林省 --长春",
-            "辽宁省 --沈阳", "安徽省--合肥", "黑龙江省 --哈尔滨", "江苏省--南京", "湖北省--武汉", "上海市 --上海",
-            "浙江省--杭州"};
+    private String[] mCityLists = {"山东省--济南", "山西省--太原", "吉林省 --长春", "江苏省--南京", "湖北省--武汉", "上海市 --上海"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_plan);
-        ButterKnife.bind(this);
+        mTvCityList = (TextView) findViewById(R.id.tv_city_list);
+        mBtRun = (Button) findViewById(R.id.bt_run);
+        mTvCityResult = (TextView) findViewById(R.id.tv_city_result);
+
+
         mTvCityList.setText(getCityListString(mCityLists));
         mBtRun.setOnClickListener(new View.OnClickListener() {
             @Override

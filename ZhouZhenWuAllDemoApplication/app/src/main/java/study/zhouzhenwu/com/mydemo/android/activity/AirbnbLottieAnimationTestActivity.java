@@ -21,6 +21,7 @@ public class AirbnbLottieAnimationTestActivity extends BaseActivity {
         LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
 
         animationView.setAnimation("lottiefiles.com - Emoji Wink.json");
+//        animationView.setAnimation("City.json");
         animationView.loop(true);
     }
 }

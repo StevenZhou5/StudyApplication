@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import com.example.mylibrary.utils.ViewUtils;
+
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.widgets.MyScrollView;
-import com.example.mylibrary.utils.ViewUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -18,9 +17,7 @@ import com.example.mylibrary.utils.ViewUtils;
  */
 
 public class TestCheckViewVisible extends BaseActivity {
-    @Bind(R.id.tv_test)
     TextView mTvTest;
-    @Bind(R.id.scroll_view_test)
     MyScrollView mScrollViewTest;
 
 
@@ -28,7 +25,8 @@ public class TestCheckViewVisible extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_view_visible);
-        ButterKnife.bind(this);
+        mTvTest = (TextView) findViewById(R.id.tv_test);
+        mScrollViewTest = (MyScrollView) findViewById(R.id.scroll_view_test);
 
         mScrollViewTest.setOnMyScrollChangedListener(new MyScrollView.OnMyScrollChangedListener() {
             @Override

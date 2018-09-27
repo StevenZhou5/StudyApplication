@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.utils.ActivityOpenFromSrcViewToTargetViewUtils;
@@ -18,14 +16,13 @@ import study.zhouzhenwu.com.mydemo.common.utils.ActivityOpenFromSrcViewToTargetV
  */
 
 public class OpenActivityFromSrcViewToTargetViewActivity extends BaseActivity {
-    @Bind(R.id.iv_src)
     View mSrcView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_activity_from_src_view_to_target_view);
-        ButterKnife.bind(this);
+        mSrcView = findViewById(R.id.iv_src);
 
         mSrcView.setOnClickListener(new View.OnClickListener() {
             @Override

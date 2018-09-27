@@ -9,8 +9,6 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.android.animation.adapter.MyRecycleViewAdapter;
 import study.zhouzhenwu.com.mydemo.android.animation.model.MyRecycleViewItemModel;
@@ -23,7 +21,6 @@ import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.OnRecyclerViewItem
  * 类简介：测试RecycleView使用的Activity
  */
 public class RecycleViewActivity extends BaseActivity {
-    @Bind(R.id.recycle_view)
     RecyclerView mRecycleView;
     private MyRecycleViewAdapter mRecycleViewAdapter;
     private List<MyRecycleViewItemModel> mListDatas;
@@ -32,7 +29,8 @@ public class RecycleViewActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view);
-        ButterKnife.bind(this);
+        mRecycleView = (RecyclerView) findViewById(R.id.recycle_view);
+
         StringBuilder sb = new StringBuilder();
         sb.append(5);
         sb.append(" ");

@@ -6,8 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.utils.CommonUtils;
@@ -19,14 +17,15 @@ import study.zhouzhenwu.com.mydemo.common.utils.CommonUtils;
  */
 
 public class IPCTestActivity extends BaseActivity {
-    @Bind(R.id.tv_test)
     TextView mTvTest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ipc_test);
-        ButterKnife.bind(this);
+        mTvTest = (TextView) findViewById(R.id.tv_test);
+
+
         mTvTest.setText(CommonUtils.getProcessName(this));
         mTvTest.setOnClickListener(new View.OnClickListener() {
             @Override

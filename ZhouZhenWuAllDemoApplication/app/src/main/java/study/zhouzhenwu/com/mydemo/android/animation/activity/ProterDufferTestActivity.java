@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.widgets.PorterDuffXfermodeView;
@@ -28,7 +26,6 @@ import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.RecycleViewArrayAd
  */
 
 public class ProterDufferTestActivity extends BaseActivity {
-    @Bind(R.id.recycle_view)
     RecyclerView mRecycleView;
 
     RecycleViewAdapter adapter;
@@ -37,7 +34,7 @@ public class ProterDufferTestActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proter_duff_test);
-        ButterKnife.bind(this);
+        mRecycleView = (RecyclerView) findViewById(R.id.recycle_view);
 
         mRecycleView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new RecycleViewAdapter();
@@ -111,12 +108,11 @@ public class ProterDufferTestActivity extends BaseActivity {
 
 
         class ViewHolder extends BaseRecycleViewViewHolder {
-            @Bind(R.id.proter_duff_view)
             PorterDuffXfermodeView porterDuffXfermodeView;
 
             public ViewHolder(View itemView) {
                 super(itemView);
-                ButterKnife.bind(this, itemView);
+                porterDuffXfermodeView = itemView.findViewById(R.id.proter_duff_view);
             }
 
             public void onBindData(TestData mainTestData) {

@@ -3,8 +3,6 @@ package study.zhouzhenwu.com.mydemo.android.animation.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
 import study.zhouzhenwu.com.mydemo.common.widgets.chart.ChartView;
@@ -15,15 +13,13 @@ import study.zhouzhenwu.com.mydemo.common.widgets.chart.ChartView;
  * 类简介：展示趋势图View的Activity
  */
 public class TendencyChartActivity extends BaseActivity {
-
-    @Bind(R.id.chart_view)
     ChartView mChartView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tendency_chart);
-        ButterKnife.bind(this);
+        mChartView = (ChartView) findViewById(R.id.chart_view);
 
         mChartView.setDatats(null);
 

@@ -42,14 +42,14 @@ android {
     defaultConfig {
         applicationId "slidingchoiceview.dingding.com.zhouzhenwualldemoapplication" // 应用包名
         minSdkVersion 18 // 支持的最低版本，低于此版本将无法安装应用
-        targetSdkVersion 23 // 目标版本
+        targetSdkVersion 26 // 目标版本
         versionCode 1
         versionName "1.0"
         multiDexEnabled true // 用于配置该BuildType是否启用自动拆分多个Dex的功能。一般用程序中代码太多，超过了65535个方法的时候
 
         javaCompileOptions {
             annotationProcessorOptions {
-                includeCompileClasspath = true
+                includeCompileClasspath = false
             }
         }
 
@@ -141,10 +141,9 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     compile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
     compile 'com.nineoldandroids:library:2.4.+'
-    compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.facebook.fresco:fresco:0.9.0+'
 
@@ -156,7 +155,6 @@ dependencies {
 
     // google ZXing扫码
     compile 'com.journeyapps:zxing-android-embedded:3.5.0'
-    compile 'com.android.support:appcompat-v7:23.1.0'   // Version 23+ is required
 
     // multitypeRecycleView的引入
     compile 'me.drakeet.multitype:multitype:3.0.0'
@@ -168,4 +166,5 @@ dependencies {
 
     // 微信sdk
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
 }

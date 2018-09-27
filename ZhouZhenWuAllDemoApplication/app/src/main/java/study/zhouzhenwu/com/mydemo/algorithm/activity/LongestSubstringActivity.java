@@ -6,11 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import com.example.mylibrary.utils.StringUtils;
+
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
-import com.example.mylibrary.utils.StringUtils;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -19,19 +18,18 @@ import com.example.mylibrary.utils.StringUtils;
  */
 
 public class LongestSubstringActivity extends BaseActivity implements View.OnClickListener {
-    @Bind(R.id.bt_test)
     Button mBtTest;
 
-    @Bind(R.id.tv_input)
     TextView mTvInput;
-    @Bind(R.id.tv_output)
     TextView mTvOutput;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_longest_substring);
-        ButterKnife.bind(this);
+        mBtTest = (Button) findViewById(R.id.bt_test);
+        mTvInput = (TextView) findViewById(R.id.tv_input);
+        mTvOutput = (TextView) findViewById(R.id.tv_output);
 
         mBtTest.setOnClickListener(this);
     }
