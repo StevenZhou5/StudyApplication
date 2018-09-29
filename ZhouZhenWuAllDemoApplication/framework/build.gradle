@@ -3,7 +3,6 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-    enforceUniquePackageName false // 解决包名冲突
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -28,11 +27,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.github.pwittchen:reactivenetwork:0.1.3'
-    compile "com.squareup.retrofit2:retrofit:2.1.0"
-    compile "com.squareup.retrofit2:converter-gson:2.1.0"
-    compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
-    compile "com.squareup.retrofit2:converter-scalars:2.1.0"
+    api 'com.github.pwittchen:reactivenetwork:0.1.3'
+    api "com.squareup.retrofit2:retrofit:2.1.0"
+    api "com.squareup.retrofit2:converter-gson:2.1.0"
+    api "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+    api "com.squareup.retrofit2:converter-scalars:2.1.0"
 }

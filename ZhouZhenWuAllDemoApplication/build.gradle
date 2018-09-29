@@ -20,7 +20,7 @@ buildscript {
 
     // dependencies里面用来配置依赖的插件
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.2.0'
 
         // google AutoValue
 //        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
@@ -62,7 +62,7 @@ task clean(type: Delete) {
 //在这里定义了全局的一些构建属性
 ext {
     compileSdkVersion = 26
-    buildToolsVersion = "26.0.2"
+    buildToolsVersion = "28.0.2"
     minSdkVersion = 16
     unTargetSdkVersion = 26
     miuiTargetSdkVersion = 26

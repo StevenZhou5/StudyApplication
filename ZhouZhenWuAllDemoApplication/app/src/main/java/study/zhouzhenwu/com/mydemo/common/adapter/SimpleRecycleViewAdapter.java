@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import butterknife.BindView;
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.module.SimpleListItemBean;
 import study.zhouzhenwu.com.mydemo.common.widgets.recycleview.BaseRecycleViewViewHolder;
@@ -33,14 +32,11 @@ public class SimpleRecycleViewAdapter extends RecycleViewArrayAdapter<SimpleList
     }
 
     class ViewHolder extends BaseRecycleViewViewHolder {
-        @BindView(R.id.tv_name)
         TextView mTvName;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mTvName = itemView.findViewById(R.id.tv_name);
-//            ButterKnife.bind(itemView);
-//            ButterKnife.bind(this, itemView);
         }
     }
 
