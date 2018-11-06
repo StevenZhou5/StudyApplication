@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import study.zhouzhenwu.com.mydemo.android.animation.activity.BezierActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.CalendarActivity;
+import study.zhouzhenwu.com.mydemo.android.animation.activity.Camera3DAnimationActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.ChangeWithScrollActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.ClockActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.ExpandableListViewActivity;
@@ -31,6 +32,7 @@ public class AnimationMainActivityActivity extends ActivityListActivity {
      * 各个Animation页面
      */
     private ActivityListItemBean[] mAllItemBeans = {
+            new ActivityListItemBean("Camera进行3D动画", Camera3DAnimationActivity.class),
             new ActivityListItemBean("简单动画集合", SimpleAnimationActivity.class),
             new ActivityListItemBean("滑动吸顶动画", ChangeWithScrollActivity.class),
             new ActivityListItemBean("日历", CalendarActivity.class),
