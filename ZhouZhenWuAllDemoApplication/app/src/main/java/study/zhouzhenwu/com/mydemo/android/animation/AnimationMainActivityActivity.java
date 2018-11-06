@@ -14,6 +14,7 @@ import study.zhouzhenwu.com.mydemo.android.animation.activity.HeartActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.MobikeActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.MoveTestActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.OpenActivityFromSrcViewToTargetViewActivity;
+import study.zhouzhenwu.com.mydemo.android.animation.activity.PercentTextViewActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.ProterDufferTestActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewDragItemActivity;
@@ -49,6 +50,7 @@ public class AnimationMainActivityActivity extends ActivityListActivity {
             new ActivityListItemBean("由一个小View渐变到一个大View打开Activity", OpenActivityFromSrcViewToTargetViewActivity.class),
             new ActivityListItemBean("图片搜索展示", MobikeActivity.class),
             new ActivityListItemBean("ProterDuff测试", ProterDufferTestActivity.class),
+            new ActivityListItemBean("百分比TextView测试", PercentTextViewActivity.class),
     };
 
     @Override
