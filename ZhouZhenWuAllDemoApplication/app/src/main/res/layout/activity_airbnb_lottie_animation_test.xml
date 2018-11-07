@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:stytles="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,4 +14,56 @@
         app:lottie_fileName="Hello World.json"
         app:lottie_loop="true" />
 
-</LinearLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_2"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_centerVertical="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="boom/boom.json"
+        app:lottie_imageAssetsFolder="boom/images"
+        app:lottie_loop="true" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_marginLeft="120dp"
+        android:layout_alignTop="@+id/animation_view_2"
+        android:layout_alignLeft="@+id/animation_view_2">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="sphere/sphere.json"
+            app:lottie_imageAssetsFolder="sphere/images"
+            app:lottie_loop="true" />
+
+        <study.zhouzhenwu.com.mydemo.common.widgets.PercentTextView
+            android:id="@+id/percent_tv"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="10dp"
+            stytles:back_paint_alpha="0"
+            stytles:back_paint_color="@color/trans"
+            stytles:paint_stoke_width="3"
+            stytles:percent_paint_color="@color/green" />
+
+    </FrameLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_above="@+id/animation_view_2"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="sphere/sphere.json"
+        app:lottie_imageAssetsFolder="sphere/images"
+        app:lottie_loop="true" />
+
+</RelativeLayout>

@@ -162,7 +162,7 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:2.6"
 
     // airbnb的lottie库
-    api 'com.airbnb.android:lottie:1.0.1'
+    api 'com.airbnb.android:lottie:2.1.0'
 
     // 微信sdk
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
