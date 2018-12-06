@@ -1,8 +1,64 @@
-apply from:'version.gradle'
+// 我们将version相关的属性定义在version.gradle中，然后在将version.gradle引入，那么久可以使用
+apply from: 'version.gradle'
+
+println "输出测试：App版本是：${versionName},版本号：${versionCode}"
 
 task printStringTest {
-   println "App版本是：${versionName},版本号：${versionCode}"
+
+    // 创建一个Action，添加到Activon列表头部
+    doFirst(new Action<Task>() {
+        @Override
+        void execute(Task task) {
+            println "First Action1"
+        }
+    })
+
+    doFirst(new Action<Task>() {
+        @Override
+        void execute(Task task) {
+            println "First Action2"
+        }
+    })
+
+    doFirst(new Action<Task>() {
+        @Override
+        void execute(Task task) {
+            println "First Action3"
+        }
+    })
+
+    // 创建一个Action，添加到Activon列表尾部
+    doLast(new Action<Task>() {
+        @Override
+        void execute(Task task) {
+            println "Last Action1"
+        }
+    })
+
+    doLast(new Action<Task>() {
+        @Override
+        void execute(Task task) {
+            println "Last Action2"
+        }
+    })
+
+    doLast(new Action<Task>() {
+        @Override
+        void execute(Task task) {
+            println "Last Action3"
+        }
+    })
+
 }
 
+// task的另外一个创建方式
+tasks.create("test_task1") {
+    doFirst {
+        println "test_task1_first_action1"
+    }
+}
 
-
+// <<代表在Action列表尾部添加一个Action
+task test_task2 dependsOn test_task1 << {
+    println "test_task2_action1"
+}

@@ -14,7 +14,7 @@
         android:textSize="20sp"
         stytles:back_paint_alpha="100"
         stytles:back_paint_color="@color/blue"
-        stytles:paint_stoke_width="6"
+        stytles:paint_stoke_width="6dp"
         stytles:percent_paint_color="@color/green" />
 
 </RelativeLayout>

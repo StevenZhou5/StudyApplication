@@ -39,6 +39,6 @@
         <attr name="back_paint_alpha" format="integer" />
         <attr name="percent_paint_color" format="color" />
         <attr name="percent_paint_alpha" format="integer" />
-        <attr name="paint_stoke_width" format="float" />
+        <attr name="paint_stoke_width" format="dimension" />
     </declare-styleable>
 </resources>

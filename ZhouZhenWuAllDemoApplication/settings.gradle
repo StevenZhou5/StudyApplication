@@ -1,4 +1,2 @@
+//Gradle项目初始化的时候执行:导入相关module
 include ':app', ':framework'
-
-
-//Gradle-Step2:导入相关module

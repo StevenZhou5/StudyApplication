@@ -49,8 +49,9 @@
             android:gravity="center"
             android:textSize="10dp"
             stytles:back_paint_alpha="0"
+            android:maxLines="2"
             stytles:back_paint_color="@color/trans"
-            stytles:paint_stoke_width="3"
+            stytles:paint_stoke_width="3dp"
             stytles:percent_paint_color="@color/green" />
 
     </FrameLayout>

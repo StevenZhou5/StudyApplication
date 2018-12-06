@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.TextView;
 
 import study.zhouzhenwu.com.mydemo.R;
@@ -52,7 +53,8 @@ public class PercentTextView extends TextView {
             mPaintBackAlpha = typedArray.getInteger(R.styleable.PercentTextView_back_paint_alpha, DEFAULT_BACK_ALPHA);
             mPaintPercentColor = typedArray.getColor(R.styleable.PercentTextView_percent_paint_color, DEFAULT_PERCENT_COLOR);
             mPaintPercentAlpha = typedArray.getInteger(R.styleable.PercentTextView_percent_paint_alpha, DEFAULT_PERCENT_ALPHA);
-            mPaintStokeWidth = CommonUtils.dip2px(context, typedArray.getFloat(R.styleable.PercentTextView_paint_stoke_width, DEFAULT_PAINT_STOKE_WIDTH));
+            mPaintStokeWidth = typedArray.getDimension(R.styleable.PercentTextView_paint_stoke_width, DEFAULT_PAINT_STOKE_WIDTH);
+            Log.d("ZZW", "mPaintStokeWidth:" + mPaintStokeWidth);
         } finally {
             typedArray.recycle();
         }
@@ -115,8 +117,8 @@ public class PercentTextView extends TextView {
             return;
         }
         canvas.drawArc(oval, -90, mCurrentPercent, false, mPaintPercent);
-        mCurrentPercent += 3; // 每次自增3度
-        postInvalidateDelayed(1); // 每隔1毫秒通知绘画一次
+        mCurrentPercent += 10; // 每次自增3度
+        postInvalidateDelayed(10); // 每隔1毫秒通知绘画一次
     }
 
 }

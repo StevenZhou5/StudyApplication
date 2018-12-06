@@ -18,19 +18,20 @@ apply plugin: 'com.android.application'
  * 最后一类是Test测试工程，用于对App工程或者Library库工程进行单元测试。
  *
  *
- * App插件id：com.android.application.
+ *       App插件id：com.android.application.
  *
- *        Library插件id：com.android.library.
+ *       Library插件id：com.android.library.
  *
  *       Test插件id：com.android.test.
  *
  *       一般一个项目只会设置一个App插件，而module一般是会设置为Library插件。
+ *       注意：App插件和Library插件不能同时存在与一个module中
  *       */
 
 // google AutoValue
 //Gradle-Step4:module的build.gradle文件执行
 
- // android{...}是Android插件提供的一个扩展类型，可以让我们自定义Android Gradle工程，是Android Gradle工程配置的唯一入口
+// android{...}是Android插件提供的一个扩展类型，可以让我们自定义Android Gradle工程，是Android Gradle工程配置的唯一入口
 android {
     // 必添加的项只有下面两项
     compileSdkVersion 26
@@ -40,10 +41,10 @@ android {
     // 默认设置，这些都会对应配置重写在AndroidManifest.xml中
     // defaultConfig是默认的配置，它是一个ProductFlavor。ProductFlavor允许我们根据不同的情况同时生成多个不同的apk包。
     defaultConfig {
-        applicationId "slidingchoiceview.dingding.com.zhouzhenwualldemoapplication" // 应用包名
-        minSdkVersion 18 // 支持的最低版本，低于此版本将无法安装应用
+        applicationId "com.zhouzhenwu.mydemo" // 应用包名
+        minSdkVersion rootProject.ext.minSdkVersion // 支持的最低版本，低于此版本将无法安装应用
         targetSdkVersion 26 // 目标版本
-        versionCode 1
+        versionCode rootProject.ext.versionCode
         versionName "1.0"
         multiDexEnabled true // 用于配置该BuildType是否启用自动拆分多个Dex的功能。一般用程序中代码太多，超过了65535个方法的时候
 
@@ -56,6 +57,7 @@ android {
 //        jackOptions {
 //            enabled true
 //        }
+        resValue("string", "debug_name", "debug_test")
     }
 
     compileOptions {
@@ -73,21 +75,33 @@ android {
 
 //        默认情况下，debug模式的签名已经被配置好了，使用的就是Android SDK自动生成的debug证书，
 //        它一般位于$HOME/.android/debug.keystore,其key和密码是已经知道的，一般情况下我们不需要单独配置debug模式的签名信息
+
+
         release {
+//            storeFile file("release.keystore")
+//            storePassword"secretpassword"
+//            keyAlias "gradleforandroid"
+//            keyPassword "secretpassword"
         }
     }
 
     buildTypes {
-        // debug类型的变体
+        // debug类型的变体；debug版本为Androidstudio默认的构建版本
         debug {
-            buildConfigField("String", "LOG_TAG", "\"ZZW\"");
+            //类似buildConfigField定义的常量，当定义了这些属性后，你完全可以在代码中使用：BuildConfig.LOG_TAG
+            buildConfigField("String", "LOG_TAG", "\"ZZW_DEBUG\"")
+
+            // 这种定义相当于在string.xml里加了一个字符串<string name="action_settings">Settings</string>；
+            // 可以在代码里使用R.string.debug_name
+            resValue("string", "debug_name", "debug_test")
         }
 
         // release类型的变体
         release {
             minifyEnabled false  // 是否进行混淆
+            //定义了Release版本proguard的位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "LOG_TAG", "\"ZZW\"");
+            buildConfigField("String", "LOG_TAG", "\"ZZW_RELEASE\"")
 
 //            name：build type的名字
 //            applicationIdSuffix：应用id后缀
@@ -104,29 +118,39 @@ android {
 //            multiDexKeepProguard：指定混淆文件编译进主Dex文件中
         }
 
+        staging.initWith(buildTypes.debug)
+        staging {
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+            debuggable = false
+        }
+
     }
 
+    // 通过productFlavors来创建不同的版本
+    flavorDimensions "versionCode"
     productFlavors {
-//        // 版本flavor1
-//        flavor1 {
-//            buildConfigField("String", "LOG_TAG", "\"ZZW\"");
-//        }
-//
-//        // 版本flavor2
-//        flavorr2 {
-//            buildConfigField("String", "LOG_TAG", "\"ZZW\"");
-//        }
+        // free版本,免费版本
+        free {
+            buildConfigField("String", "LOG_TAG", "\"ZZW_FREE\"");
+        }
+
+        // pay版本
+        pay {
+            buildConfigField("String", "LOG_TAG", "\"ZZW_pay\"");
+        }
 
     }
+
 
 
     android.variantFilter { variant ->
         if (!variant.buildType.name.equals("release")) { // 变体过滤器，当buildType不为release时不处理
             return
         }
-        // 当buildType等于release时
+        // 当buildType等于release时x
         variant.getFlavors().each() { falvor ->
-            if (falvor.name.equals("flavor1")) {// 变体过滤器，当falvor为flavor1时
+            if (falvor.name.equals("free")) {// 变体过滤器，当falvor为free时
                 variant.setIgnore(true); // 忽略这个Build Variant
             }
         }
@@ -134,13 +158,19 @@ android {
 
 }
 
+
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar']) // 配置对此module目录libs下所有jar包的依赖
     api(name: 'pickerview', ext: 'aar')
     api project(':framework')
 
     testImplementation 'junit:junit:4.12'
-    api 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+
+    //一个依赖是需要三个元素：group，name,version；
+    api group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: '1.4-beta2'
+    // 这样的定义和下面的定义是完全一样的
+//    api 'com.squareup.leakcanary:leakcanary-android:1.4-beta2' // 这是Groovy语法的定义方式
+
     api 'com.android.support:appcompat-v7:23.2.1'
     api 'com.android.support:design:23.2.1'
     api 'com.nineoldandroids:library:2.4.+'
@@ -168,3 +198,46 @@ dependencies {
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
 }
+
+// 在clean任务执行前打出开始日志
+task cleanStartLog << {
+    println "app_clean开始执行了"
+}
+// 在执行clean任务前先执行cleanStartLog
+clean.dependsOn cleanStartLog
+
+// 在clean任务执行完毕后打出执行完毕日志
+task cleanFinishLog << {
+    println "app_clean开始执行完毕"
+}
+// 在执行cleanFinishLog任务前先执行clean
+cleanFinishLog.dependsOn clean
+
+// 在clean任务后面增加一个Action
+clean << {
+    println "clean任务后增加了一个LastTask"
+}
+
+// 在clean任务前面增加一个Action
+clean {
+    doFirst(new Action<Task>() {
+        @Override
+        void execute(Task task) {
+            println "clean任务前增加了一个FirsTask"
+        }
+    })
+}
+
+clean.doFirst {
+    println "clean任务前增加了一个FirsTask形式2"
+}
+
+tasks.addRule("pattern: ping<Id>") {
+    String taskName ->
+        if (taskName.startsWith("clean")) {
+            task(taskName) << {
+                println "我给所有以clean开头的任务都加了一个规则"
+            }
+        }
+}
+

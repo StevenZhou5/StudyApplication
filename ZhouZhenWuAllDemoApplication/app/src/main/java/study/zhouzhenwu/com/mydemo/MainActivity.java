@@ -1,6 +1,12 @@
 package study.zhouzhenwu.com.mydemo;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
+import com.example.mylibrary.utils.ToastUtils;
 
 import study.zhouzhenwu.com.mydemo.algorithm.AlgorithmTestActivityActivity;
 import study.zhouzhenwu.com.mydemo.android.AndroidTestMainActivity;
@@ -41,6 +47,17 @@ public class MainActivity extends ActivityListActivity {
         return mAllItemBeans;
     }
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Log.d(BuildConfig.LOG_TAG, getString(R.string.debug_name));
+        try {
+            ToastUtils.showLongToast(this, getPackageName() + ":" + getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_ACTIVITIES).versionCode);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

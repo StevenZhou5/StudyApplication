@@ -1,4 +1,10 @@
 ext{
-    versionName = '8.8.78'
-    versionCode = 3
+    versionName = '8.8.68'
+    versionCode = 18
+
+    compileSdkVersion = 26
+    buildToolsVersion = "28.0.2"
+    minSdkVersion = 16
+    unTargetSdkVersion = 26
+    miuiTargetSdkVersion = 26
 }
