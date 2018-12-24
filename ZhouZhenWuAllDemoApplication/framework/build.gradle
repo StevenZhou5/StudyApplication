@@ -1,37 +1,40 @@
 apply plugin: 'com.android.library'
 
-android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+apply from: "../android_common.gradle"
 
-    defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = false
-            }
-        }
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        staging.initWith(buildTypes.debug)
-        staging {
-            versionNameSuffix "-staging"
-            debuggable = false
-        }
-
-    }
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
-}
+// android{xxx}可以直接用父类"../android_common.gradle"中的android{xxx}中定义的属性
+//android {
+//    compileSdkVersion rootProject.ext.compileSdkVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
+//
+//    defaultConfig {
+//        minSdkVersion rootProject.ext.minSdkVersion
+//
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                includeCompileClasspath = false
+//            }
+//        }
+//    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//
+//        staging.initWith(buildTypes.debug)
+//        staging {
+//            versionNameSuffix "-staging"
+//            debuggable = false
+//        }
+//
+//    }
+//    repositories {
+//        flatDir {
+//            dirs 'libs'
+//        }
+//    }
+//}
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])

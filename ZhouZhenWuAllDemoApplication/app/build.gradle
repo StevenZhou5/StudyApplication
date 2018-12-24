@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+apply from: "../android_common.gradle"
 /* apply plugin：'×××' 这种叫做引入Gradle插件，而Gradle插件大致分为分为两种：
  *
  * 1. apply plugin：'×××'：叫做二进制插件，二进制插件一般都是被打包在一个jar里独立发布的，
@@ -33,16 +34,16 @@ apply plugin: 'com.android.application'
 
 // android{...}是Android插件提供的一个扩展类型，可以让我们自定义Android Gradle工程，是Android Gradle工程配置的唯一入口
 android {
-    // 必添加的项只有下面两项
-    compileSdkVersion 26
-    buildToolsVersion '28.0.2'
+    // 必添加的项只有下面两项,这里直接使用了apply from: "../android_common.gradle"中父类定义的默认值
+//    compileSdkVersion 26
+//    buildToolsVersion '28.0.2'
 //    enforceUniquePackageName false // 解决包名冲突
 
     // 默认设置，这些都会对应配置重写在AndroidManifest.xml中
     // defaultConfig是默认的配置，它是一个ProductFlavor。ProductFlavor允许我们根据不同的情况同时生成多个不同的apk包。
     defaultConfig {
         applicationId "com.zhouzhenwu.mydemo" // 应用包名
-        minSdkVersion rootProject.ext.minSdkVersion // 支持的最低版本，低于此版本将无法安装应用
+//        minSdkVersion rootProject.ext.minSdkVersion // 支持的最低版本，低于此版本将无法安装应用
         targetSdkVersion 26 // 目标版本
         versionCode rootProject.ext.versionCode
         versionName "1.0"
@@ -196,6 +197,10 @@ dependencies {
 
     // 微信sdk
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
+    // b站弹幕SDK
+    api 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+    api 'com.github.ctiao:ndkbitmap-armv7a:0.9.21'
 
 }
 

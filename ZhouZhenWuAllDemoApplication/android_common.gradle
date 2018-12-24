@@ -1,0 +1,36 @@
+
+// 只要引用这个gradle的项目中有使用插件apply plugin: 'com.android.application'或者插件apply plugin: 'com.android.library'
+// 那么这个配置文件就可以被使用，否侧会报错说android{xxx}这个方法找不到；
+// 这里的android{xxx}相当于一个基类方法，而使用这个配置项的gradle的项目配置文件中可以重新这个方法（相当于重写父类的方法）
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = false
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        staging.initWith(buildTypes.debug)
+        staging {
+            versionNameSuffix "-staging"
+            debuggable = false
+        }
+
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}

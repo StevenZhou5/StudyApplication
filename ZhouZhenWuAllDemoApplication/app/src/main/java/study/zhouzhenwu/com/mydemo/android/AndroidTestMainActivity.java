@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 import study.zhouzhenwu.com.mydemo.android.activity.AirbnbLottieAnimationTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.CoordinatorLayoutTestActivity;
+import study.zhouzhenwu.com.mydemo.android.activity.DanmakuViewTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.GoogleZXingScanActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.HandlerTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.IPCTestActivity;
@@ -53,7 +54,8 @@ public class AndroidTestMainActivity extends ActivityListActivity {
             new ActivityListItemBean("Text指示器设置测试", TabTextIndicatorTest.class),
             new ActivityListItemBean("通知栏展示下载进度测试", NotificationShowProgressTestActivity.class),
             new ActivityListItemBean("TextureView使用测试", TextureViewTestActivity.class),
-            new ActivityListItemBean("AirbnbLottieAnimation使用测试", AirbnbLottieAnimationTestActivity.class)
+            new ActivityListItemBean("AirbnbLottieAnimation使用测试", AirbnbLottieAnimationTestActivity.class),
+            new ActivityListItemBean("B站弹幕库View测试", DanmakuViewTestActivity.class)
     };
 
     @Override
