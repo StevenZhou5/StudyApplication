@@ -308,6 +308,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <receiver android:name=".android.broadcastreceiver.NotificationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="close_notification" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".android.activity.TextureViewTestActivity"
             android:label="@string/app_name"

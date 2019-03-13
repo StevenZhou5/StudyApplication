@@ -22,15 +22,15 @@ public class CoordinatorLayoutTestActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinator_layout_test);
-        fabButton = (FloatingActionButton) findViewById(R.id.fab_button);
-
-
-        fabButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(findViewById(R.id.contentView), "Snackbar", Snackbar.LENGTH_SHORT).show();
-            }
-        });
+//        fabButton = (FloatingActionButton) findViewById(R.id.fab_button);
+//
+//
+//        fabButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Snackbar.make(findViewById(R.id.contentView), "Snackbar", Snackbar.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
 }

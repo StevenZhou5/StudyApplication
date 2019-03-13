@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/blue"
             android:gravity="center"
             android:minHeight="10dp"
             android:paddingBottom="10dp"
@@ -21,8 +21,8 @@
             android:text="标题"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
-
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways" />
+        <!--app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="150dp"
@@ -62,12 +62,12 @@
     layout_anchor：设置 FAB 的锚点，我们熟悉的 PopupWindow 也有类似概念。
     layout_anchorGravity：设置相对锚点的位置，如bottom|right表示 FAB 位于锚点的右下角
     -->
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_anchor="@id/anchorView"
-        app:layout_anchorGravity="bottom|right" />
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--app:layout_anchor="@id/anchorView"-->
+        <!--app:layout_anchorGravity="bottom|right" />-->
 </android.support.design.widget.CoordinatorLayout>

@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
+import android.widget.RelativeLayout;
 
 import study.zhouzhenwu.com.mydemo.R;
 import study.zhouzhenwu.com.mydemo.common.activity.BaseActivity;
@@ -26,6 +27,11 @@ public class Camera3DAnimationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_3d_animation);
         mClockView = (ClockView) findViewById(R.id.clock_view);
+        RelativeLayout.LayoutParams rlParams =
+                (RelativeLayout.LayoutParams) mClockView.getLayoutParams();
+        rlParams.setMargins(-1 * 500, 0, 800, 0);
+        mClockView.setLayoutParams(rlParams);
+
 
         WindowManager windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
@@ -72,11 +78,12 @@ public class Camera3DAnimationActivity extends BaseActivity {
 //            camera.translate(0,0,80.0f);
 //            camera.rotateY(360 * (interpolatedTime));
             //根据interpolateTime时间在X轴上旋转不同角度
-            camera.rotateZ(360 * (interpolatedTime));
+//            camera.rotateZ(360 * (interpolatedTime));
+            camera.translate(800*(interpolatedTime), 0, 360 * (interpolatedTime));
             //获取Transformation的Matrix参数
             Matrix matrix = t.getMatrix();
             camera.getMatrix(matrix);
-            camera.translate(centerX,centerY,0);
+            camera.translate(centerX, centerY, 0);
 //            matrix.preTranslate(-centerX, -centerY);
 //            matrix.postTranslate(centerX, centerY);
             camera.restore();
