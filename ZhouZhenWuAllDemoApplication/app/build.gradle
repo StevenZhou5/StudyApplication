@@ -168,9 +168,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     //一个依赖是需要三个元素：group，name,version；
-    api group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: '1.4-beta2'
+//    api group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: '1.4-beta2'
     // 这样的定义和下面的定义是完全一样的
-//    api 'com.squareup.leakcanary:leakcanary-android:1.4-beta2' // 这是Groovy语法的定义方式
+    api 'com.squareup.leakcanary:leakcanary-android:1.5' // 这是Groovy语法的定义方式
 
     api 'com.android.support:appcompat-v7:23.2.1'
     api 'com.android.support:design:23.2.1'

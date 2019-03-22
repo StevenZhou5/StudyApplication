@@ -25,7 +25,9 @@ public class MyApplication extends Application {
         if (instance == null) {
             instance = this;
         }
-        LeakCanary.install(this);
+        if (!LeakCanary.isInAnalyzerProcess(this)) {
+            LeakCanary.install(this);
+        }
 
     }
 }

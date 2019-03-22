@@ -45,19 +45,9 @@ public class MatrixRotate90DegreeActivity extends BaseActivity {
         mAdapter = new MatrixIntAdapter();
         mRecycleView.setAdapter(mAdapter);
 
-        mBtInit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initMatrix();
-            }
-        });
+        mBtInit.setOnClickListener(v -> initMatrix());
 
-        mBtTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rotate();
-            }
-        });
+        mBtTest.setOnClickListener(v -> rotate());
     }
 
 
