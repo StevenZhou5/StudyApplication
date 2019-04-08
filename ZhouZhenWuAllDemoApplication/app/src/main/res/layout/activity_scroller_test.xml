@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <Button
+        android:id="@+id/bt_scroll_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="ScrollerToButton" />
+
+    <Button
+        android:id="@+id/bt_scroll_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_scroll_to"
+        android:layout_centerHorizontal="true"
+        android:text="ScrollerByButton" />
+
+
+    <study.zhouzhenwu.com.mydemo.common.widgets.MyScrollerLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/blue"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="这是第一个View" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/green"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="这是第二个View" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/red"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="这是第三个View" />
+    </study.zhouzhenwu.com.mydemo.common.widgets.MyScrollerLayout>
+
+</RelativeLayout>

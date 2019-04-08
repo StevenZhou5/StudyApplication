@@ -81,20 +81,43 @@
             android:text="堆排序O(nlogn)" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bt_init"
+    <LinearLayout
+        android:id="@+id/layout_init"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_sort_button"
-        android:layout_centerHorizontal="true"
-        android:background="@color/higtlight"
-        android:text="初始化数据" />
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/bt_init"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/higtlight"
+            android:text="初始化数据" />
+
+        <EditText
+            android:id="@+id/et_num_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@color/gray"
+            android:hint="输入数字个数" />
+
+        <EditText
+            android:id="@+id/et_max_int"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@color/gray"
+            android:hint="输入取值的最大值" />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_init"
+        android:layout_below="@+id/layout_init"
         android:layout_centerHorizontal="true"
         android:maxLines="3"
         android:text="输入：" />
@@ -107,5 +130,14 @@
         android:layout_centerHorizontal="true"
         android:maxLines="3"
         android:text="输出：" />
+
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_output"
+        android:layout_centerHorizontal="true"
+        android:maxLines="3"
+        android:text="排序耗时：" />
 
 </RelativeLayout>

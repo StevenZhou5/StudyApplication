@@ -48,8 +48,8 @@ public class MatrixRotate90DegreeActivity extends BaseActivity {
         mBtInit.setOnClickListener(v -> initMatrix());
 
         mBtTest.setOnClickListener(v -> rotate());
-    }
 
+    }
 
     private void initMatrix() {
         Random random = new Random();

@@ -162,6 +162,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".android.animation.activity.ScrollerTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".android.animation.activity.ProterDufferTestActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"

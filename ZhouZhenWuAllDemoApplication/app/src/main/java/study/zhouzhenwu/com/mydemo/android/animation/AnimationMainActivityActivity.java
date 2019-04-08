@@ -19,6 +19,7 @@ import study.zhouzhenwu.com.mydemo.android.animation.activity.ProterDufferTestAc
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewDragItemActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.RecycleViewSlidingItemActivity;
+import study.zhouzhenwu.com.mydemo.android.animation.activity.ScrollerTestActivity;
 import study.zhouzhenwu.com.mydemo.android.animation.activity.TendencyChartActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
@@ -33,6 +34,7 @@ public class AnimationMainActivityActivity extends ActivityListActivity {
      * 各个Animation页面
      */
     private ActivityListItemBean[] mAllItemBeans = {
+            new ActivityListItemBean("ScrollerTest动画", ScrollerTestActivity.class),
             new ActivityListItemBean("Camera进行3D动画", Camera3DAnimationActivity.class),
             new ActivityListItemBean("简单动画集合", SimpleAnimationActivity.class),
             new ActivityListItemBean("滑动吸顶动画", ChangeWithScrollActivity.class),

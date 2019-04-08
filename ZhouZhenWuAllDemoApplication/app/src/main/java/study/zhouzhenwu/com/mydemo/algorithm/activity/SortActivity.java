@@ -2,8 +2,10 @@ package study.zhouzhenwu.com.mydemo.algorithm.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import study.zhouzhenwu.com.mydemo.R;
@@ -36,10 +38,13 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
 
     // 初始化按钮
     Button mBtInit;
+    private EditText mEtNumCount; // 数字个数
+    private EditText mEtMaxInt; // 取值的的最大值
 
     // 输出和输出文案
     TextView mTvInput;
     TextView mTvOutput;
+    private TextView mTvDurantiom;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,10 +62,12 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
         mBtHeapSort = (Button) findViewById(R.id.bt_heap_sort);
 
         mBtInit = (Button) findViewById(R.id.bt_init);
+        mEtNumCount = (EditText) findViewById(R.id.et_num_count);
+        mEtMaxInt = (EditText) findViewById(R.id.et_max_int);
 
         mTvInput = (TextView) findViewById(R.id.tv_input);
         mTvOutput = (TextView) findViewById(R.id.tv_output);
-
+        mTvDurantiom = (TextView) findViewById(R.id.tv_duration);
 
         initListener();
     }
@@ -99,6 +106,7 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
         log("点击时间处理完毕后的结束时间:" + CommonUtils.intsToString(datas));
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
+        mTvDurantiom.setText("排序耗时：" + duration);
         LogUtils.log("点击触发的事件的耗时：" + duration);
     }
 
@@ -106,11 +114,21 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
         if (datas != null) {
             datas = null;
         }
-        int length = (int) (Math.random() * 19) + 1;
+        int length = 10;
+        try {
+            length = Integer.parseInt(mEtNumCount.getText().toString());
+        } catch (Exception e) {
+        }
         datas = new int[length];
+        int maxInt = 1000;
+        try {
+            maxInt = Integer.parseInt(mEtMaxInt.getText().toString());
+        } catch (Exception e) {
+
+        }
         int i = 0;
         while (i < datas.length) {
-            datas[i] = (int) (Math.random() * 1000);
+            datas[i] = (int) (Math.random() * maxInt);
             i++;
         }
     }
@@ -164,8 +182,7 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    /* ---------------------- 堆排序算法 ------------------*/
-
+    // ========================================<editor-fold  des="堆排序算法">================================================
     public void heapSortTest(int[] datas) {
         // step1: 构建大根堆；
         buildMaxHeap(datas);
@@ -190,7 +207,7 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
     }
 
     /**
-     * 构建大根堆
+     * 构建大根堆：目的是使所有父节点的值都大于子节点
      *
      * @param datas
      */
@@ -264,6 +281,7 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
     private int getRightChildIndex(int parentIndex) {
         return (parentIndex + 1) << 1;
     }
+    //</editor-fold>
 
 
     /**
