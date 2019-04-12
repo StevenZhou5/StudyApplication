@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import study.zhouzhenwu.com.mydemo.android.activity.AIDLTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.AirbnbLottieAnimationTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.CoordinatorLayoutTestActivity;
 import study.zhouzhenwu.com.mydemo.android.activity.DanmakuViewTestActivity;
@@ -41,6 +42,7 @@ public class AndroidTestMainActivity extends ActivityListActivity {
      * 首页入口列表Item数据
      */
     private ActivityListItemBean[] mAllItemBeans = {
+            new ActivityListItemBean("AIDL跨进程通信测试", AIDLTestActivity.class),
             new ActivityListItemBean("动画", AnimationMainActivityActivity.class),
             new ActivityListItemBean("Handler相关测试", HandlerTestActivity.class),
             new ActivityListItemBean("PopupWindow跟Activity生命周期相关测试", PopupWindowTestActivity.class),
