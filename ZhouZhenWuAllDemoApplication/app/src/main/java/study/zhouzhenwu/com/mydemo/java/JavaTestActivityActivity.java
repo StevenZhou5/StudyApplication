@@ -4,18 +4,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 
-import study.zhouzhenwu.com.mydemo.android.animation.AnimationMainActivityActivity;
-import study.zhouzhenwu.com.mydemo.algorithm.AlgorithmTestActivityActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
-import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivityActivity;
 import study.zhouzhenwu.com.mydemo.java.activity.AnnotationTestActivity;
 import study.zhouzhenwu.com.mydemo.java.activity.GenericsTestActivity;
 import study.zhouzhenwu.com.mydemo.java.activity.TypeChangeTestActivity;

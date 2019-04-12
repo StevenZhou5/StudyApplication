@@ -1,10 +1,11 @@
-package study.zhouzhenwu.com.mydemo.designpattern.activity;
+package study.zhouzhenwu.com.mydemo.designpattern;
 
 import android.content.Intent;
 
 import study.zhouzhenwu.com.mydemo.android.AndroidTestMainActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
+import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternCommendActivity;
 
 /**
  * 创建者： ZhouZhenWu/Steven.
@@ -22,7 +23,7 @@ public class DesignPatternActivityActivity extends ActivityListActivity {
             new ActivityListItemBean("装饰者模式", AndroidTestMainActivity.class),
             new ActivityListItemBean("工厂模式", AndroidTestMainActivity.class),
             new ActivityListItemBean("单例模式", AndroidTestMainActivity.class),
-            new ActivityListItemBean("命令模式", AndroidTestMainActivity.class),
+            new ActivityListItemBean("命令模式", DesignPatternCommendActivity.class),
             new ActivityListItemBean("适配器模式", AndroidTestMainActivity.class),
             new ActivityListItemBean("外观模式", AndroidTestMainActivity.class),
     };

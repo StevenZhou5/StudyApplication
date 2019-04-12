@@ -15,7 +15,7 @@ import study.zhouzhenwu.com.mydemo.cityplan.CityPlanActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
-import study.zhouzhenwu.com.mydemo.designpattern.activity.DesignPatternActivityActivity;
+import study.zhouzhenwu.com.mydemo.designpattern.DesignPatternActivityActivity;
 import study.zhouzhenwu.com.mydemo.java.JavaTestActivityActivity;
 import study.zhouzhenwu.com.mydemo.rxjava.RxJavaTestActivity;
 

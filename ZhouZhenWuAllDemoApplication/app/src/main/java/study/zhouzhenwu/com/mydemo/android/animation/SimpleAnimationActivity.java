@@ -45,7 +45,7 @@ public class SimpleAnimationActivity extends SimpleListActivity<AnimationIdListB
             new AnimationIdListBean("push_up_out", R.anim.push_up_out),
             new AnimationIdListBean("right_in", R.anim.right_in),
             new AnimationIdListBean("right_out", R.anim.right_out),
-            new AnimationIdListBean("rotate", R.anim.rotate),
+            new AnimationIdListBean("turnLeft", R.anim.rotate),
             new AnimationIdListBean("scale", R.anim.scale),
             new AnimationIdListBean("scale_rotate", R.anim.scale_rotate),
             new AnimationIdListBean("scale_translate", R.anim.scale_translate),
