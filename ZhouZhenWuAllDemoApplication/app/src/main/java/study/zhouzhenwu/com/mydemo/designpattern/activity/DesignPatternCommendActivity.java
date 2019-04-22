@@ -1,6 +1,7 @@
 package study.zhouzhenwu.com.mydemo.designpattern.activity;
 
 import android.animation.Animator;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -96,14 +97,7 @@ public class DesignPatternCommendActivity extends BaseActivity {
      */
     public static class Robot extends android.support.v7.widget.AppCompatImageView implements Animator.AnimatorListener {
         private boolean isAnimationRunning;
-        private Orientation mOrientation = Orientation.DOWN;
-
-        public enum Orientation {
-            LEFT, // 向左
-            RIGHT, // 向右
-            UP, // 向上
-            DOWN, // 向下
-        }
+        private float currentDegree; // 当前机器人的角度(360度以内，已初始时向下为0度)
 
         public Robot(Context context) {
             super(context);
@@ -116,42 +110,21 @@ public class DesignPatternCommendActivity extends BaseActivity {
          * @param distance
          */
         public void goStraight(int distance) {
-            switch (mOrientation) {
-                case LEFT:
-                    animate().translationXBy(distance);
-                    break;
-                case RIGHT:
-                    animate().translationXBy(-distance);
-                    break;
-                case UP:
-                    animate().translationYBy(-distance);
-                    break;
-                case DOWN:
-                    animate().translationYBy(distance);
-                    break;
-            }
+            Log.d("ZZW", "currentDegree:" + currentDegree / 180.0f + "; distance:" + distance);
+            double degreePi = Math.PI * (currentDegree / 180.0f); // 注意进行三角函数计算，一定要把角度转换为Math.PI，
+            float xDistance = (float) (Math.sin(degreePi) * distance);
+            float yDistance = (float) (Math.cos(degreePi) * distance);
+//            AnimatorSet set = new AnimatorSet();
+            Log.d("ZZW", "xDistance:" + xDistance + "; yDistance:" + yDistance);
+            animate().translationXBy(-xDistance).translationYBy(yDistance);
         }
 
-        /**
-         * 向左转
-         */
-        public void turnLeft() {
+        public void rotationBy(int degree) {
             if (isAnimationRunning) {
                 return;
             }
-            animate().rotationBy(-90);
+            animate().rotationBy(degree);
         }
-
-        /**
-         * 向左转
-         */
-        public void turnRight() {
-            if (isAnimationRunning) {
-                return;
-            }
-            animate().rotationBy(90);
-        }
-
 
         @Override
         public void onAnimationStart(Animator animation) {
@@ -162,24 +135,8 @@ public class DesignPatternCommendActivity extends BaseActivity {
         public void onAnimationEnd(Animator animation) {
             Log.d("ZZW", "onAnimationEnd-Rotation:" + getRotation());
             isAnimationRunning = false;
-            int degree = (int) (getRotation() % 360);
-            degree = degree >= 0 ? degree : degree + 360;
-            switch (degree) {
-                case 0:
-                    mOrientation = Orientation.DOWN;
-                    break;
-                case 90:
-                    mOrientation = Orientation.RIGHT;
-                    break;
-                case 180:
-                    mOrientation = Orientation.UP;
-                    break;
-                case 270:
-                    mOrientation = Orientation.LEFT;
-                    break;
-                default:
-                    break;
-            }
+            float degree = getRotation() % 360;
+            currentDegree = degree >= 0 ? degree : degree + 360;
         }
 
         @Override
@@ -192,14 +149,15 @@ public class DesignPatternCommendActivity extends BaseActivity {
             isAnimationRunning = true;
         }
     }
-    // </editor-fold>
+// </editor-fold>
 
-    // ================================= <editor-fold desc="每一条命令都对应一个操作按钮，扩展命令就对应扩展相应的操作按钮,遥控器的开始团队可以完全独立，他们只需要基于机器人现有的能力就能开发出各种不同的遥控器"> ==========================
+// ================================= <editor-fold desc="每一条命令都对应一个操作按钮，扩展命令就对应扩展相应的操作按钮,遥控器的开始团队可以完全独立，他们只需要基于机器人现有的能力就能开发出各种不同的遥控器"> ==========================
 
     /**
      * 抽象的命令
      */
     public static interface Commend {
+
         void action();
     }
 
@@ -207,6 +165,12 @@ public class DesignPatternCommendActivity extends BaseActivity {
      * 向左转命令
      */
     public class TurnLeftCommend implements Commend {
+        /**
+         * 这个机器人必须是私有的，不能让发出命令的人直接操作这个机器人；
+         * 如果它允许被命令的发起者获得，那么发号命令的行为逻辑就和机器人本身耦合了；
+         * 命令发起者就要去关心机器人的功能更新，而改动代码；但实际上命令发起人只应该关心手里的遥控器是否更新变化了，遥控器哪里才是用户可以理解的简单命令操作；
+         * 做决策的人不需要关心技术细节；
+         */
         private Robot robot;
 
         public TurnLeftCommend(Robot robot) {
@@ -215,7 +179,7 @@ public class DesignPatternCommendActivity extends BaseActivity {
 
         @Override
         public void action() {
-            robot.turnLeft();
+            robot.rotationBy(-90);
         }
     }
 
@@ -231,7 +195,7 @@ public class DesignPatternCommendActivity extends BaseActivity {
 
         @Override
         public void action() {
-            robot.turnRight();
+            robot.rotationBy(45);
         }
     }
 
@@ -247,11 +211,11 @@ public class DesignPatternCommendActivity extends BaseActivity {
 
         @Override
         public void action() {
-            robot.goStraight(100);
+            robot.goStraight(-100);
         }
     }
 
-    // 基于1.0版本的机器人，我们还可以实现掉头命令，后退命令；
-    // </editor-fold>
+// 基于1.0版本的机器人，我们还可以实现掉头命令，后退命令；
+// </editor-fold>
 
 }
