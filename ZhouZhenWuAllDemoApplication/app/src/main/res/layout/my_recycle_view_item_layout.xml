@@ -10,6 +10,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:singleLine="true"
         android:text="recycleView的itemText"
         android:textSize="15sp" />
 

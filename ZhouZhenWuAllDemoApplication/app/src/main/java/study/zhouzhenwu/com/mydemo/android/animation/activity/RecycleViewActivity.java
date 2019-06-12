@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +85,92 @@ public class RecycleViewActivity extends BaseActivity {
                 }
             }
 
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                View lastChildView = recyclerView.getChildAt(recyclerView.getChildCount() - 1);
+                int lastItem = recyclerView.getChildLayoutPosition(lastChildView);
+                Log.d("ZZW", "onScrolled最后一条可见Item是：" + lastItem);
+                if (lastItem == mRecycleViewAdapter.getItemCount() - 1) {
+                    Log.d("ZZW", "lastChildView:getLeft=" + lastChildView.getLeft() +
+                            "; recyclerView.getWidth:" + recyclerView.getWidth());
+                    if (lastChildView instanceof RelativeLayout) {
+                        TextView textView = (TextView) ((RelativeLayout) lastChildView).getChildAt(0);
+                        textView.setTextColor(getResources().getColor(R.color.red));
+                        int width = Math.abs(recyclerView.getWidth() - lastChildView.getLeft());
+                        Log.d("ZZW", "width：" + width);
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) textView.getLayoutParams();
+                        layoutParams.leftMargin = 0;
+                        layoutParams.width = width;
+                        textView.setLayoutParams(layoutParams);
+                        lastChildView.getLayoutParams().width = 300;
+                    }
+                }
+            }
         });
+
+        // 设置滑动监听，用于处理滑动查看更多的动画效果处理
+//        mRecyclerViewVideoList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                if (RecyclerView.SCROLL_STATE_IDLE == newState) {
+//                    // step1：找到最后一个可见Item的位置
+//                    View lastChildView = recyclerView.getChildAt(recyclerView.getChildCount() - 1);
+//                    int lastItem = recyclerView.getChildLayoutPosition(lastChildView);
+//                    // step2:如果最后一个可见Item就是列表的最后一个Item，且这个Item是产看更多Item,那么进行计算
+//                    if (lastItem == mVideoListAdapter.getItemCount() - 1
+//                            && mVideoListAdapter.getItemViewType(lastItem) == VideoListAdapter.VIEW_TYPE_MORE_LINK) {
+//                        if (isAutoScrollBack) {
+//                            // 打开最后最后一条查看更多Item的target
+//                            TinyCardEntity tmp = mVideoListAdapter.getItem(mVideoListAdapter.getItemCount()-1);
+//                            CUtils.getInstance().openLink(mContext, tmp.getTarget(), tmp.getTargetAddition(), null, null, 0);
+//                            isAutoScrollBack = false;
+//                        }
+//
+//                        // step3: 如果最后一条Item展示出来的宽度大于了产看更多Item的最小可见宽度时，需要回滑到最小可见宽度
+//                        int showWidth = (recyclerView.getWidth() - lastChildView.getLeft()); // Item展示出来的宽度
+//                        if (showWidth > mMoreLinkItemMinWidth) {
+//                            recyclerView.smoothScrollBy(-(showWidth - mMoreLinkItemMinWidth), 0);
+//                            isAutoScrollBack = true;
+//                        }
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                View lastChildView = recyclerView.getChildAt(recyclerView.getChildCount() - 1);
+//                int lastItem = recyclerView.getChildLayoutPosition(lastChildView);
+//                if (lastItem != mVideoListAdapter.getItemCount() - 1
+//                        || mVideoListAdapter.getItemViewType(lastItem) != VideoListAdapter.VIEW_TYPE_MORE_LINK) {
+//                    return;
+//                }
+//                // step1: 如果查看更多Item可见时进行相关icon图标的大小及位置动态设置
+//                if (!(lastChildView instanceof RelativeLayout)) {
+//                    return;
+//                }
+//                // step2：计算出item可见的总宽度
+//                View childView = ((RelativeLayout) lastChildView).getChildAt(0);
+//                int width = Math.abs(recyclerView.getWidth() - lastChildView.getLeft());
+//
+//                // 计算出图片应该有的宽度:可见宽度减去图片左右两边应该有的margin
+//                int imgShouldWidth = width - mMoreLinkItemImgLeftAndRightMargin;
+//                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) childView.getLayoutParams();
+//                if (imgShouldWidth < mMoreLinkItemImgMinWidth) { // 图片应该有的宽度小于图片应该展示的最小宽度，那么图片设置为最小宽度
+//                    layoutParams.width = mMoreLinkItemImgMinWidth;
+//                } else if (imgShouldWidth > mMoreLinkItemImgMaxWidth) { // 图片应该有的宽度大于图片应该展示的最大宽度，那么图片设置为最大宽度
+//                    layoutParams.width = mMoreLinkItemImgMaxWidth;
+//                } else { // 图片应该有的宽度介于图片应该展示的最小宽度和图片应该展示的最大宽度的之间时，那么图片设置为应该有的宽度
+//                    layoutParams.width = imgShouldWidth;
+//                }
+//                layoutParams.height = layoutParams.width;
+//                childView.setLayoutParams(layoutParams);
+//                lastChildView.getLayoutParams().width = mMoreLinkItemMaxWidth;
+//            }
+//        });
     }
 
     private void smoothMoveToPosition(RecyclerView mRecyclerView, final int position) {

@@ -6,4 +6,5 @@ import com.example.myservice.UserInfo;
 
 interface IUserInfoController {
    void changeUserName(out UserInfo userInfo);
+   void changeUserName2(in UserInfo userInfo);
 }

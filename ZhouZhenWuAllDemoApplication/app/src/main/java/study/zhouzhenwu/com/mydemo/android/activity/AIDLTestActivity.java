@@ -41,11 +41,12 @@ public class AIDLTestActivity extends BaseActivity {
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Log.d("ZZW","onServiceConnected");
+            Log.d("ZZW", "onServiceConnected");
             mIUserInfoController = IUserInfoController.Stub.asInterface(service);
             mTvTitle.setOnClickListener(v -> {
                 try {
                     mIUserInfoController.changeUserName(userInfo);
+                    mIUserInfoController.changeUserName2(userInfo);
                     mTvTitle.setText(userInfo.getUserName());
                 } catch (RemoteException e) {
                     e.printStackTrace();

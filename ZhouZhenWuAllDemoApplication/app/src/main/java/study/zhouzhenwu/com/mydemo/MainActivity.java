@@ -30,15 +30,15 @@ public class MainActivity extends ActivityListActivity {
      * 首页入口列表Item数据
      */
     private ActivityListItemBean[] mAllItemBeans = {
-            new ActivityListItemBean("Camera进行3D动画", Camera3DAnimationActivity.class),
             new ActivityListItemBean("java相关测试", JavaTestActivityActivity.class),
-            new ActivityListItemBean("RxJava相关测试", RxJavaTestActivity.class),
             new ActivityListItemBean("Android相关测试", AndroidTestMainActivity.class),
             new ActivityListItemBean("算法测试", AlgorithmTestActivityActivity.class),
             new ActivityListItemBean("设计模式", DesignPatternActivityActivity.class),
             new ActivityListItemBean("2018城市计划", CityPlanActivity.class),
+            new ActivityListItemBean("RxJava相关测试", RxJavaTestActivity.class),
             new ActivityListItemBean("生日计算器", BirthdayEqualActivity.class),
             new ActivityListItemBean("三扇门问题", ThreeDoorsActivity.class),
+            new ActivityListItemBean("Camera进行3D动画", Camera3DAnimationActivity.class),
     };
 
 
