@@ -31,24 +31,15 @@ public class MoveTestActivity extends BaseActivity {
         initView();
     }
 
-    float y;
-    float top;
-    float x;
-    float left;
-    float translationX;
-    float translationY;
-
     private void initView() {
-        refreshTestData();
-        refreshTestData();
         mBtTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showToast("按钮被点击");
-                refreshTestData();
-                mTvTest.setText("Y:" + y + "; Top:" + top + ";" + "\n" +
-                        "X:" + x + "; left:" + left + ";" + "\n" +
-                        "translationX:" + translationX + ";+translationY:" + translationY);
+                mTvTest.setText("getX:" + v.getX() + ";  getY:" + v.getY() + ";" + "\n" +
+                        "getLeft:" + v.getLeft() + "; getRight:" + v.getRight() + ";" + "\n" +
+                        "getTop:" + v.getTop() + "; getBottom:" + v.getBottom() + ";" + "\n" +
+                        "getTranslationX:" + v.getTranslationX() + ";+getTranslationY:" + v.getTranslationY() + ";+getTranslationZ:" + v.getTranslationZ());
             }
         });
         mBtTest.setOnTouchListener(mTouchListener);
@@ -89,13 +80,4 @@ public class MoveTestActivity extends BaseActivity {
             return false;
         }
     };
-
-    private void refreshTestData() {
-        y = mBtTest.getY();
-        top = mBtTest.getTop();
-        x = mBtTest.getX();
-        left = mBtTest.getLeft();
-        translationX = mBtTest.getTranslationX();
-        translationY = mBtTest.getTranslationY();
-    }
 }
