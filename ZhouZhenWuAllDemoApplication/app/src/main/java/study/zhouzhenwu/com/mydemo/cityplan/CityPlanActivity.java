@@ -13,7 +13,9 @@ public class CityPlanActivity extends AppCompatActivity {
     Button mBtRun;
     TextView mTvCityResult;
 
-    private String[] mCityLists = {"山东省--济南", "山西省--太原", "吉林省 --长春", "江苏省--南京", "湖北省--武汉", "上海市 --上海"};
+    private String[] mCityLists = {"山东省--济南", "山西省--太原", "吉林省 --长春", "江苏省--南京",
+            "湖北省--武汉", "福建省-福州市", "重庆市-重庆", "宁夏-银川", "贵州省-贵阳", "云南省-昆明", "广西省-南宁",
+            "西藏-拉萨", "江西省-南昌", "海南省-海口", "上海市 --上海", "深圳", "香港", "澳门", "台湾"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class CityPlanActivity extends AppCompatActivity {
         mBtRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int index = (int) (Math.random() * (mCityLists.length + 1));
+                int index = (int) (Math.random() * (mCityLists.length));
                 mTvCityResult.setText(mCityLists[index]);
             }
         });

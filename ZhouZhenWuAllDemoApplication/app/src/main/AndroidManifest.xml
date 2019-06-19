@@ -206,6 +206,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".java.activity.JavaInitTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <!-- RxJava相关学习测试 -->
         <activity
             android:name=".rxjava.RxJavaTestActivity"

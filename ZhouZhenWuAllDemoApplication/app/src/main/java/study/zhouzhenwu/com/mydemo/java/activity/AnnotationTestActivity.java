@@ -22,9 +22,9 @@ public class AnnotationTestActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         TestUser testUser = new TestUser();
-        Log.d("ZZW_TEST:", "testUserName_before: name=" + testUser.getName() + "; age=" + testUser.getAge());
+        Log.d("ZZW:", "testUserName_before: name=" + testUser.getName() + "; age=" + testUser.getAge());
         getUserInfo(testUser);
-        Log.d("ZZW_TEST:", "testUserName_after:" + testUser.getName() + "; age=" + testUser.getAge());
+        Log.d("ZZW", "testUserName_after:" + testUser.getName() + "; age=" + testUser.getAge());
     }
 
     public void getUserInfo(TestUser testUser) {

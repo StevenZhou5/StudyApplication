@@ -2,9 +2,6 @@ package study.zhouzhenwu.com.mydemo.rxjava;
 
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
-import study.zhouzhenwu.com.mydemo.java.activity.AnnotationTestActivity;
-import study.zhouzhenwu.com.mydemo.java.activity.GenericsTestActivity;
-import study.zhouzhenwu.com.mydemo.java.activity.TypeChangeTestActivity;
 import study.zhouzhenwu.com.mydemo.rxjava.activity.RxJavaSimpleTestActivity;
 
 /**
