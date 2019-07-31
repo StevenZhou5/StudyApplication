@@ -18,21 +18,21 @@ import study.zhouzhenwu.com.mydemo.common.utils.CommonUtils;
  */
 public class PointPageIndicator extends View {
     /* -------------- 公共 ------------------*/
-    private final float DEFAULT_DISTANCE = 10f;
+    private final int DEFAULT_DISTANCE = 10;
     private float mDistance = 10; // 圆点之间的距离
-    private int mAllCOunt = 3; // 所有点数量
+    private int mAllCount = 3; // 所有点数量
 
     /* -------------- 背景原点 ----------------*/
     private final int DEFAULT_BACK_COLOR = Color.RED;
-    private final float DEFAULT_BACK_RADIUS = 3f;
+    private final int DEFAULT_BACK_RADIUS = 3;
 
-    private Paint mPaintbackGround; // 背景圆点的画笔
+    private Paint mPaintBackGround; // 背景圆点的画笔
     private int mBackColor = DEFAULT_BACK_COLOR; // 背景圆点颜色
     private float mBackRadius = DEFAULT_BACK_RADIUS; // 背景圆半径
 
     /* -------------- 当前原点 ---------------*/
     private final int DEFAULT_CURRENT_COLOR = Color.BLACK;
-    private final float DEFAULT_CURRENT_RADIUS = 4f;
+    private final int DEFAULT_CURRENT_RADIUS = 4;
 
     private Paint mPaintCurrent; // 画当前点的画笔
     private int mCurrentColor = DEFAULT_CURRENT_COLOR; // 背景圆点颜色
@@ -45,22 +45,23 @@ public class PointPageIndicator extends View {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        mPaintbackGround = new Paint();
-        mPaintbackGround.setAntiAlias(true);
-        mPaintbackGround.setColor(mBackColor);
+        if (attrs != null) {
+            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.PointPageIndicator);
+            mDistance = typedArray.getDimensionPixelOffset(R.styleable.PointPageIndicator_pointDistance, DEFAULT_DISTANCE);
+            mBackColor = typedArray.getColor(R.styleable.PointPageIndicator_backPointColor, DEFAULT_BACK_COLOR);
+            mBackRadius = typedArray.getDimensionPixelOffset(R.styleable.PointPageIndicator_backPointRadius, DEFAULT_BACK_RADIUS);
+            mCurrentColor = typedArray.getColor(R.styleable.PointPageIndicator_currentPointColor, DEFAULT_CURRENT_COLOR);
+            mCurrentRadius = typedArray.getDimensionPixelOffset(R.styleable.PointPageIndicator_currentPointRadius, DEFAULT_CURRENT_RADIUS);
+        }
+        mPaintBackGround = new Paint();
+        mPaintBackGround.setAntiAlias(true);
+        mPaintBackGround.setColor(mBackColor);
 
         mPaintCurrent = new Paint();
         mPaintCurrent.setAntiAlias(true);
         mPaintCurrent.setColor(mCurrentColor);
 
-        if (attrs != null) {
-            TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.PointPageIndicator);
-            mDistance = CommonUtils.dip2px(context, typedArray.getFloat(R.styleable.PointPageIndicator_pointDistance, DEFAULT_DISTANCE));
-            mBackColor = typedArray.getColor(R.styleable.PointPageIndicator_backPointColor, DEFAULT_BACK_COLOR);
-            mBackRadius = CommonUtils.dip2px(context, typedArray.getFloat(R.styleable.PointPageIndicator_backPointRadius, DEFAULT_BACK_RADIUS));
-            mCurrentColor = typedArray.getColor(R.styleable.PointPageIndicator_currentPointColor, DEFAULT_CURRENT_COLOR);
-            mCurrentRadius = CommonUtils.dip2px(context, typedArray.getFloat(R.styleable.PointPageIndicator_currentPointRadius, DEFAULT_CURRENT_RADIUS));
-        }
+
     }
 
     /**
@@ -68,8 +69,8 @@ public class PointPageIndicator extends View {
      *
      * @param count
      */
-    private void setCount(int count) {
-        mAllCOunt = count;
+    public void setCount(int count) {
+        mAllCount = count;
         mCurrentPosition = 0;
         invalidate();
     }
@@ -79,8 +80,8 @@ public class PointPageIndicator extends View {
      *
      * @param currentPosition
      */
-    private void setCurrentPosition(int currentPosition) {
-        if (mCurrentPosition >= 0 && mCurrentPosition < mAllCOunt) {
+    public void setCurrentPosition(int currentPosition) {
+        if (mCurrentPosition >= 0 && mCurrentPosition < mAllCount) {
             mCurrentPosition = currentPosition;
             invalidate();
         }
@@ -90,14 +91,14 @@ public class PointPageIndicator extends View {
     protected void onDraw(Canvas canvas) {
         int width = getWidth();
         int height = getHeight();
-        float cxStart = width / 2 - (mAllCOunt - 1) * mDistance / 2;
+        float cxStart = width / 2 - (mAllCount - 1) * mDistance / 2;
         float cy = height / 2;
-        if (mAllCOunt <= 0) {
+        if (mAllCount <= 0) {
             return;
         }
         // 画背景圆
-        for (int i = 0; i < mAllCOunt; i++) {
-            canvas.drawCircle(cxStart + i * mDistance, cy, mBackRadius, mPaintbackGround);
+        for (int i = 0; i < mAllCount; i++) {
+            canvas.drawCircle(cxStart + i * mDistance, cy, mBackRadius, mPaintBackGround);
         }
 
         // 画当前圆

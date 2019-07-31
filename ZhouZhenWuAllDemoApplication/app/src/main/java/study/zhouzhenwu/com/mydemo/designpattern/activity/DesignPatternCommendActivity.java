@@ -1,7 +1,6 @@
 package study.zhouzhenwu.com.mydemo.designpattern.activity;
 
 import android.animation.Animator;
-import android.animation.AnimatorSet;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -30,11 +29,15 @@ public class DesignPatternCommendActivity extends BaseActivity {
         init();
     }
 
+    /**
+     *
+     */
     private void init() {
         // step1:我们需要一个机器人
         Robot robot = new Robot(this);
         robot.setImageResource(R.drawable.ic_robot);
-        robot.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        ImageView.ScaleType scaleType = ImageView.ScaleType.CENTER_INSIDE;
+        robot.setScaleType(scaleType);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100, 100);
         robot.setLayoutParams(params);
         RelativeLayout layoutContent = (RelativeLayout) findViewById(R.id.layout_content);
@@ -153,7 +156,7 @@ public class DesignPatternCommendActivity extends BaseActivity {
     }
 // </editor-fold>
 
-// ================================= <editor-fold desc="每一条命令都对应一个操作按钮，扩展命令就对应扩展相应的操作按钮,遥控器的开始团队可以完全独立，他们只需要基于机器人现有的能力就能开发出各种不同的遥控器"> ==========================
+    // ================================= <editor-fold desc="每一条命令都对应一个操作按钮，扩展命令就对应扩展相应的操作按钮,遥控器的开始团队可以完全独立，他们只需要基于机器人现有的能力就能开发出各种不同的遥控器"> ==========================
 
     /**
      * 抽象的命令
@@ -213,7 +216,7 @@ public class DesignPatternCommendActivity extends BaseActivity {
 
         @Override
         public void action() {
-            robot.goStraight(-100);
+            robot.goStraight(100);
         }
     }
 

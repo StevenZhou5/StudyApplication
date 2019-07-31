@@ -26,11 +26,11 @@
     </declare-styleable>
 
     <declare-styleable name="PointPageIndicator">
-        <attr name="pointDistance" format="float"/>
+        <attr name="pointDistance" format="dimension"/>
         <attr name="backPointColor" format="color" />
-        <attr name="backPointRadius" format="float" />
+        <attr name="backPointRadius" format="dimension" />
         <attr name="currentPointColor" format="color" />
-        <attr name="currentPointRadius" format="float" />
+        <attr name="currentPointRadius" format="dimension" />
     </declare-styleable>
 
     <!--百分比展示控件-->

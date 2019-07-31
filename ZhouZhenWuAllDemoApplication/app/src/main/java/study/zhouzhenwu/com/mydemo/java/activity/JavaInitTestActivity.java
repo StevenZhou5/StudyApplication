@@ -21,6 +21,9 @@ public class JavaInitTestActivity extends BaseActivity {
     public static abstract class Parent {
         public Parent() {
             Log.d("ZZW", "父类构造方法执行");
+            if (this instanceof OnTestEvent) {
+                ((OnTestEvent) this).test();
+            }
             initData(); // 在构造函数去调用方法是非常错误的做法，因为方法执行时，子类的构造函数和非静态成员变量都未初始化
         }
 
@@ -28,7 +31,11 @@ public class JavaInitTestActivity extends BaseActivity {
         public abstract void initData();
     }
 
-    public static class Child extends Parent {
+    public interface OnTestEvent {
+        void test();
+    }
+
+    public static class Child extends Parent implements OnTestEvent {
         private TestUser1 testUser = new TestUser1();
         private static TestUser2 testUser2 = new TestUser2();
 
@@ -40,6 +47,12 @@ public class JavaInitTestActivity extends BaseActivity {
         @Override
         public void initData() {
             Log.d("ZZW", "子类重载的initData方法执行：此时子类的静态成员变量是否为空：" + (testUser2 == null)
+                    + ";  此时子类的非静态成员变量是否为空：" + (testUser == null));
+        }
+
+        @Override
+        public void test() {
+            Log.d("ZZW", "test方法执行：此时子类的静态成员变量是否为空：" + (testUser2 == null)
                     + ";  此时子类的非静态成员变量是否为空：" + (testUser == null));
         }
     }
