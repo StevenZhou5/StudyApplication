@@ -1,4 +1,112 @@
 <resources>
     <string name="app_name">myDemo</string>
     <string name="action_settings">Settings</string>
+
+    <string name="design_pattern_base_rule">
+        <Data><![CDATA[<font color="#fe0202">单一职责原则</font>]]></Data> \n
+        \t\t What：一个遵循单一职责的对象应该尽可能的不要和其他对象发生相互影响（你不去影响别人，也不能让别人来影响你），是自身的职责范围内的事，坚决不让别人来碰；别人的事也绝对不要去管。\n
+        \t\t Why：是程序易于维护，易于扩展，对程序的开闭/灵活性提供基础支持。\n
+        \t\t How： 需要对对象的职责有清晰的定位。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">开放/关闭原则</font>]]></Data> \n
+        \t\t What：对扩展开放，对修改关闭。可以很好的扩展新功能以适应新的需求，同时不去修改以前原有的代码。\n
+        \t\t Why：增加程序的的灵活性，使程序可以更好的适应快速变更的迭代需求，并且在适应迭代需求的同时代码的改动尽可能的少并且尽可能的容易。\n
+        \t\t How：使用合理的设计模式，依赖抽象而不依赖体体。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">里式替换原则</font>]]></Data> \n
+        \t\t What：所有基类出现的地方都可以子类进行替换，子类可以出现在基类出现的任何地方。这告诉我们子类必须具有父类的所有特征。\n
+        \t\t Why：可以帮助我们更合理的定义子类与基类。同时对基类与父类扩展时的更合理的定义新的特征（放到基类还是子类），子类的扩展更合理（宽进严出：访问权限控制，异常抛出控制。注意重写与重载的区别）。\n
+        \t\t How：在设计基类及扩展子类时将此原则进行带入验证以验证设计及扩展的合理性。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">依赖倒置/翻转原则</font>]]></Data> \n
+        \t\t What：有A，B两个对象，其中A的层级比B的高，但是A得部分行为出发依赖于B的部分行为的触发，为了解除这种高层依赖底层的关系，我们让A依赖于抽象的接口，B实现这个抽象接口，解除A与B的直接依赖关系，降低程序的耦合度，增加程序的健壮性和扩展性。\n
+        \t\t Why：解除高层对底层的依赖，降低程序的耦合度，增加程序的扩展性。\n
+        \t\t How：依赖抽象，而不依赖具体。B定义抽象接口，A通过抽象接口回调来触发事件，而不应该改让B与持有A的实例去控制A的事件触发。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">接口隔离原则</font>]]></Data> \n
+        \t\t What：不要使用庞大的聚合接口，而应该使用多个小而精的专项接口。很多时候我们并不需要实现接口的所有方法也不一定用得到接口中的搜有属性，所以在接口的设计时要注意：并不是你的接口能返回多少东西你就加多少东西，而是要看接口的使用者需要什么，还要看是否所有使用者都需要，如果不同的使用者使用的东西不同，那么就有必要将接口进行拆分。\n
+        \t\t Why：降低实现接口的难度，增强程序的易维护性。\n
+        \t\t How：检查接口中是否所有方法是否都合理，是否所有方法的返回值都有意义；才有多重继承的方式来将复杂接口中的无用接口隔离。\n\n
+
+
+        <Data><![CDATA[<font color="#fe0202">面向对象软体操</font>]]></Data> \n
+        \t\t 1：Use only one level of indentation per method. 每种方法只用一层缩进。\n
+        \t\t 2：Don’t use the else keyword. 不要使用“else”关键字。\n
+        \t\t 3：Wrap all primitives and Strings.包装所有的基础类型和String类型。\n
+        \t\t 4：Use only one dot per line.每一行只用一个“.”。\n
+        \t\t 5：Don’t abbreviate.不要使用缩写/省略句。\n
+        \t\t 6：Keep all entities small.让所有的实体都尽量的小。（类不超过50行，引包数不超过10个文件）\n
+        \t\t 7：Don’t use any class with more than two instance variables.不要使用任何超过两个实例变量的类。\n
+        \t\t 7：Don’t use any class with more than two instance variables.不要使用任何超过两个实例变量的类。\n
+        \t\t 8：Use first-class collections.使用聚合(多用聚合，少用继承)。\n
+        \t\t 9：don’t use any getters/setters/properties.\n
+        \t\t 总结一句话：keep it shy,keep it dry,tell and don’t ask.\n
+        <Data><![CDATA[<font color="#fe0202">特别注意：这些规则是在自己写demo代码时锻炼自己使自己拥有良好编程习惯的《体操动作》，在实际项目中万万不可完全依赖这些规则，要学会适情况而定</font>]]></Data> \n\n
+    </string>
+
+    <string name="java_byte_length">
+        <Data><![CDATA[<font color="#fe0202">byte数据类型是8位、有符号的，以二进制补码表示的整数；（256个数字），占1字节</font>]]></Data> \n
+        \t\t 最小值是-128（-2^7）；\n
+        \t\t 最大值是127（2^7-1）；\n
+        \t\t 默认值是0；\n
+        \t\t byte类型用在大型数组中节约空间，主要代替整数，因为byte变量占用的空间只有int类型的四分之一；\n
+        \t\t 例子：byte a = 100，byte b = -50。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">short数据类型是16位、有符号的以二进制补码表示的整数，占2字节</font>]]></Data> \n
+        \t\t 最小值是-32768（-2^15）；\n
+        \t\t 最大值是32767（2^15 - 1）；\n
+        \t\t 默认值是0；\n
+        \t\t Short数据类型也可以像byte那样节省空间。一个short变量是int型变量所占空间的二分之一；\n
+        \t\t 例子：short s = 1000，short r = -20000。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">int数据类型是32位、有符号的以二进制补码表示的整数；占4字节</font>]]></Data> \n
+        \t\t 最小值是-2,147,483,648（-2^31）；\n
+        \t\t 最大值是2,147,485,647（2^31 - 1）；\n
+        \t\t 默认值是0；\n
+        \t\t 一般地整型变量默认为int类型；\n
+        \t\t 例子：int a = 100000, int b = -200000。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">long数据类型是64位、有符号的以二进制补码表示的整数；占8字节</font>]]></Data> \n
+        \t\t 最小值是-9,223,372,036,854,775,808（-2^63）；\n
+        \t\t 最大值是9,223,372,036,854,775,807（2^63 -1）；\n
+        \t\t 默认值是0L；\n
+        \t\t 这种类型主要使用在需要比较大整数的系统上；\n
+        \t\t long a=111111111111111111111111(错误，整数型变量默认是int型)\n
+        \t\t long a=111111111111111111111111L(正确，强制转换)\n
+        \t\t 例子： long a = 100000L，int b = -200000L。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">float数据类型是单精度、32位、符合IEEE 754标准的浮点数；占4字节,-3.4*E38- 3.4*E38。。。浮点数是有舍入误差的</font>]]></Data> \n
+        \t\t 最小值是 -3.4*E38；\n
+        \t\t 最大值是 3.4*E38；\n
+        \t\t 默认值是0.0f；\n
+        \t\t float在储存大型浮点数组的时候可节省内存空间；\n
+        \t\t 浮点数不能用来表示精确的值，如货币；\n
+        \t\t float f=6.26(错误  浮点数默认类型是double类型)\n
+        \t\t float f=6.26F（转换正确，强制）\n
+        \t\t double d=4.55(正确)\n
+        \t\t 例子： long a = 100000L，int b = -200000L。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">double数据类型是双精度、64位、符合IEEE 754标准的浮点数；</font>]]></Data> \n
+        \t\t 最小值是 Double.MIN_VALUE=4.9E-324 （2的-1024次方）\n
+        \t\t 最大值是 Double.MAX_VALUE=1.7976931348623157E308 （2的1024次方-1）\n
+        \t\t 默认值是0.0d；\n
+        \t\t 浮点数的默认类型为double类型；\n
+        \t\t double类型同样不能表示精确的值，如货币；\n
+        \t\t 例子：double d1 = 123.4。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">boolean数据类型表示一位的信息；</font>]]></Data> \n
+        \t\t 只有两个取值：true和false；\n
+        \t\t 这种类型只作为一种标志来记录true/false情况；\n
+        \t\t 默认值是false；\n
+        \t\t 例子：boolean one = true。\n\n
+
+        <Data><![CDATA[<font color="#fe0202">char类型是一个单一的16位Unicode字符；用 ‘’表示一个字符。。java 内部使用Unicode字符集。。他有一些转义字符，2字节</font>]]></Data> \n
+        \t\t 最小值是 (即为0）\n
+        \t\t 最大值是（即为65,535）； \n
+        \t\t 可以当整数来用，它的每一个字符都对应一个数字 \n
+        \t\t char数据类型可以储存任何字符；\n
+        \t\t 例子：char letter = ‘A’。\n\n
+
+    </string>
+
 </resources>

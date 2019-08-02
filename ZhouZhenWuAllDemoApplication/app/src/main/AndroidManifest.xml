@@ -213,6 +213,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity
+            android:name=".java.activity.JavaByteLengthTestActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <!-- RxJava相关学习测试 -->
         <activity
             android:name=".rxjava.RxJavaTestActivity"
@@ -415,6 +422,12 @@
         <!-- 设计模式学习Activity -->
         <activity
             android:name=".designpattern.DesignPatternActivityActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".designpattern.activity.DesignPatternBaseRuleActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

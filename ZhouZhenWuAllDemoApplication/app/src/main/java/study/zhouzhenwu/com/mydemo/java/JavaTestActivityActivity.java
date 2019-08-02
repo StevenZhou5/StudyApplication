@@ -11,6 +11,7 @@ import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
 import study.zhouzhenwu.com.mydemo.common.utils.LogUtils;
 import study.zhouzhenwu.com.mydemo.java.activity.AnnotationTestActivity;
 import study.zhouzhenwu.com.mydemo.java.activity.GenericsTestActivity;
+import study.zhouzhenwu.com.mydemo.java.activity.JavaByteLengthTestActivity;
 import study.zhouzhenwu.com.mydemo.java.activity.JavaInitTestActivity;
 import study.zhouzhenwu.com.mydemo.java.activity.TypeChangeTestActivity;
 import study.zhouzhenwu.com.mydemo.java.testclass.A;
@@ -30,6 +31,7 @@ public class JavaTestActivityActivity extends ActivityListActivity {
             new ActivityListItemBean("泛型相关测试", GenericsTestActivity.class),
             new ActivityListItemBean("注解相关测试", AnnotationTestActivity.class),
             new ActivityListItemBean("父类，子类，静态成员变量及非静态成员变量的初始化顺序测试", JavaInitTestActivity.class),
+            new ActivityListItemBean("java数据类型长度测试", JavaByteLengthTestActivity.class),
     };
 
 
