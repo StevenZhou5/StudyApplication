@@ -3,12 +3,14 @@ package study.zhouzhenwu.com.mydemo.algorithm;
 import android.content.Intent;
 
 import study.zhouzhenwu.com.mydemo.algorithm.activity.AESTestActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.HowManyWaActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.LongestSubstringActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.MatrixRotate90DegreeActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.MedianOfTwoSortedArraysActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SimpleTestActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SingleLinkedListsActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.SortActivity;
+import study.zhouzhenwu.com.mydemo.algorithm.activity.SuperLongPlusTestActivity;
 import study.zhouzhenwu.com.mydemo.algorithm.activity.UpstairsWithOneOrTwoStepActivity;
 import study.zhouzhenwu.com.mydemo.common.activity.ActivityListActivity;
 import study.zhouzhenwu.com.mydemo.common.module.ActivityListItemBean;
@@ -31,6 +33,8 @@ public class AlgorithmTestActivityActivity extends ActivityListActivity {
             new ActivityListItemBean("查找一个字符串的最长不重复子串", LongestSubstringActivity.class),
             new ActivityListItemBean("两个已排序的数组中值", MedianOfTwoSortedArraysActivity.class),
             new ActivityListItemBean("矩阵旋转90度", MatrixRotate90DegreeActivity.class),
+            new ActivityListItemBean("超长大整数相加/减算法", SuperLongPlusTestActivity.class),
+            new ActivityListItemBean("总共有多少种花销方式", HowManyWaActivity.class),
             new ActivityListItemBean("AES加密算法", AESTestActivity.class),
     };
 
