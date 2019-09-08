@@ -15,7 +15,6 @@ L = 2  # 神经网络的层数
 # 正向传播的通用公式
 def forward_propagation(l, preA, W, B):
     """
-
     :param l: 当前是第几层
     :param PreA: A^[l-1],上一层的计算结果A
     :param W: W^[l],当前要计算层的权重
@@ -128,7 +127,7 @@ print("dA1.shape:", dA1.shape)
 print("dw1.shape:", dw1.shape)
 print("db1.shape:", db1.shape)
 
-def coumpute_cost(Y,predict):
+# def coumpute_cost(Y,predict):
 
 
 
