@@ -136,3 +136,74 @@ def Maxout(Z):
     :param Z:
     :return:
     """
+
+
+# ======================================================= 正向传播 ======================================================
+# 正向传播的通用公式
+def forward_propagation(preA, W, B, g_fun_type=1):
+    """
+    :param PreA: A^[l-1],上一层的计算结果A
+    :param W: W^[l],当前要计算层的权重
+    :param B: B^[l],当前要计算层的常量偏差
+    :param g_fun_name: 激活函数名称
+    :return: Z^[l]:反向传播时使用
+             A^[l]:作为下一层的输入值
+    """
+    m = preA.shape[1]
+    pren = preA.shape[0]  # 上一层神经元的个数
+    n = W.shape[0]  # 当前神经元的个数
+    Z = np.dot(W, preA) + B
+    assert Z.shape == (n, m)
+    if g_fun_type == 0:
+        A = sigmoid(Z)
+    elif g_fun_type == 1:
+        A = tanh(Z)
+    elif g_fun_type == 2:
+        A = ReLU(Z)
+    elif g_fun_type == 3:
+        A = Leaky_ReLU(Z)
+    else:
+        A = tanh(Z)
+    assert A.shape == (n, m)
+    return Z, A
+
+
+# ======================================================= 反向传播 ======================================================
+def backward_propagation(A, dA, Z, W, preA, g_funDZ_type=1):
+    """
+    反向传播
+    :param A: l层的A
+    :param dA: l层的dA：输出值的关于下一层的偏导/斜率
+    :param Z:  l层的Z：激活函数的参数:有些激活函数的求dZ需要用到它，如ReLU，有些不需要
+    :param W: l层的W：关于上一层输入值的各个权重值
+    :param preA:
+    :param g_funDZ_name: 激活函数g(Z)对Z求导的导函数
+    :return: dW:l层的权重W梯度下降值：l层的W关于最终cost函数的偏导
+             db:l层的偏差b梯度下降值: l层的b关于最终cost函数的偏导
+             dpreA：l-1层的关于l层的对A求偏导/斜率
+    """
+    m = A.shape[1]
+    pren = preA.shape[0]
+    n = A.shape[0]  # 当前神经元的个数
+    if g_funDZ_type == 0:
+        dZ = np.multiply(dA, sigmoidDZ(A))
+    elif g_funDZ_type == 1:
+        dZ = np.multiply(dA, tanhDZ(A))
+    elif g_funDZ_type == 2:
+        dZ = np.multiply(dA, ReLUDZ(Z))
+    elif g_funDZ_type == 3:
+        dZ = np.multiply(dA, Leaky_ReLUDZ(Z))
+    else:
+        dZ = np.multiply(dA, tanhDZ(A))
+    assert dZ.shape == (n, m)
+
+    dW = (1 / m) * np.dot(dZ, preA.T)
+    assert dW.shape == (n, pren)
+
+    db = (1 / m) * np.sum(dZ, axis=1, keepdims=True)
+    assert db.shape == (n, 1)
+
+    predA = np.dot(W.T, dZ)
+    assert predA.shape == (pren, m)
+
+    return dW, db, predA
