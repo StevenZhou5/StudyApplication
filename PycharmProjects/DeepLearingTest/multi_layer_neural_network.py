@@ -137,6 +137,7 @@ TrainX, TrainY, TestX, TestY = init_cat_data()
 
 costs = run(TrainX, TrainY, TestX, TestY, num_iterations=5000, learning_rate=0.002, print_cost=True)
 
+
 def plt_costs(costs, learning_rate):
     plt.plot(costs)
     plt.ylabel("cost")
@@ -144,35 +145,5 @@ def plt_costs(costs, learning_rate):
     plt.title("learning_rate:" + str(learning_rate))
     plt.show()
 
-plt_costs(costs,0.02)
 
-# 第0层:输入层
-# n0 = TrainX.shape[0]
-# A0 = TrainX
-#
-# # 第1层
-# n1 = 3  # 第一层有三个神经元
-# W1 = np.random.randn(n1, n0) * 0.01  # 初始权重要尽可能小，不然在sigmoid和tanh作为激活函数是Z值过大，训练效率低
-# B1 = np.zeros((n1, 1))
-# Z1, A1 = forward_propagation(1, TrainX, W1, B1)
-# print("A1.shape:", A1.shape)
-#
-# # 第2层
-# n2 = 1
-# W2 = np.random.randn(n2, n1) * 0.01
-# B2 = np.zeros((n2, 1))
-# Z2, A2 = forward_propagation(2, A1, W2, B2)
-# print("A2.shape:", A2.shape)
-#
-# # 第2层：输出层
-# dA2 = np.divide(-TrainY, A2) + np.divide(1 - TrainY, 1 - A2)
-# dw2, db2, dA1 = backward_propagation(2, A2, dA2, Z2, W2, A1)
-# print("dA2.shape:", dA2.shape)
-# print("dW2.shape:", dw2.shape)
-# print("db2.shape:", db2.shape)
-#
-# # 第1层
-# dw1, db1, dA0 = backward_propagation(1, A1, dA1, Z1, W1, A0)
-# print("dA1.shape:", dA1.shape)
-# print("dw1.shape:", dw1.shape)
-# print("db1.shape:", db1.shape)
+plt_costs(costs, 0.02)
