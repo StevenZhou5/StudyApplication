@@ -59,6 +59,8 @@ tasks.create("test_task1") {
 }
 
 // <<代表在Action列表尾部添加一个Action
-task test_task2 dependsOn test_task1 << {
-    println "test_task2_action1"
+task test_task2 dependsOn test_task1 {
+    doLast {
+        println "test_task2_action1"
+    }
 }

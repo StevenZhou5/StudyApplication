@@ -205,22 +205,28 @@ dependencies {
 }
 
 // 在clean任务执行前打出开始日志
-task cleanStartLog << {
-    println "app_clean开始执行了"
+task cleanStartLog {
+    doFirst {
+        println "app_clean开始执行了"
+    }
 }
 // 在执行clean任务前先执行cleanStartLog
 clean.dependsOn cleanStartLog
 
 // 在clean任务执行完毕后打出执行完毕日志
-task cleanFinishLog << {
-    println "app_clean开始执行完毕"
+task cleanFinishLog {
+    doLast {
+        println "app_clean开始执行完毕"
+    }
 }
 // 在执行cleanFinishLog任务前先执行clean
 cleanFinishLog.dependsOn clean
 
 // 在clean任务后面增加一个Action
-clean << {
-    println "clean任务后增加了一个LastTask"
+clean  {
+    doLast {
+        println "clean任务后增加了一个LastTask"
+    }
 }
 
 // 在clean任务前面增加一个Action

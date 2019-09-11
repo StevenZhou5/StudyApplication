@@ -32,7 +32,7 @@ buildscript {
 
     // dependencies里面用来配置依赖的插件
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.android.tools.build:gradle:3.5.0'
 
         // google AutoValue
 //        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
@@ -77,16 +77,20 @@ ext {
     javaVersion = JavaVersion.VERSION_1_7
 
     local = 'Hello from build.gradle'
+    var = rootProject.ext.compileSdkVersion
 }
 
-task printProperties << {
-    println local        // local 定义在此文件的ext中
-    println propertiesFile        // propertiesFile定义在gradle.properties中
-    println versionName       // 定义在build_test.gradle/version.gradle中的ext中
-    if (project.hasProperty('cmd')) {
-        // 如果在执行task：printProperties时后面带上参数 -Pcmd='Hello from the command line'，那么将会输出Hello from the command line
-        println cmd        // Command line property
+task printProperties {
+    doLast {
+        println local        // local 定义在此文件的ext中
+        println propertiesFile        // propertiesFile定义在gradle.properties中
+        println versionName       // 定义在build_test.gradle/version.gradle中的ext中
+        if (project.hasProperty('cmd')) {
+            // 如果在执行task：printProperties时后面带上参数 -Pcmd='Hello from the command line'，那么将会输出Hello from the command line
+            println cmd        // Command line property
+        }
     }
+
 }
 
 
