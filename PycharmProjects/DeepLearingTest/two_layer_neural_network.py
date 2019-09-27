@@ -116,7 +116,7 @@ fname = "images/" + my_image
 image = np.array(plt.imread(fname))
 my_image = tf.resize(image, (num_px, num_px, 3), mode='reflect').reshape((1, num_px * num_px * 3)).T
 print("my_image:", my_image.shape)
-A0 = my_image
+A0 = my_image / 255
 Z1, A1 = forward_propagation(A0, W1, B1, g_fun_type=2)
 Z2, A2 = forward_propagation(A1, W2, B2, g_fun_type=0)
 my_predicted_image = A2[0][0]

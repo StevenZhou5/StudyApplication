@@ -11,7 +11,7 @@ from g_function import sigmoid, tanh, sigmoidDZ, tanhDZ, forward_propagation, ba
 
 
 # 多层神经网络测试
-def coumpute_cost(Y, predictY):
+def compute_cost(Y, predictY):
     m = Y.shape[1]
     assert Y.shape == predictY.shape
     cost = -np.sum(np.multiply(Y, np.log(predictY)) + np.multiply(1 - Y, np.log(1 - predictY))) / m
@@ -100,7 +100,7 @@ def run(TrainX, TrainY, TestX, TestY, num_iterations=10000, learning_rate=0.02, 
         # assert B4.shape == (n4, 1)
 
         if i % 100 == 0:
-            cost = coumpute_cost(TrainY, A2)
+            cost = compute_cost(TrainY, A2)
             costs.append(cost)
             if print_cost:
                 print("当训练到第%i次时的代价函数值为：%f" % (i, cost))
@@ -113,7 +113,7 @@ def run(TrainX, TrainY, TestX, TestY, num_iterations=10000, learning_rate=0.02, 
     TrainA = A2
     # PredictTrainY = np.round(TrainA + 1) - 1  # 把结果按照>=0.5为1，否则为0
     PredictTrainY = (TrainA + 0.5).astype(int)  # 把结果按照>=0.5为1，否则为0
-    TrainPredictRongNum = np.sum(PredictTrainY ^ TrainY)  # 训练数据预测错误的数量
+    TrainPredictRongNum = np.sum(PredictTrainY ^ TrainY)  # 训练数据预测错误的数量 ^ 是异或操作符
     TrainPredictRightRate = (TrainM - TrainPredictRongNum) * 100 / TrainM
     print("训练数据的准确率为：", TrainPredictRightRate)
 
