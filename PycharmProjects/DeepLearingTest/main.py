@@ -3,7 +3,7 @@
 import numpy as np
 import h5py
 import matplotlib.pyplot as plt
-from g_function import sigmoid
+from baseutil.g_function import sigmoid
 from init_data import init_cat_data
 
 print("这是一个识别小猫的Ai算法，基于stand NN")

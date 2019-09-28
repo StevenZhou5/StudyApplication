@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import skimage.transform as tf  # 这里我们用它来缩放图片
 
 from init_data import init_cat_data
-from g_function import sigmoid, tanh, sigmoidDZ, tanhDZ, forward_propagation, backward_propagation
-from plat_function import plt_costs
+from baseutil.g_function import sigmoid, tanh, sigmoidDZ, tanhDZ, forward_propagation, backward_propagation
+from baseutil.plat_function import plt_costs
 
 
 # 根据神经网络的层数，初始化每一层的权重矩阵W和常量偏移矩阵B
