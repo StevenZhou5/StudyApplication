@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import numpy as np
-import h5py
 import matplotlib.pyplot as plt
-from baseutil.g_function import sigmoid
+from common.baseutil.g_function import sigmoid
 from init_data import init_cat_data
 
 print("这是一个识别小猫的Ai算法，基于stand NN")
@@ -81,9 +80,10 @@ def plt_costs(costs, learning_rate):
     plt.show()
 
 
-TrainX, TrainY, TestX, TestY = init_cat_data()
-result = run(TrainX, TrainY, TestX, TestY, learning_rate=0.002, count=2000, print_cost=True)
-plt_costs(result["costs"], result["learning_rate"])
+if __name__ == "__main__":
+    TrainX, TrainY, TestX, TestY = init_cat_data()
+    result = run(TrainX, TrainY, TestX, TestY, learning_rate=0.002, count=2000, print_cost=True)
+    plt_costs(result["costs"], result["learning_rate"])
 
 # A = np.ones((1, 5))
 # B = np.ones((1, 5)) + 2

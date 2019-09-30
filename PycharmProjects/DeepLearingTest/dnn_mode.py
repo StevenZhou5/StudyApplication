@@ -2,13 +2,10 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 # 这个库是用来画图的
-import matplotlib
-import matplotlib.pyplot as plt
-import skimage.transform as tf  # 这里我们用它来缩放图片
 
 from init_data import init_cat_data
-from baseutil.g_function import sigmoid, tanh, sigmoidDZ, tanhDZ, forward_propagation, backward_propagation
-from baseutil.plat_function import plt_costs
+from common.baseutil.g_function import forward_propagation, backward_propagation
+from common.baseutil.plat_function import plt_costs
 
 
 """ 深度神经网络DNN(Deep Neural Networks)模型:"""
@@ -199,5 +196,5 @@ def cat_test():
 
 if __name__ == "__main__":
     print("测试开始")
-    # cat_test()
+    cat_test()
 

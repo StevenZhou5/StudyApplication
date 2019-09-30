@@ -2,12 +2,10 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 # 这个库是用来画图的
-import matplotlib
 import matplotlib.pyplot as plt
-import skimage.transform as tf  # 这里我们用它来缩放图片
 
 from init_data import init_cat_data
-from baseutil.g_function import sigmoid, tanh, sigmoidDZ, tanhDZ, forward_propagation, backward_propagation
+from common.baseutil.g_function import forward_propagation, backward_propagation
 
 
 # 多层神经网络测试
