@@ -11,10 +11,14 @@ from baseutil.g_function import sigmoid, tanh, sigmoidDZ, tanhDZ, forward_propag
 from baseutil.plat_function import plt_costs
 
 
+""" 深度神经网络DNN(Deep Neural Networks)模型:"""
+
+
 # 根据神经网络的层数，初始化每一层的权重矩阵W和常量偏移矩阵B
 def init_params_deep_network(layer_cell_counts):
     '''
     :param layer_cell_counts:  一个存放了每层神经元个数的数组，输入层的神经元个数是数组的第一个位置
+    :param layer_keep_prob: 每一层保持激活状态的神经元占比
     :return: 每层神经元的权重矩阵和常量偏移矩阵组成的字典
     '''
 
@@ -34,7 +38,7 @@ def init_params_deep_network(layer_cell_counts):
 
 
 # 执行L层的前项传播
-def L_mode_forward(X, params, L):
+def L_mode_forward(X, params, layer_keep_prob, L):
     """
     :param X:  初始输入层数据
     :param params: 参数字典
@@ -50,6 +54,10 @@ def L_mode_forward(X, params, L):
             g_fun_type = 0
         W = params['W' + str(l)]
         B = params['B' + str(l)]
+        # 在没有出现过拟合问题的时候不要用随机失活去进行正则化
+        # D = np.random.rand(preA.shape[0], preA.shape[1]) < layer_keep_prob[l - 1]  # 初始化每一层的随机失活性矩阵
+        # real_computeA = np.multiply(preA, D)  # 失活后真正参与计算的A
+        # real_computeA /= layer_keep_prob[l - 1]
         Z, preA = forward_propagation(preA, W, B, g_fun_type)
         params['A' + str(l)] = preA  # 把A1-AL记录下来
         params['Z' + str(l)] = Z  # 把Z1-ZL记录下来
@@ -114,7 +122,7 @@ def update_params(params, L, learning_rate=0.02):
 
 
 # 标准多层神经网络模型
-def dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, num_iterations=2000, learning_rate=0.02,
+def dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, layer_keep_prob, num_iterations=2000, learning_rate=0.02,
              print_cost=False):
     """
     :param TrainX: 训练数据输入：X
@@ -136,7 +144,7 @@ def dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, num_iterations=200
     costs = []
     for i in range(1, num_iterations + 1):
         # step1:前向转播
-        params = L_mode_forward(TrainX, params, L)
+        params = L_mode_forward(TrainX, params, layer_keep_prob, L)
 
         # step2 :计算最后一层的dAL及为dY
         predictY = params['A' + str(L)]  # 最后一层的输出就是预测值
@@ -161,8 +169,9 @@ def dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, num_iterations=200
     TrainPredictRightRate = (TrainM - TrainPredictRongNum) * 100 / TrainM
     print("训练数据的准确率为：", TrainPredictRightRate)
 
+    test_layer_keep_prob = [1, 1, 1, 1]
     TestM = TestY.shape[1]  # 测试数据个数
-    paramsTest = L_mode_forward(TestX, params, L)
+    paramsTest = L_mode_forward(TestX, params, test_layer_keep_prob, L)
     PredictTestY = (paramsTest['A' + str(L)] + 0.5).astype(int)  # 把训练数据的预测结果按照>=0.5为1，否则为0
     TestPredictRongNum = np.sum(PredictTestY ^ TestY)  # 训练数据预测错误的数量
     TestPredictRightRate = (TestM - TestPredictRongNum) * 100 / TestM
@@ -182,9 +191,13 @@ def real_test():
 
 def cat_test():
     TrainX, TrainY, TestX, TestY = init_cat_data()
-    layer_cell_counts = [TrainX.shape[0], 20, 7, 5, 1]
-    costs = dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, 5000, 0.0075, print_cost=True)
+    layer_cell_counts = [TrainX.shape[0], 20, 7, 5, 1]  # 每一层神经元个数
+    layer_keep_prob = [1, 1, 1, 1]  # 每一层保持激活的神经元占比
+    costs = dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, layer_keep_prob, 5000, 0.0075, print_cost=True)
     plt_costs(costs, 0.0075)
 
 
-cat_test()
+if __name__ == "__main__":
+    print("测试开始")
+    # cat_test()
+

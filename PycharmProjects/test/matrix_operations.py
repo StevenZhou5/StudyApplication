@@ -31,14 +31,14 @@ def rotate_90degree_test(A):
     return A_rotate_90degree
 
 
-A = np.array([[1, 1, 1, 5],
-              [12, 15, 22, 4],
-              [-2, 1, 0, 4],
-              ])
-B = rotate_90degree_test(A)
-print(B)
-C = rotate_90degree_test(B)
-print(C)
+# A = np.array([[1, 1, 1, 5],
+#               [12, 15, 22, 4],
+#               [-2, 1, 0, 4],
+#               ])
+# B = rotate_90degree_test(A)
+# print(B)
+# C = rotate_90degree_test(B)
+# print(C)
 
 
 def inv_def_test():
@@ -82,15 +82,19 @@ def exchange_row_column_test():
                   [3, 1, 4, 7, 6]])
     print(A)
     print(A[:, 2])
-    AX_23 = np.zeros((3, 3))  # 换行的话，矩阵的行列数必须等于原矩阵的行数
+    # AX_23 = np.zeros((3, 3))  # 换行的话，矩阵的行列数必须等于原矩阵的行数
+    AX_23 = np.identity(3)  # 生成一个单位矩阵
     AX_23[1, 2] = 1  # 把第A的第三行换到第二行
     print(AX_23)
-    print(np.matmul(AX_23, A))
+    print(np.dot(AX_23, A))
 
     AY_35 = np.zeros((5, 5))  # 换列的话，矩阵的行列数必须等于原矩阵的列数
-    AY_35[2, 4] = 1
+    AY_35[2, 4] = 1  # 把第A的第3列换到第5列
     print(AY_35)
     print(np.matmul(A, AY_35))
+
+
+exchange_row_column_test()
 
 
 def take_special_row_and_column_test():

@@ -5,7 +5,7 @@ import numpy as np
 
 # 规范化初始值的方法（归一化）：规范化可以使得所有值的取值在（-1，1）之间，可以使梯度递减的更快
 
-def normalizeRows(x):
+def uniformizationRows(x):
     """
     Implement a function that normalizes each row of the matrix x (to have unit length).
 
@@ -23,7 +23,7 @@ def normalizeRows(x):
 A = np.array([
     [0, 3, 4],
     [-3, 0, 4]])
-print("normalizeRows(A)", normalizeRows(A))
+print("normalizeRows(A)", uniformizationRows(A))
 
 
 def softmax(x):

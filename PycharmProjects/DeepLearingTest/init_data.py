@@ -23,3 +23,5 @@ def init_cat_data():
     TestY = test_y.reshape(1, test_m)
     print("整理后的数据\n", TrainX.shape, TrainY.shape, TestX.shape, TestY.shape)
     return TrainX, TrainY, TestX, TestY
+
+
