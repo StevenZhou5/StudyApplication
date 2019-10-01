@@ -7,7 +7,6 @@ from init_data import init_cat_data
 from common.baseutil.g_function import forward_propagation, backward_propagation
 from common.baseutil.plat_function import plt_costs
 
-
 """ 深度神经网络DNN(Deep Neural Networks)模型:"""
 
 
@@ -51,11 +50,14 @@ def L_mode_forward(X, params, layer_keep_prob, L):
             g_fun_type = 0
         W = params['W' + str(l)]
         B = params['B' + str(l)]
-        # 在没有出现过拟合问题的时候不要用随机失活去进行正则化
-        # D = np.random.rand(preA.shape[0], preA.shape[1]) < layer_keep_prob[l - 1]  # 初始化每一层的随机失活性矩阵
-        # real_computeA = np.multiply(preA, D)  # 失活后真正参与计算的A
-        # real_computeA /= layer_keep_prob[l - 1]
         Z, preA = forward_propagation(preA, W, B, g_fun_type)
+
+        # dropOut的正则化，在没有出现过拟合问题的时候不要用随机失活去进行正则化
+        # D = np.random.rand(preA.shape[0], preA.shape[1]) < layer_keep_prob[l]  # 初始化每一层的随机失活性矩阵
+        # preA = preA * D  # 失活后真正参与计算的A
+        # preA = preA / layer_keep_prob[l]
+        # params['D' + str(l)] = D
+
         params['A' + str(l)] = preA  # 把A1-AL记录下来
         params['Z' + str(l)] = Z  # 把Z1-ZL记录下来
 
@@ -76,7 +78,7 @@ def compute_cost(Y, predictY):
     return cost
 
 
-def L_mode_back(dAL, params, L):
+def L_mode_back(dAL, params, layer_keep_prob, L):
     """
     :param dAL:  最后一层的dA值
     :param params:
@@ -84,7 +86,9 @@ def L_mode_back(dAL, params, L):
     :return:
     """
     dA = dAL
+    m = dAL.shape[1]  # 总训练数据个数
     for l in reversed(range(1, L + 1)):  # reversed(range(1,L))的结果是L-1,L-2...1。是不包括L的。第0层是输入层，不必计算。
+        # D = params['D' + str(l)] # 随机失活时用到的D
         A = params['A' + str(l)]
         Z = params['Z' + str(l)]
         W = params['W' + str(l)]
@@ -92,8 +96,14 @@ def L_mode_back(dAL, params, L):
         g_funDZ_type = 2
         if l == L:
             g_funDZ_type = 0
+
+        # 随机失活的正则化
+        # dA = dA * D
+        # dA = dA / layer_keep_prob[l]
+
         dW, dB, dA = backward_propagation(A, dA, Z, W, preA, g_funDZ_type)
-        params['dW' + str(l)] = dW
+        # params['dW' + str(l)] = dW + (0.7 / m) * W  # 加上L2正则化项的dW
+        params['dW' + str(l)] = dW  # 不加L2正则化项的dW
         params['dB' + str(l)] = dB
     return params
 
@@ -137,6 +147,7 @@ def dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, layer_keep_prob, n
     assert np.max(TestX) <= 1 and np.min(TestX) >= 0  # 要限制测试数据进行过正则化了，介于（0-1）之间
     params = init_params_deep_network(layer_cell_counts)
     L = len(layer_cell_counts) - 1
+    m = TrainX.shape[1]
 
     costs = []
     for i in range(1, num_iterations + 1):
@@ -145,15 +156,24 @@ def dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, layer_keep_prob, n
 
         # step2 :计算最后一层的dAL及为dY
         predictY = params['A' + str(L)]  # 最后一层的输出就是预测值
+
         dY = np.divide(-TrainY, predictY) + np.divide(1 - TrainY, 1 - predictY)
 
         # step3:反向传播
-        params = L_mode_back(dY, params, L)
+        params = L_mode_back(dY, params, layer_keep_prob, L)
 
         # step4:更新新的权重值
         update_params(params, L, learning_rate)
 
         if i % 100 == 0:
+            # 进行L2正则化的cost ，即最后的总花销
+            # L2_W = 0
+            # for l in range(1, L + 1):
+            #     Wl = params['W' + str(l)]
+            #     L2_W = L2_W + np.sum(np.square(Wl))
+            # cost = compute_cost(TrainY, predictY) + (0.7 / (2 * m)) * L2_W
+
+            # 未进行L2正则化的cost
             cost = compute_cost(TrainY, predictY)
             costs.append(cost)
             if print_cost:
@@ -166,7 +186,7 @@ def dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, layer_keep_prob, n
     TrainPredictRightRate = (TrainM - TrainPredictRongNum) * 100 / TrainM
     print("训练数据的准确率为：", TrainPredictRightRate)
 
-    test_layer_keep_prob = [1, 1, 1, 1]
+    test_layer_keep_prob = [1, 1, 1, 1, 1]
     TestM = TestY.shape[1]  # 测试数据个数
     paramsTest = L_mode_forward(TestX, params, test_layer_keep_prob, L)
     PredictTestY = (paramsTest['A' + str(L)] + 0.5).astype(int)  # 把训练数据的预测结果按照>=0.5为1，否则为0
@@ -189,12 +209,11 @@ def real_test():
 def cat_test():
     TrainX, TrainY, TestX, TestY = init_cat_data()
     layer_cell_counts = [TrainX.shape[0], 20, 7, 5, 1]  # 每一层神经元个数
-    layer_keep_prob = [1, 1, 1, 1]  # 每一层保持激活的神经元占比
-    costs = dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, layer_keep_prob, 5000, 0.0075, print_cost=True)
+    layer_keep_prob = [1, 0.65, 0.7, 0.8, 1]  # 每一层保持激活的神经元占比
+    costs = dnn_mode(TrainX, TrainY, TestX, TestY, layer_cell_counts, layer_keep_prob, 3000, 0.0075, print_cost=True)
     plt_costs(costs, 0.0075)
 
 
 if __name__ == "__main__":
     print("测试开始")
     cat_test()
-

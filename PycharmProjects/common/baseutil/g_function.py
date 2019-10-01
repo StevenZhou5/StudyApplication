@@ -74,9 +74,9 @@ def ReLUDZ(Z):
     :param Z:
     :return:
     """
-    Z[Z >= 0] = 1  # 如果Z大于等于0，那么导数即斜率为1
-    Z[Z < 0] = 0  # 如果Z小于0，那么导数即斜率为0
-    ReLUDZ = Z
+    # Z[Z > 0] = 1  # 如果Z大于等于0，那么导数即斜率为1
+    # Z[Z < 0] = 0  # 如果Z小于0，那么导数即斜率为0
+    ReLUDZ = np.int64(Z > 0)
     return ReLUDZ
 
 
