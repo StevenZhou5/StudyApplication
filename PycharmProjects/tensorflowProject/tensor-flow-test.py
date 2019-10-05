@@ -32,4 +32,5 @@ def simple_cost_test():
     print(session.run(w))
 
 
-simple_cost_test()
+if __name__ == "__main__":
+    simple_cost_test()

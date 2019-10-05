@@ -5,6 +5,10 @@ import numpy as np
 
 
 # 激活函数
+def liner(Z):
+    return Z
+
+
 def sigmoid(Z):
     """
     激活函数sigmoid：只有在输出层结果表示结果为（0-1）的分类/概率问题时作为输出层的激活函数，否则其他情况下都不使用
@@ -17,6 +21,10 @@ def sigmoid(Z):
     """
     s = 1 / (1 + np.exp(-Z))
     return s
+
+
+def linerDZ():
+    return 1
 
 
 def sigmoidDZ(A):
@@ -162,6 +170,8 @@ def forward_propagation(preA, W, B, g_fun_type=1):
         A = ReLU(Z)
     elif g_fun_type == 3:
         A = Leaky_ReLU(Z)
+    elif g_fun_type == 4:
+        A = liner(Z)
     else:
         A = tanh(Z)
     assert A.shape == (n, m)
@@ -193,6 +203,8 @@ def backward_propagation(A, dA, Z, W, preA, g_funDZ_type=1):
         dZ = np.multiply(dA, ReLUDZ(Z))
     elif g_funDZ_type == 3:
         dZ = np.multiply(dA, Leaky_ReLUDZ(Z))
+    elif g_funDZ_type == 4:
+        dZ = np.multiply(dA, linerDZ())
     else:
         dZ = np.multiply(dA, tanhDZ(A))
     assert dZ.shape == (n, m)
