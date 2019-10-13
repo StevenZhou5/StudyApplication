@@ -1,0 +1,7 @@
+setup.py
+cloudml_tutorial_01.egg-info/PKG-INFO
+cloudml_tutorial_01.egg-info/SOURCES.txt
+cloudml_tutorial_01.egg-info/dependency_links.txt
+cloudml_tutorial_01.egg-info/top_level.txt
+trainer/__init__.py
+trainer/task.py
