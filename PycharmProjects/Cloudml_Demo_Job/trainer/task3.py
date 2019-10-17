@@ -203,7 +203,7 @@ def main():
     # 设定存储位置，每个模型不一样的路径
     tensorboard = tf.keras.callbacks.TensorBoard(
         # log_dir=export_path + '/tensorboardLogs'.format(model_name),
-        log_dir='../tensorboardLogs'.format(model_name),
+        log_dir='/Users/zhenwuzhou/TensorBoardLogs/tensorboardLogs'.format(model_name),
         histogram_freq=1,
         write_graph=True, write_grads=False, write_images=True,
         embeddings_freq=0, embeddings_layer_names=None,
