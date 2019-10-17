@@ -6,11 +6,11 @@ import h5py
 
 # 初始化数据
 def init_cat_data():
-    train_dataset = h5py.File('../common/datasets/train_catvnoncat.h5', "r")
+    train_dataset = h5py.File('/Users/zhenwuzhou/.keras/datasets/train_catvnoncat.h5', "r")
     train_x = np.array(train_dataset["train_set_x"][:])  # shape(209,64,64,3)
     train_y = np.array(train_dataset["train_set_y"][:])  # shape(209,)
 
-    test_dataset = h5py.File('../common/datasets/test_catvnoncat.h5', "r")
+    test_dataset = h5py.File('/Users/zhenwuzhou/.keras/datasets/test_catvnoncat.h5', "r")
     test_x = np.array(test_dataset["test_set_x"][:])
     test_y = np.array(test_dataset["test_set_y"][:])
     print("初始数据\n", train_x.shape, train_y.shape, test_x.shape, test_y.shape)

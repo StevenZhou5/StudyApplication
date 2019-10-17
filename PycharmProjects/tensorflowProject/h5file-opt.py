@@ -4,7 +4,7 @@ import numpy as np
 
 def read():
     # read
-    f = h5py.File("./datasets/xception_weights_tf_dim_ordering_tf_kernels.h5", 'r')  # 打开h5文件
+    f = h5py.File("/Users/zhenwuzhou/.keras/datasets/xception_weights_tf_dim_ordering_tf_kernels.h5", 'r')  # 打开h5文件
     for key in f.keys():  # 查看所有键值
 
         print(f[key].name)
@@ -20,7 +20,7 @@ def read():
 def delete_key():
     # f = h5py.File('file.h5', 'a')
     # dsetname = 'del'
-    f = h5py.File("./datasets/xception_weights_tf_dim_ordering_tf_kernels.h5", 'a')  # 读写权限都打开
+    f = h5py.File("/Users/zhenwuzhou/.keras/datasets/xception_weights_tf_dim_ordering_tf_kernels.h5", 'a')  # 读写权限都打开
     dsetname = '/input_1'
     if dsetname in f.keys():
         f.__delitem__(dsetname)

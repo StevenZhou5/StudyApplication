@@ -7,14 +7,14 @@ import h5py
 def save_data(file_name):
     name = '周振武'
     age = 27
-    f = h5py.File('../common/datasets/' + str(file_name) + '.h5', 'w')  # 注意'w'必须小写
+    f = h5py.File('/Users/zhenwuzhou/.keras/datasets/' + str(file_name) + '.h5', 'w')  # 注意'w'必须小写
     f.create_dataset('name', data=name)  # 可以使用这种Key——Value形式存储
     f['age'] = age  # 也可以使用这种Key——Value形式存储
     f.close()
 
 
 def get_data(file_name):
-    f = h5py.File('../common/datasets/' + str(file_name) + '.h5', 'r')
+    f = h5py.File('/Users/zhenwuzhou/.keras/datasets/' + str(file_name) + '.h5', 'r')
     print(f['name'][()])
     print(f['age'][()])
     f.close()
