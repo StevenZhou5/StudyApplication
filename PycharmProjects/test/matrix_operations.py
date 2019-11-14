@@ -5,6 +5,35 @@ import tensorflow as tf
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
+# 求矩阵的L2范数
+def L2Test(X):
+    L2X = np.dot(X, X.T)
+    print(L2X.shape)
+    print(X)
+    print(X.T)
+    print(L2X)
+    return L2X
+
+
+# 求矩阵中每两个向量之间的宇轩相似度
+def cos_sim(L2X):
+    cos_simX = np.zeros((L2X.shape[0], L2X.shape[1]))
+    assert L2X.shape == cos_simX.shape
+    for i in range(L2X.shape[0]):
+        for j in range(L2X.shape[1]):
+            distance_mul = np.sqrt(L2X[i][i] * L2X[j][j])
+            sim_value = L2X[i][j] / distance_mul
+            cos_simX[i][j] = sim_value
+
+    print(cos_simX)
+
+
+X = np.array([[1, 1], [1, 2], [1, 0]])
+L2X = L2Test(X)
+
+cos_sim(L2X)
+
+
 # 矩阵顺时针旋转90度
 def rotate_90degree_test(A):
     # step1:将A进行转职
@@ -94,7 +123,7 @@ def exchange_row_column_test():
     print(np.matmul(A, AY_35))
 
 
-exchange_row_column_test()
+# exchange_row_column_test()
 
 
 def take_special_row_and_column_test():
