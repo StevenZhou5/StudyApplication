@@ -229,7 +229,7 @@ class EncoderLayer(nn.Module):
 
     def __init__(self, embedding_dim):
         super(EncoderLayer, self).__init__()
-        #todo 
+        # todo
         #
 
 
