@@ -50,10 +50,10 @@ def train(train_dataset, model, device):
     model.train()  # 将模型设置为训练模式
     model.zero_grad()
     num_train_epochs = 10
-    train_iterator = trange(int(num_train_epochs), desc="Epoch")
-    for eopch in train_iterator:
-        epoch_iterator = tqdm(train_dataLoader, desc="BatchIteration")
-        for step, batch in enumerate(epoch_iterator):
+    epoch_iterator = trange(int(num_train_epochs), desc="EpochIterating")
+    for epoch in epoch_iterator:
+        batch_iterator = tqdm(train_dataLoader, desc="BatchIterating")
+        for step, batch in enumerate(batch_iterator):
             batch = tuple(t.to(device) for t in batch)  # 将batch中的tensor数据转换成对应的device格式
             inputs = {
                 'train_batch_x': batch[0],
@@ -73,7 +73,7 @@ def train(train_dataset, model, device):
             optimizer.zero_grad()
 
             if (step % 100 == 0):
-                logger.info("Train Epoch:{},iteration:{},Loss:{}".format(eopch, step, loss.item()))
+                logger.info("Train Epoch:{},iteration:{},Loss:{}".format(epoch, step, loss.item()))
 
 
 def main():

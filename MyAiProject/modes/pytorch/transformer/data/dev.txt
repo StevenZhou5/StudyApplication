@@ -1,0 +1,36 @@
+en	zh	the fat is in the fire	近在眼前的麻烦
+en	zh	doozie	出色的人或事
+en	zh	at loggerheads	心存怨恨
+en	zh	sweeten the pot	使人愿意做事
+en	zh	sweetness and light	表里不一
+en	zh	sweetheart deal	私下交易
+en	zh	cat's pajamas	自以为是
+en	zh	cat's paw	被人利用
+en	zh	cat's meow	非常出色
+en	zh	has the cat got your tongue	焦灼烦躁
+en	zh	deep six	置之不理
+en	zh	four flusher	欺骗别人的人
+en	zh	sticky wicket	走投无路
+en	zh	go off reservation	采取强硬行动反击
+en	zh	flip out	怒火中烧
+en	zh	gum up the works	阻碍事情发展
+en	zh	lose one's cool	情绪失控
+en	zh	jump start	立刻开始一件事
+en	zh	to stick to one's ribs	大吃一顿
+en	zh	to stick in one's craw	无法忍受
+en	zh	to stick one's neck out	冒着风险
+en	zh	soft touch	好说话
+en	zh	hard act to follow	出色的事情
+en	zh	play hard ball	使用强硬的手段
+en	zh	a hard row to hoe	很努力才能完成的事
+en	zh	toe in the line	遵守规则
+en	zh	to be on the line	处于危险状态
+en	zh	have one's heart set on something	专心致志
+en	zh	one's heart not in it	心不在焉
+en	zh	how does that grab you	你怎么看
+en	zh	a babe in the woods	一窍不通
+en	zh	off the top of one's head	大概记得
+en	zh	bite off more than one can chew	不自量力
+en	zh	make a point	重视
+en	zh	take one's word for it	相信别人的话
+en	zh	make no bones	坦率地表达意见

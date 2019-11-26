@@ -1,0 +1,187 @@
+en	zh	the fat is in the fire	近在眼前的麻烦
+en	zh	doozie	出色的人或事
+en	zh	at loggerheads	心存怨恨
+en	zh	sweeten the pot	使人愿意做事
+en	zh	sweetness and light	表里不一
+en	zh	sweetheart deal	私下交易
+en	zh	cat's pajamas	自以为是
+en	zh	cat's paw	被人利用
+en	zh	cat's meow	非常出色
+en	zh	has the cat got your tongue	焦灼烦躁
+en	zh	deep six	置之不理
+en	zh	four flusher	欺骗别人的人
+en	zh	sticky wicket	走投无路
+en	zh	go off reservation	采取强硬行动反击
+en	zh	flip out	怒火中烧
+en	zh	gum up the works	阻碍事情发展
+en	zh	lose one's cool	情绪失控
+en	zh	jump start	立刻开始一件事
+en	zh	to stick to one's ribs	大吃一顿
+en	zh	to stick in one's craw	无法忍受
+en	zh	to stick one's neck out	冒着风险
+en	zh	soft touch	好说话
+en	zh	hard act to follow	出色的事情
+en	zh	play hard ball	使用强硬的手段
+en	zh	a hard row to hoe	很努力才能完成的事
+en	zh	toe in the line	遵守规则
+en	zh	to be on the line	处于危险状态
+en	zh	have one's heart set on something	专心致志
+en	zh	one's heart not in it	心不在焉
+en	zh	how does that grab you	你怎么看
+en	zh	a babe in the woods	一窍不通
+en	zh	off the top of one's head	大概记得
+en	zh	bite off more than one can chew	不自量力
+en	zh	make a point	重视
+en	zh	take one's word for it	相信别人的话
+en	zh	make no bones	坦率地表达意见
+en	zh	feel it in ones bones	有预感
+en	zh	leave the door open	不排除任何可能性
+en	zh	get ones foot in the door	走出第一步
+en	zh	see eye to eye	观点一致
+en	zh	to keep track	关注进展
+en	zh	the proof is in the pudding	实践出真知
+en	zh	an albatross around one's neck	令人忧虑的事情
+en	zh	ask for the moon	想要得不到的东西
+en	zh	more bang for the buck	尽量获得更多的价值
+en	zh	bag of tricks	各种窍门
+en	zh	go over like a lead balloon	建议不受欢迎
+en	zh	the ball is in someone's court	轮到某人采取行动
+en	zh	bank on me	信任我
+en	zh	nose out of joint	心烦意乱
+en	zh	beat a dead horse	做无用功
+en	zh	put one's best foot forward	留下好的第一印象
+en	zh	beyond a doubt	毫无疑问
+en	zh	a blank check	全权处理
+en	zh	bone up	多加练习
+en	zh	make no bones about	直言不讳
+en	zh	breathe down someone's neck	盯得很紧
+en	zh	come down on like a ton of bricks	严厉惩罚
+en	zh	brownie points	做好事得到回报
+en	zh	burn at the stake	严厉惩罚
+en	zh	icing on the cake	锦上添花
+en	zh	can't make heads or tails of	完全不明白
+en	zh	like a bull in a china shop	笨手笨脚
+en	zh	blow hot and cold	摇摆不定
+en	zh	come out in the wash	事情得到圆满解决
+en	zh	came to my senses	恢复理智
+en	zh	cozy up	套近乎
+en	zh	put one's finger on	确切指出
+en	zh	caught in the crossfire	被两方夹在中间
+en	zh	fits and starts	间歇的
+en	zh	fix someone's wagon	报复别人
+en	zh	flat on one's back	卧病在床
+en	zh	fly blind	摸索着做事
+en	zh	string someone along	牵着鼻子走
+en	zh	pull strings	走关系
+en	zh	under the table	非法的行为
+en	zh	beat someone at their own game	以其人之道，还治其人之身
+en	zh	get a fix on	定位
+en	zh	give as good as one gets	毫不示弱的反击
+en	zh	to hook someone up	介绍机会
+en	zh	go berserk	发疯
+en	zh	greek to me	如同天书
+en	zh	grind to a halt	慢慢停止
+en	zh	has had its day	过时
+en	zh	keep one's head above water	勉强生活
+en	zh	put the kibosh on	防止事情的发生
+en	zh	know one's place	符合身份地位
+en	zh	last ditch effort	最后的努力
+en	zh	leave in the lurch	在危难中抛弃别人
+en	zh	the lesser of two evils	两害相权取其轻
+en	zh	let slide	不再计较
+en	zh	lost in the shuffle	在混乱中忽略
+en	zh	lower the boom	严厉惩罚
+en	zh	push ones luck	得寸进尺
+en	zh	make a dent in	取得初步进展
+en	zh	march to a different drummer	独树一帜
+en	zh	go to the mat	不遗余力
+en	zh	method to one's madness	另有隐情
+en	zh	millstone around one's neck	沉重的负担
+en	zh	a mixed bag	各种各样的
+en	zh	one's name in mud	名声扫地
+en	zh	nip something in the bud	防微杜渐
+en	zh	not know beans about	一无所知
+en	zh	somebody's number is up	将要倒霉
+en	zh	on again off again	断断续续的
+en	zh	out of line	越界
+en	zh	paint oneself into a corner	陷入困境
+en	zh	par for the course	意料之中
+en	zh	pour water on	泼冷水
+en	zh	pull one's own weight	完成各自的工作
+en	zh	put in mothballs	无限期搁置
+en	zh	quit while one's ahead	见好就收
+en	zh	riding high	大获成功
+en	zh	give someone a run for one’s money	对竞争对手构成挑战
+en	zh	run into the ground	彻底讨论某事
+en	zh	seal one's fate	决定命运
+en	zh	sign one's own death warrant	自寻死路
+en	zh	the sky is the limit	没有限制
+en	zh	slippery slope	越来越糟
+en	zh	small potatoes	微不足道的事
+en	zh	have a soft spot for	对某人心软
+en	zh	squared away	安排妥当
+en	zh	squeak by	侥幸成功
+en	zh	long shot	成功机会小
+en	zh	give one's best shot	尽力而为
+en	zh	stop cold	突然停止
+en	zh	swallow one's pride	忍气吞声
+en	zh	swim against the tide	逆流而上
+en	zh	tar and feather	严厉惩罚
+en	zh	tar with the same brush	以偏概全
+en	zh	out in the open	公开
+en	zh	open the door to sth	带来
+en	zh	have one's back against the wall	没有退路
+en	zh	too close for comfort	险些发生不好的事
+en	zh	to save one's life	绝对不做某事
+en	zh	tough break	困难的处境
+en	zh	treat like dirt	把别人看得一文不值
+en	zh	trick out	打扮花哨
+en	zh	tried and true	行之有效
+en	zh	turn up the heat	加大压力
+en	zh	up a creek	处境艰难
+en	zh	under the wire	勉强达到要求
+en	zh	without a leg to stand on	无法使人相信
+en	zh	with one hand tied behind one's back	做事很熟练
+en	zh	worth one's while	努力是值得的
+en	zh	achilles' heel	致命弱点
+en	zh	come a long way	突飞猛进
+en	zh	come clean	坦白承认
+en	zh	come to grips with	面对
+en	zh	cook someone's goose	打乱计划
+en	zh	cover one's tracks	隐瞒证据
+en	zh	cross that bridge when one comes to it	船到桥头自然直
+en	zh	cross one's fingers	祈求好运
+en	zh	damn with faint praise	名褒实贬
+en	zh	diamond in the rough	璞玉
+en	zh	feast or famine	饥一顿，饱一顿
+en	zh	have one's finger on the pulse	紧跟最新动态
+en	zh	on the firing line	遭受攻击
+en	zh	flotsam and jetsam	没有价值的物品
+en	zh	fly in the face of	截然不同
+en	zh	force one's hand	逼迫做某事
+en	zh	foregone conclusion	不可避免的结果
+en	zh	foul-play	严重犯规
+en	zh	full of oneself	自以为是
+en	zh	get wise to	了解到
+en	zh	go easy on	温和有耐心地对待
+en	zh	add fuel to the fire	火上浇油
+en	zh	against all odds	出乎意料
+en	zh	also ran	失败者
+en	zh	looks can be deceiving	外表可能会骗人
+en	zh	at face value	根据外表上看
+en	zh	baptism by fire	严峻的考验
+en	zh	bare one's soul	敞开心扉
+en	zh	be all and end all	顶尖的
+en	zh	beat one's head against the wall	徒劳无功
+en	zh	beg borrow or steal	不择手段
+en	zh	big fish in a small pond	小地方的大人物
+en	zh	a black hole	让人迷惑的空洞
+en	zh	beside oneself	情绪失控
+en	zh	blow by blow	详细描述事情经过
+en	zh	boggle the mind	令人惊叹
+en	zh	break one's back	辛苦工作
+en	zh	bring to a head	做决定的紧急关头
+en	zh	burning question	十万火急的问题
+en	zh	cast in stone	板上钉钉
+en	zh	caught in the middle	左右为难
+en	zh	chip on one's shoulder	怀恨在心
