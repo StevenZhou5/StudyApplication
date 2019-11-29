@@ -4,8 +4,21 @@ from tensorflow.keras import layers as layers
 from tensorflow.keras import models as models
 
 
+class Test():
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def plus(self, add):
+        print(self.a + self.b)
+
+    def sub(self):
+        print(self.a - self.b)
+
+
 def main():
-    input_layer = layers.Input()
+    test = Test(3, 5)
+    test.sub()
 
 
 if __name__ == '__main__':

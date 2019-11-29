@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -24,6 +25,8 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int MY_PERMISSION_WRITE_EXTERNAL_STORAGE_CODE = 123;
+
+    private boolean isZhToEn = true; // 默认是中到英的翻译
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // ======================================<editor-fold des="翻译相关操作"> ======================================
     private EditText mEtInput;
 
+    private TextView mTvSource;
+    private TextView mTvTarget;
+    private Button mBtChange;
+
     private TextView mTvTest;
     private TextView mTvTestResult;
 
@@ -59,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
         mEtInput = findViewById(R.id.et_input);
+
+        mTvSource = findViewById(R.id.tv_source);
+        mTvTarget = findViewById(R.id.tv_target);
+        mBtChange = findViewById(R.id.bt_change);
+        mBtChange.setOnClickListener(this);
 
         mTvTest = findViewById(R.id.tv_test);
         mTvTest.setOnClickListener(this);
@@ -74,6 +86,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.bt_change: // 交换源语言和目标语言
+                isZhToEn = !isZhToEn;
+                if (isZhToEn) {
+                    mTvSource.setText("中文");
+                    mTvTarget.setText("English");
+                } else {
+                    mTvSource.setText("English");
+                    mTvTarget.setText("中文");
+                }
             case R.id.tv_test:
                 test();
                 break;
@@ -161,30 +182,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     // ======================================<editor-fold des="翻译相关操作"> ======================================
-    private Translator mTranslator;
+    private Translator mZhToEnTranslator;
+    private Translator mEnToZhTranslator;
     private int mEngineThreadNum = 2; // 翻译器Engine的线程数目
 
-    private boolean isEngineAvailable = false; // 翻译器Engine是否创建成功
+    private boolean isZhToEnEngineAvailable = false; // 翻译器Engine是否创建成功
+    private boolean isEnToZhEngineAvailable = false; // 翻译器Engine是否创建成功
 
     private void initTranslate() {
         // 初始化Translator
         // 四个参数分别为:参数1:Android中的Context；参数2：源语言：Language.ZH；参数3：目标语言： Language.EN；参数4：模型参数和缓存DB在Android系统中的绝对路径：mDataDirectoryPath；
-        mTranslator = new Translator(this.getApplicationContext(), Language.ZH, Language.EN, mDataDirectoryPath);
+        mZhToEnTranslator = new Translator(this.getApplicationContext(), Language.ZH, Language.EN, mDataDirectoryPath);
 
         // 创建Engine;参数1：mEngineThreadNum:翻译器Engine的线程数目
-        isEngineAvailable = mTranslator.createEngine(mEngineThreadNum);
+        isZhToEnEngineAvailable = mZhToEnTranslator.createEngine(mEngineThreadNum);
+
+
+        mEnToZhTranslator = new Translator(this.getApplicationContext(), Language.EN, Language.ZH, mDataDirectoryPath);
+        isEnToZhEngineAvailable = mEnToZhTranslator.createEngine(mEngineThreadNum);
     }
 
     /**
      * 只要翻译结果的简单测试
      */
     private void test() {
-        if (mTranslator == null || !isEngineAvailable) {
+        if (mZhToEnTranslator == null || !isZhToEnEngineAvailable) {
             return;
         }
         String input = mEtInput.getText().toString();
         // 参数一：input：需要翻译的源语言的字符串；参数2：false(不使用)：是否需要使用缓存(创建Translator指定的文件路径下必须包含缓存文件DB)
-        String result = mTranslator.translate(input, false);
+        // 缓存数据属于商业数据，demo示例中暂不提供缓存数据，如需使用请接正式版本SDK
+        String result = "";
+        if (isZhToEn) {
+            result = mZhToEnTranslator.translate(input, false);
+        } else {
+            result = mEnToZhTranslator.translate(input, false);
+        }
         mTvTestResult.setText(result);
     }
 
@@ -193,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 需要详细的翻译信息测试
      */
     private void testMoreInfo() {
-        if (mTranslator == null || !isEngineAvailable) {
+        if (mZhToEnTranslator == null || !isZhToEnEngineAvailable) {
             return;
         }
         String input = mEtInput.getText().toString();
@@ -201,13 +234,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 创建翻译请求所需要的参数实体类TranslatorRequest
         TranslatorRequest translatorRequest = new TranslatorRequest();
         translatorRequest.setSourceText(input); // 设置源语言字符串
-        translatorRequest.setUseCaches(true); // 是否需要使用缓存
-        translatorRequest.setUsePunctuation(true); // 是否启动标点符号处理逻辑:删除不合适位置的的标点符号，在合适的位置添加合适的标点符号
+//        translatorRequest.setUseCaches(true); // 是否需要使用缓存
+//        translatorRequest.setUsePunctuation(true); // 是否启动标点符号处理逻辑:删除不合适位置的的标点符号，在合适的位置添加合适的标点符号
 
 
         String finalResultStr = "";
         // 发起翻译请求并返回翻译结果数据
-        TranslatorResponse translatorResponse = mTranslator.translate(translatorRequest);
+        TranslatorResponse translatorResponse = mZhToEnTranslator.translate(translatorRequest);
         // 翻译返回的目标语言结果字符串
         String resultStr = translatorResponse.getTargetText();
         finalResultStr += "翻译结果：\n" + resultStr + "；\n\n";
@@ -226,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // 请求返回的DebugInfo
         TranslatorDebugInfo debugInfo = translatorResponse.getDebugInfo();
-        if (debugInfo != null){ // 当命中缓存的时候是不会反悔debugInfo的
+        if (debugInfo != null) { // 当命中缓存的时候是不会反悔debugInfo的
             String puncedSourceStr = debugInfo.getPuncedSourceText(); // 标点处理后的源语言字符串
             String taggedSourceStr = debugInfo.getTaggedSourceText(); // tag处理后的源语言字符串
             String afterPreProcessedSourceStr = debugInfo.getAfterPreProcessedSourceText(); // 前处理后的源语言字符串
@@ -246,9 +279,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         // 在onDestroy的时候将翻译器mTranslator资源释放
-        if (mTranslator != null) {
-            mTranslator.freeEngine();
-            mTranslator = null;
+        if (mZhToEnTranslator != null) {
+            mZhToEnTranslator.freeEngine();
+            mZhToEnTranslator = null;
+        }
+
+        if (mEnToZhTranslator != null) {
+            mEnToZhTranslator.freeEngine();
+            mEnToZhTranslator = null;
         }
     }
 }

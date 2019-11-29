@@ -20,6 +20,33 @@
             android:maxLength="20"
             android:textColor="@color/black" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="中文" />
+
+            <Button
+                android:id="@+id/bt_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="=>" />
+
+            <TextView
+                android:id="@+id/tv_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="English" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/tv_test"
             android:layout_width="wrap_content"
@@ -28,7 +55,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/blue2"
             android:padding="10dp"
-            android:text="简单翻译测试" />
+            android:text="翻译" />
 
         <TextView
             android:id="@+id/tv_test_result"
@@ -48,7 +75,8 @@
             android:layout_marginTop="50dp"
             android:background="@color/blue2"
             android:padding="10dp"
-            android:text="需要更多信息翻译测试" />
+            android:text="需要更多信息翻译测试"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_test_more_info_result"
@@ -58,14 +86,16 @@
             android:layout_marginTop="10dp"
             android:background="@color/blue2"
             android:padding="10dp"
-            android:text="结果" />
+            android:text="结果"
+            android:visibility="gone" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/layout_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue">
+        android:background="@color/blue"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_loading"
