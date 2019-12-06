@@ -58,6 +58,11 @@ class TranslatorModel(nn.Module):
         self.linear_output = nn.Linear(embedding_dim, num_target_vocab_size, bias=False)
 
     def forward(self, source_seq, source_position, target_seq, target_position, return_attentions=False):
+        # 因为在decode的时候是预测下一个词，所以不需用到最后一个词，要用到最后一个词的时候是在loss回归的时候(loss回归的target不需要第一个词)
+        target_seq = target_seq[:, :-1]  # 将target中的最后一个词去掉
+        target_position = target_position[:, :-1]  # 将最后一个词对应的position也去掉
+
+
         if return_attentions:
             encoder_output, encoder_attentions = self.encoder(source_seq, source_position,
                                                               return_attentions=return_attentions)
@@ -78,6 +83,8 @@ class TranslatorModel(nn.Module):
 
         # 最终在做一次全连接
         output = self.linear_output(decoder_output)  # [batch_size,batch_target_seq_len,num_target_vocab_size]
+        # 这里要做下降维操作，以方便后面进行cross_entropy的loss的计算，
+        output = output.view(-1, output.size(2))  # [batch_size*batch_target_seq_len,num_target_vocab_size]
 
         if return_attentions:
             return output, encoder_attentions, decoder_self_attentions, decoder_encoder_attentions

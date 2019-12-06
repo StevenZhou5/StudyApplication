@@ -84,7 +84,11 @@ def main():
                                  multi_attention_dropout=0.1,
                                  self_attention_dropout=0.1,
                                  ff_dropout=0.1)
-    # encoder_output = encoder_model(source_seq, source_position)
+    encoder_output = encoder_model(source_seq, source_position)
+    # print(encoder_output.size())
+    # lossFun = torch.nn.MSELoss()
+    # loss = lossFun(encoder_output, torch.randn(encoder_output.size(0), encoder_output.size(1), encoder_output.size(2)))
+    # loss.backward()
 
     # DecoderModel 测试
     num_target_vocab_size = train_dataset.target_vocab_size
@@ -98,8 +102,11 @@ def main():
                                  multi_attention_dropout=0.1,
                                  self_attention_dropout=0.1,
                                  ff_dropout=0.1)
-    # decoder_output = decoder_model(target_seq, target_position, source_seq, encoder_output)
+    decoder_output = decoder_model(target_seq, target_position, source_seq, encoder_output)
     # print(decoder_output.size())
+    # lossFun = torch.nn.MSELoss()
+    # loss = lossFun(decoder_output, torch.randn(decoder_output.size(0), decoder_output.size(1), decoder_output.size(2)))
+    # loss.backward()
 
     transformerModel = TranslatorModel(num_source_vocab_size, num_target_vocab_size, max_seq_len,
                                        embedding_dim=embedding_dim,
@@ -113,6 +120,9 @@ def main():
                                        ff_dropout=0.1)
     output = transformerModel(source_seq, source_position, target_seq, target_position)
     print(output.size())
+    lossFun = torch.nn.MSELoss()  # 采用这样的伪Loss的方式进行验证
+    loss = lossFun(output, torch.randn(output.size(0), output.size(1)))
+    loss.backward()
 
 
 if __name__ == '__main__':

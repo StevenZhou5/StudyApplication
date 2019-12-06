@@ -45,8 +45,12 @@ def main():
 
     # 定义optimizer和loss
     optimizer = tf.keras.optimizers.Adam(0.03)  # Adam优化器
-    #mse：均方根误差损失函数；用预测值与真实在的差的平方来作为loss函数
-    model.compile(optimizer=optimizer, loss='mse')  #
+
+    # mse：均方根误差损失函数；用预测值与真实在的差的平方来作为loss函数
+    # model.compile(optimizer=optimizer, loss='mse')  # 使用loss名称定义loss
+    # 定义MSE的Loss
+    mse_loss = tf.losses.MSE
+    model.compile(optimizer=optimizer, loss=mse_loss)  # 使用tf.losses.Loss 中的函数来定义
 
     # 模型训练
     history = model.fit(trainX, trainY, epochs=500)

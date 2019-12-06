@@ -526,7 +526,8 @@ class DecoderLayer(nn.Module):
                                                                                input_k=decoder_layer_input,
                                                                                input_v=decoder_layer_input,
                                                                                mask=self_attention_mask)
-        decoder_layer_input *= non_pad_mask  # [batch_size,batch_target_seq_len,embedding_dim]
+        # decoder_layer_input *= non_pad_mask  # [batch_size,batch_target_seq_len,embedding_dim] 这是一个严重错误，在使用完之后根本就没有再次对他进行使用,此时的改变会影响反向出传播
+        decoder_output *= non_pad_mask  # [batch_size,batch_target_seq_len,embedding_dim]
 
         # 目标语言对源语言的注意力
         # decoder_output：[batch_size,batch_target_seq_len,embedding_dim]
@@ -541,7 +542,7 @@ class DecoderLayer(nn.Module):
         decoder_output = self.feed_forward(decoder_output)  # [batch_size,batch_target_seq_len,embedding_dim]
         decoder_output *= non_pad_mask  # [batch_size,batch_target_seq_len,embedding_dim]
 
-        return decoder_output, decoder_multi_attention, decoder_encoder_attention
+        return decoder_output, decoder_multi_attention, None
 
 
 class DecoderModel(nn.Module):
@@ -566,8 +567,8 @@ class DecoderModel(nn.Module):
             self.position_embedding = nn.Embedding(max_seq_len, embedding_dim, padding_idx=dataset.PAD_POSITION)
         else:
             self.position_embedding = nn.Embedding.from_pretrained(
-                get_sinusoid_embedding_position_matrix(max_seq_len, embedding_dim, padding_idx=dataset.PAD_POSITION)
-            )
+                get_sinusoid_embedding_position_matrix(max_seq_len, embedding_dim, padding_idx=dataset.PAD_POSITION),
+                freeze=True)
 
         # 多层的decoder_layer
         self.decoder_layers = nn.ModuleList([

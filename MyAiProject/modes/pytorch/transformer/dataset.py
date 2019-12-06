@@ -4,7 +4,7 @@
 from collections import Counter  # 计数器
 
 import jieba  # 中文分词
-import nltk  # 引文分词
+import nltk  # 英文分词
 from tqdm import tqdm  # 用于进度条展示
 
 import torch.utils.data.dataset
