@@ -14,7 +14,7 @@ chardet==3.0.4
 Click==7.0
 cloud-ml-common==0.2.2
 cloud-ml-sdk==0.3.25
-cryptography==2.7
+cryptography==3.2
 cycler==0.10.0
 decorator==4.4.0
 defusedxml==0.6.0
