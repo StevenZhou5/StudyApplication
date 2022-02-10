@@ -10,7 +10,7 @@ setuptools.setup(name='cloudml-tutorial-01', version='3.7', packages=['trainer']
                  #             ('/etc/init.d', ['init-script']),
                  #             ('txt', ['trainer/requirements.txt', '/'])],
                  install_requires=[ # 用来配置依赖的包，在执行任务前会先执行pip install去按照相关的包
-                     'tensorflow==2.0.0b0',
+                     'tensorflow==2.5.3',
                      'scikit-learn',
                      'panda',
                      'pandas'
